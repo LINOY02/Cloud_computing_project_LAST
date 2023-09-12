@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud_computing_project_LAST", "Cloud_computing_project_LAST\Cloud_computing_project_LAST.csproj", "{0267D48B-29A3-459D-AA78-A3F55DFDDECF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud_computing_project_LAST", "Cloud_computing_project_LAST\Cloud_computing_project_LAST.csproj", "{0267D48B-29A3-459D-AA78-A3F55DFDDECF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{8A357F65-4477-4C15-B976-041F71D5B9A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0267D48B-29A3-459D-AA78-A3F55DFDDECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0267D48B-29A3-459D-AA78-A3F55DFDDECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0267D48B-29A3-459D-AA78-A3F55DFDDECF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A357F65-4477-4C15-B976-041F71D5B9A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A357F65-4477-4C15-B976-041F71D5B9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A357F65-4477-4C15-B976-041F71D5B9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A357F65-4477-4C15-B976-041F71D5B9A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
