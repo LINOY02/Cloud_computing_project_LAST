@@ -1,0 +1,89 @@
+/* breadcrumb css */
+.breadcrumb-area {
+    @include respond(xs) {
+        padding: 100px 0px;
+    }
+    @include respond(sm) {
+        padding: 120px 0px;
+    }
+    .shape {
+        position: absolute;
+        width: 100%;
+        &__1 {
+            top: -10px;
+            left: 0;
+            @include respond(lg) {
+                top: -12px;
+            }
+            @include respond(md) {
+                top: -13px;
+            }
+            @include respond(xs) {
+                top: -14px;
+            }
+            @include respond(sm) {
+                top: -13px;
+            }
+            @media(max-width: 360px) {
+                top: -16px;
+            }
+        }
+        &__2 {
+            top: auto;
+            bottom: -8px;
+            @include respond(lg) {
+                bottom: -10px;
+            }
+            @include respond(xs) {
+                bottom: -12px;
+            }
+            @include respond(sm) {
+                bottom: -10px;
+            }
+        }
+    }
+    .page-title {
+        color: $white;
+        font-size: 70px;
+        @include respond(xs) {
+            font-size: 45px;
+        }
+    }
+    .cafena-breadcrumb {
+        ul {
+            margin-bottom: 0px;
+        }
+        li {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            position: relative;
+            @include respond(xs) {
+                font-size: 14px;
+            }
+            &:not(:last-child) {
+                margin-right: 20px;
+                &::after {
+                    @include after;
+                    content: "/";
+                    width: auto;
+                    height: auto;
+                    left: auto;
+                    right: -15px;
+                    top: 0;
+                    color: $white;
+                }
+            }
+            a {
+                span {
+                    color: $white;
+                }
+                text-decoration: none;
+            }
+            span {
+                color: $theme-color;
+            }
+        }
+    }
+}

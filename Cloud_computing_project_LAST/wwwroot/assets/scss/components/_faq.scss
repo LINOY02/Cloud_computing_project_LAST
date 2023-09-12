@@ -1,0 +1,118 @@
+/* faq css*/
+.faq {
+    &__wrapper {
+        background: $white;
+        border-radius: 10px;
+        box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+        border: 1px solid $border-color-2;
+        padding: 90px 120px;
+        padding-top: 100px;
+        margin-left: 65px;
+        margin-right: 65px;
+        padding-right: 200px;
+        @include respond(lg) {
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 60px 80px;
+            padding-right: 100px;
+        }
+        @include respond(md) {
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 40px 40px;
+            padding-right: 60px;
+        }
+        @include respond(xs) {
+            margin-left: 0px;
+            margin-right: 0px;
+            padding: 40px 30px;
+        }
+        @media(max-width: 420px) {
+            padding: 40px 25px;
+        }
+    }
+    &__item {
+        border: none;
+        padding-left: 70px;
+        @media(max-width: 420px) {
+            padding-left: 55px;
+        }
+        &:not(:last-child) {
+            margin-bottom: 60px;
+            @include respond(xs) {
+                margin-bottom: 40px;
+            }
+        }
+        .title {
+            font-family: $bodyfont;
+            text-decoration: none;
+            background: transparent;
+            padding: 0px;
+            @include transition(.3s);
+            button {
+                font-size: 20px;
+                font-weight: 500;
+                color: $black;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                position: relative;
+                margin-bottom: 0px;
+                padding: 0px;
+                @include transition(.3s);
+                @media(max-width: 420px) {
+                    font-size: 18px;
+                }
+                &::after {
+                    content: "\f175";
+                    font-family: "Font Awesome 5 Pro";
+                    background-image: none;
+                    left: -70px;
+                    right: auto;
+                    width: 35px;
+                    height: 35px;
+                    border: 1px solid $border-color-2;
+                    border-radius: 5px;
+                    color: #A5A5A7;
+                    @include d-flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 0px;
+                    position: absolute;
+                    font-size: 16px;
+                    font-weight: 400;
+                    @include transition(.3s);
+                    box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+                    @media(max-width: 420px) {
+                        left: -55px;
+                    }
+                }
+                &:not(.collapsed)::after{
+                    background: $theme-color;
+                    color: $white;
+                    border-color: $theme-color;
+                }
+            }
+            &:hover {
+                button::after {
+                    background: $theme-color;
+                    color: $white;
+                    border-color: $theme-color;
+                }
+            }
+        }
+        .content {
+            border: none;
+            padding: 0px;
+            padding-top: 15px;
+            p {
+                color: $pera-color-2;
+                font-size: 18px;
+                @media(max-width: 420px) {
+                    font-size: 15px;
+                    line-height: 27px;
+                }
+            }
+        }
+    }
+}

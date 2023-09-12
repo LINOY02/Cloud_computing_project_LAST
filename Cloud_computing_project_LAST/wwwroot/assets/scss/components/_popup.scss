@@ -1,0 +1,173 @@
+.product-popup {
+    position: fixed;
+    left: 0;
+    @include transition(.3s);
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1170px;
+    right: 0;
+    margin: auto;
+    z-index: 999;
+    height: 100%;
+    & :is(.popup-text) {
+        background-color: $white;
+        position: relative;
+        padding: 30px;
+        overflow-y: auto;
+    }
+}
+
+.popup-coffe-mechine {
+    .quickview,
+    .quickview__thumb {
+        @include respond(md) {
+            width: 200px;
+        }
+    }
+}
+
+.show-popup {
+    opacity: 1;
+    visibility: visible;
+}
+
+.view {
+    cursor: pointer;
+}
+.view-background {
+    overflow-y: auto;
+    position: relative;
+    background: $white;
+    padding: 40px;
+    border-radius: 10px;
+    .quickview {
+        @include respond(xs) {
+            margin-bottom: 30px;
+        }
+    }
+    @include respond(xs) {
+        padding: 15px;
+    }
+    @include respond(sm) {
+        padding: 30px;
+    }
+}
+.view_close {
+    background: $bg-dark;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    @include transition(.3s);
+    display: block;
+    color: $white;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border-radius: 5px;
+    &:hover {
+        color: $white;
+        background-color: $theme-color;
+    }
+}
+
+.viewcontent {
+    &__header {
+        h2 {
+            font-size: 22px;
+            font-weight: 500;
+            font-family: $bodyfont;
+        }
+    }
+    &__rating {
+        i {
+            color: $theme-color;
+            font-size: 14px;
+        }
+    }
+    &__price {
+        margin-top: 5px;
+        h4 {
+            color: $bg-dark;
+            font-family: $bodyfont;
+            font-weight: 500;
+            font-size: 24px;
+            span {
+                color: $bg-dark;
+            }
+        }
+    }
+    &__stock {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        h4 {
+            font-family: $bodyfont;
+        }
+    }
+    &__details {
+        margin-bottom: 20px;
+        p {
+            color: $grey-dark;
+        }
+    }
+    &__action {
+        @include respond(xs) {
+            @include d-flex;
+            align-items: center;
+        }
+        span {
+            margin-right: 10px;
+            color: $bg-dark;
+            text-transform: uppercase;
+        }
+        input {
+            width: 100px;
+            min-height: 50px;
+            padding: 0px 10px;
+            border-color: $grey-dark;
+            border: 1px solid $grey-dark;
+            border-radius: 4px;
+            @include respond(xs) {
+                width: 80px;
+            }
+            @include respond(sm) {
+                width: 100px;
+            }
+        }
+        .site-btn {
+            margin-left: 10px;
+            @include transform(translateY(-2px));
+            @include respond(xs) {
+                padding: 9.5px 25px;
+            }
+            @include respond(sm) {
+                padding: 9.5px 30px;
+            }
+        }
+        margin-bottom: 20px;
+    }
+    &__footer {
+        @include d-flex;
+        ul {
+            @include d-flex;
+            flex-direction: column;
+            margin-bottom: 0px;
+            li {
+                color: $grey-dark;
+                font-size: 13px;
+                text-transform: uppercase;
+            }
+            &:first-child {
+                min-width: 90px;
+                li {
+                    color: $bg-dark;
+                }
+            }
+        }
+    }
+}

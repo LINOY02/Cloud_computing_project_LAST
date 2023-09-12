@@ -1,0 +1,155 @@
+/* side info css */
+.hamburger-trigger {
+    margin-left: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.side-info {
+    padding-left: 20px;
+    padding-right: 20px;
+    .title {
+        font-family: $bodyfont;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .mb-5 {
+        margin-bottom: 5px !important;
+    }
+    p {
+        font-size: 15x;
+        line-height: 28px;
+    }
+    &__close {
+        top: 0;
+        left: 0;
+        background: $bg-dark;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border-radius: 50%;
+        @include transition(.3s);
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            color: $white;
+        }
+        &:hover {
+            background: $theme-color;
+        }
+    }
+    &__wrapper {
+        padding: 20px;
+    }
+    .social-links {
+        a {
+            &:hover {
+                color: $theme-color;
+                border-color: $theme-color;
+            }
+        }
+    }
+}
+
+.overlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s linear 0s;
+	transition: all 600ms ease;
+	-webkit-transition: all 600ms ease;
+	-moz-transition: all 600ms ease;
+	-ms-transition: all 600ms ease;
+	-o-transition: all 600ms ease;
+}
+.overlay.active {
+	opacity: .5;
+	visibility: visible;
+	cursor: url(../images/icons/cancel.png), auto;
+}
+
+.side-info-wrapper, 
+.cart-bar-wrapper {
+    position: fixed;
+	overflow-y: auto;
+	top: 0;
+	right: -330px;
+	width: 300px;
+	height: 100%;
+	display: block;
+	background-color: $white;
+	z-index: 100;
+	box-shadow: -5px 0 20px -5px rgba(0, 0, 0, 0.5);
+	padding-top: 0px;
+    @include transition(all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86));
+    .nav {
+        @include d-flex;
+        a {
+            @include flexWidth(50%);
+            font-size: 18px;
+            color: $bg-dark;
+            @include d-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        a.active {
+            background: $bg-dark;
+            color: $white;
+        }
+    }
+}
+
+.side-info-wrapper.show,
+.cart-bar-wrapper.show {
+    right: 0;
+}
+
+.side-info-wrapper.mm-only.show {
+    display: none;
+    @include respond(md) {
+        display: inline-block;
+    }
+}
+
+.side-info-wrapper.show-all.show {
+    @include respond(md) {
+        display: none;
+    }
+}
+
+.side-info-wrapper {
+    .contact__info {
+        li {
+            @include d-flex;
+            font-size: 15px;
+            align-items: flex-start;
+            span {
+                margin-right: 10px;
+                @include flexWidth(15px);
+                color: $theme-color;
+                font-size: 15px;
+            }
+            p {
+                @include flexWidth(85%);
+            }
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

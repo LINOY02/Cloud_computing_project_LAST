@@ -1,0 +1,95 @@
+/* team css */
+.team {
+    &__box {
+        border: 1px solid $border-color-2;
+        border-radius: 10px;
+        padding: 38px 28px;
+        @include transition(.4s);
+        .thumb {
+            position: relative;
+            min-height: 310px;
+            img {
+                border-radius: 60px 60px 60px 0px;
+                min-height: 310px;
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        .name {
+            font-size: 18px;
+            font-family: $bodyfont;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .experience {
+            color: $theme-color;
+            letter-spacing: 2px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .social-links {
+            position: absolute;
+            top: 30px;
+            right: -1px;
+            ul {
+                position: absolute;
+                @include transform(translateX(-50%));
+                @include transition(0.6s cubic-bezier(0.25, 1, 0.5, 1));
+                opacity: 0;
+                visibility: hidden;
+                flex-direction: column;
+                left: 50%;
+                li {
+                    opacity: 0;
+                    margin-top: 10px;
+                    @include transition(0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6));
+                }
+            }
+            &__trigger,
+            a {
+                border: none;
+                color: #958f8a;
+                font-size: 13px;
+                width: 45px;
+                border-radius: 5px;
+                height: 45px;
+                background: $white;
+                box-shadow: 0px 6px 21px 0px rgba(118, 118, 118, 0.09);
+                &:hover {
+                    background-color: $theme-color;
+                    color: $white;
+                    border-color: $theme-color;
+                }
+            }
+            &:hover {
+                ul {
+                    opacity: 1;
+                    visibility: visible;
+                    li {
+                        @include transition(0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6));
+                        opacity: 1;
+                        &:nth-child(1) {
+                            transition-delay: 0.1s;
+                        }
+                        &:nth-child(2) {
+                            transition-delay: 0.2s;
+                        }
+                        &:nth-child(3) {
+                            transition-delay: 0.3s;
+                        }
+                        &:nth-child(4) {
+                            transition-delay: 0.4s;
+                        }
+                    }
+                }
+            }
+        }
+        &:hover {
+            img {
+                border-radius: 0px 60px 60px 60px;
+            }
+        }
+    }
+}

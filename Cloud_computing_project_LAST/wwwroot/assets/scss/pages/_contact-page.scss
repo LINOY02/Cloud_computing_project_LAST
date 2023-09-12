@@ -1,0 +1,86 @@
+/* contact css */
+.contact {
+    &__area {
+        .shape {
+            left: 0px;
+            top: 80px;
+            width: auto;
+            &__2 {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+    &__wrapper {
+        position: relative;
+        z-index: 2;
+        padding: 80px 75px;
+        border: 1px solid $border-color-2;
+        box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+        background: $white;
+        @include respond(xs) {
+            padding: 40px 25px;
+        }
+        @include respond(sm) {
+            padding: 80px 75px;
+        }
+    }
+    &__form {
+        input, textarea {
+            border: 1px solid $border-color-2;
+            font-size: 15px;
+            @include placeholder(#737373);
+            padding: 12px 20px;
+            width: 100%;
+            background: $white;
+            box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+            border-radius: 5px;
+        }
+        textarea {
+            min-height: 160px;
+        }
+    }
+}
+
+.contact-info {
+    @include respond(lg) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+    .icon {
+        @include flexWidth(80px);
+        height: 70px;
+        margin-right: 30px;
+        border: 1px solid $border-color-2;
+        border-radius: 10px;
+        @include respond(lg) {
+            margin-bottom: 20px;
+            margin-right: 0px;
+            width: 80px;
+        }
+    }
+    .title {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    .content {
+        a {
+            color: #737373;
+            font-size: 15px;
+            display: block;
+            text-decoration: none;
+            line-height: 24px;
+        }
+        p {
+            color: #737373;
+            line-height: 24px;
+        }
+    }
+}
+
+#contactmap {
+    height: 510px;
+    width: 100%;
+}

@@ -1,0 +1,294 @@
+/* Button css */
+.site-btn {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $white;
+    letter-spacing: 2px;
+    background: $theme-color;
+    padding: 9.5px 34px;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    border: 1px solid $theme-color;
+    font-weight: 500;
+    @include respond(xs) {
+        padding: 9.5px 30px;
+    }
+    @include respond(sm) {
+        padding: 9.5px 34px;
+    }
+    &::after {
+        background: $border-color;
+        width: 0%;
+        height: 100%;
+        border-radius: 5px;
+        position: absolute;
+        content: "";
+        top: 0;
+        @include transition(all 0.4s cubic-bezier(0.42, 0, 0.58, 1));
+        z-index: -1;
+        right: 0;
+    }
+    &:hover::after {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+    &:hover {
+        color: $white;
+        border-color: $bg-dark;
+        border-radius: 7px;
+    }
+    &__borderd {
+        background: transparent;
+        border-color: $border-color;
+        &::after {
+            background: $theme-color;
+        }
+        &:hover {
+            border-color: $theme-color;
+        }
+    }
+    &__2 {
+        background: transparent;
+        border-color: $border-color-2;
+        margin-right: 20px;
+        color: $bg-dark;
+        &::after {
+            background: $theme-color;
+        }
+        &:hover {
+            border-color: $theme-color;
+        }
+    }
+    &__bghide {
+        border: none;
+        border-radius: 0px;
+        color: $black;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0px;
+        background-color: transparent;
+        &::after {
+            display: none;
+        }
+        &:hover {
+            color: $theme-color;
+        }
+    }
+}
+
+.btns {
+    @include respond(xs) {
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    @include respond(sm) {
+        flex-direction: row;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+    .site-btn {
+        &__borderd {
+            margin-left: 20px;
+            @include respond(xs) {
+                margin-left: 0px;
+                margin-top: 20px;
+            }
+            @include respond(sm) {
+                margin-left: 20px;
+                margin-top: 0px;
+            }
+            &--double {
+                border-width: 2px;
+                padding: 8.5px 34px;
+            }
+        }
+    }
+}
+
+.video-btn {
+    text-decoration: none;
+    span {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #828282;
+        margin-right: 18px;
+    }
+    i {
+        width: 50px;
+        height: 50px;
+        @include d-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: $white;
+        border-radius: 50%;
+        border: 1px solid #79797A;
+        @include transition(.3s);
+    }
+    &:hover {
+        i {
+            background: $theme-color;
+            color: $white;
+        }
+    }
+    &__2 {
+        i {
+            width: 70px;
+            height: 70px;
+            color: #776c62;
+            font-size: 13px;
+            margin-bottom: 5px;
+            border-color: #E3E0DE;
+        }
+        flex-direction: column;
+        justify-content: center;
+        span {
+            color: $black;
+            font-weight: 500;
+            margin-right: 0px;
+            display: block;
+        }
+        &--white {
+            i {
+                color: $white;
+            }
+            span {
+                color: $white;
+                letter-spacing: 2px;
+            }
+            &:hover {
+                i {
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+.read-more {
+    color: $pera-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    i {
+        padding-left: 10px;
+        @include transition(.3s);
+    }
+    &:hover {
+        color: $white;
+        i {
+            padding-left: 5px;
+        }
+    }
+    &__2 {
+        color: $pera-color-2;
+    }
+}
+
+.go-top {
+    position: absolute;
+    flex-direction: column;
+    font-size: 15px;
+    color: $pera-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    top: -25px;
+    left: 50%;
+    display: inline-block;
+    @include transform(translateX(-50%));
+    span {
+        @include transition(.3s);
+        &:hover {
+            color: $white;
+        }
+    }
+    i {
+        @include transition(.3s);
+        background-color: $bg-dark;
+        @include d-flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        margin-bottom: 10px;
+        border: 1px solid $pera-color;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        &:hover {
+            background-color: $theme-color;
+        }
+    }
+
+    &__bottom {
+        left: 0;
+        @include transform(translateX(0%));
+        position: static;
+        color: $white;
+        @include respond(md) {
+            margin-top: 30px;
+        }
+        span {
+            color: $white;
+        }
+        i {
+            display: inline-block;
+            width: auto;
+            height: auto;
+            border: none;
+            margin-bottom: 0;
+            padding-left: 5px;
+            background-color: transparent;
+        }
+    }
+    &__white {
+        i {
+            background: $white;
+            border-color: $border-color-2;
+            color: $black;
+            margin-bottom: 0px;
+            @include transition(.3s);
+            &:hover {
+                background-color: $theme-color;
+                border-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+}
+
+.btns-wrapper {
+    .site-btn {
+        @include respond(md) {
+            margin-top: 20px;
+        }
+    }
+}
+
+.share-btn {
+    color: $pera-color-2;
+}
+
+.inline-btn {
+    width: 45px;
+    height: 45px;
+    @include d-flex;
+    align-items: center;
+    justify-content: center;
+    color: #776c62;
+    border: 1px solid $border-color-2;
+    border-radius: 5px;
+    text-decoration: none;
+    &:hover {
+        color: $white;
+        background-color: $theme-color;
+        border-color: $theme-color;
+    }
+}

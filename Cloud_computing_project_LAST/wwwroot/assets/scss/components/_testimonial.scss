@@ -1,0 +1,54 @@
+/* testimonial css */
+.testimonial {
+    &__area {
+        .owl-item img {
+            width: auto;
+        }
+        .shape {
+            right: 0;
+            top: -50px;
+            @include respond(lg) {
+                width: 20%;
+            }
+        }
+    }
+    &__active {
+        .owl-nav {
+            div {
+                top: 85px;
+                @include transform(translateY(0));
+            }
+        }
+    }
+    &__item {
+        .quote {
+            display: inline-block;
+            img {
+                margin: 0 auto;
+            }
+        }
+        p {
+            font-size: 20px;
+            color: $white;
+        }
+        .thumb {
+            border-radius: 50%; 
+            img {
+                border-radius: 50%;
+                margin: 0 auto;
+            }
+        }
+        .name {
+            color: $white;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-family: $bodyfont;
+        }
+        .designation {
+            font-size: 14;
+            text-transform: uppercase;
+            color: $theme-color;
+        }
+    }
+
+}

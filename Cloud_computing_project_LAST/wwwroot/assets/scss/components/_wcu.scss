@@ -1,0 +1,67 @@
+/* wcu css */
+.wcu {
+    &__area {
+        @include respond(lg) {
+            padding-top: 0px;
+        }
+    }
+    &__item {
+        border: 1px solid $border-color-2;
+        border-radius: 10px;
+        padding: 50px 45px;
+        @include transition(.3s);
+        @include respond(xs) {
+            padding: 50px 20px;
+        }
+        @include respond(sm) {
+            padding: 50px 45px;
+        }
+        .icon {
+            z-index: 1;
+            position: relative;
+            max-width: 75px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            &::after {
+                width: 45px;
+                height: 45px;
+                background: #EDDFD1;
+                content: "";
+                position: absolute;
+                left: 30px;
+                top: 25px;
+                border-radius: 50%;
+                z-index: -1;
+                @include transition(.3s);
+            }
+        }
+        .content {
+            @include d-flex;
+            align-items: center;
+            flex-direction: column;
+            .title {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            p {
+                color: $pera-color-2;
+            }
+        }
+        .inline-btn {
+            margin-top: 28px;
+        }
+        &:hover {
+            @include transform(translateY(0px));
+            .icon {
+                &::after {
+                    left: 0;
+                }
+            }
+            .inline-btn {
+                color: $white;
+                background-color: $theme-color;
+                border-color: $theme-color;
+            }
+        }
+    }
+}

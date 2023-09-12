@@ -1,0 +1,252 @@
+/* hero area css */
+
+.hero {
+    &__area {
+        z-index: 1;
+        padding-top: 275px;
+        padding-bottom: 90px;
+        .shape {
+            left: 0;
+            top: 0;
+            @include respond(laptop) {
+                width: 35%;
+            }
+            @include respond(lg) {
+                width: 35%;
+            }
+            &__2 {
+                left: auto;
+                right: 0;
+            }
+        }
+        .mm-reverse {
+            @include respond(md) {
+                flex-direction: column-reverse;
+            }
+        }
+        &--2 {
+            padding-top: 0px;
+            padding-bottom: 80px;
+            .shape {
+                top: -65px;
+                &__2 {
+                    right: 0;
+                    top: -100px;
+                }
+            }
+        }
+        &--3 {
+            padding-top: 285px;
+            background-position: center top;
+            padding-bottom: 165px;
+            @include respond(xs) {
+                padding-top: 225px;
+            }
+            @include respond(sm) {
+                padding-top: 285px;
+            }
+            .vide-wrapper {
+                height: 100%;
+                position: relative;
+                @include d-flex;
+                @include flexWidth(100%);
+                align-items: flex-end;
+                justify-content: flex-end;
+                .vide-btn {
+                    right: 0;
+                    bottom: 0;
+                }
+                @include respond(xs) {
+                    justify-content: center;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    &__content {
+        .title {
+            color: $white;
+            font-size: 100px;
+            line-height: 97px;
+            letter-spacing: 2px;
+            @include respond(lg) {
+                font-size: 60px;
+                line-height: 57px;
+            }
+        }
+        z-index: 2;
+        p {
+            color: $pera-color;
+            font-size: 18px;
+        }
+        &--2 {
+            @include respond(md) {
+                @include d-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            .title {
+                color: $black;
+                font-size: 120px;
+                line-height: 115px;
+                @include respond(lg) {
+                    font-size: 80px;
+                    line-height: 75px;
+                }
+                @include respond(xs) {
+                    font-size: 50px;
+                    line-height: 45px;
+                }
+                @include respond(sm) {
+                    font-size: 80px;
+                    line-height: 75px;
+                }
+            }
+            p {
+                color: $pera-color-2;
+            }
+            .btns {
+                @include respond(xs) {
+                    align-items: center !important;
+                    margin-top: 5px;
+                }
+                @include respond(sm) {
+                    align-items: flex-start !important;
+                    margin-top: 25px;
+                }
+                .site-btn {
+                    @include respond(xs) {
+                        margin-right: 0px;
+                        margin-top: 15px;
+                    }
+                    @include respond(sm) {
+                        margin-right: 20px;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        &--3 {
+            @include respond(xs) {
+                @include d-flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+            @include respond(sm) {
+                display: block;
+            }
+            .title {
+                @include respond(xs) {
+                    text-align: center;
+                }
+                @include respond(sm) {
+                    text-align: left;
+                }
+            }
+            .btns {
+                @include respond(xs) {
+                    margin-top: 30px;
+                    align-items: center !important;
+                }
+                @include respond(sm) {
+                    margin-top: 45px;
+                }
+            }
+            p {
+                @include respond(xs) {
+                    text-align: center;
+                }
+                @include respond(sm) {
+                    text-align: left;
+                }
+            }
+        }
+        .social-links  {
+            @include respond(xs) {
+                margin-top: 30px;
+            }
+            @include respond(sm) {
+                margin-top: 40px;
+            }
+            a {
+                width: auto;
+                border: none;
+                text-transform: uppercase;
+                font-size: 14px;
+                &:not(:last-child) {
+                    margin-right: 45px;
+                }
+                i {
+                    font-size: 15px;
+                    color: $white;
+                    margin-right: 10px;
+                    @include transition(.3s);
+                }
+                span {
+                    color: $white;
+                    font-weight: 500;
+                    @include transition(.3s);
+                }
+                &:hover {
+                    i {
+                        color: $theme-color;
+                    }
+                    span {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+    &__thumb {
+        padding-top: 2px;
+        z-index: 2;
+        position: relative;
+        @include transform(translate(-30px, -25px));
+        @include respond(md) {
+            @include transform(translate(0px, 0px));
+            margin-bottom: 50px;
+            margin-top: 40px;
+        }
+        @include respond(xs) {
+            margin-top: 80px;
+        }
+        @include respond(sm) {
+            margin-top: 40px;
+        }
+        &--2 {
+            @include respond(md) {
+                text-align: center;
+            }
+            img {
+                @include transform(translateX(65px));
+                @include respond(laptop) {
+                    @include transform(translateX(0px));
+                }
+                @include respond(lg) {
+                    @include transform(translateX(0px));
+                }
+            }
+            .video-btn  {
+                position: absolute;
+                bottom: 55px;
+                right: -30px;
+                @include respond(laptop) {
+                    right: 0px;
+                }
+                @include respond(md) {
+                    right: 100px;
+                }
+                @include respond(xs) {
+                    position: static;
+                    bottom: 0;
+                    right: 0;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}

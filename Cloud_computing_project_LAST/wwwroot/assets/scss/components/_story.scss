@@ -1,0 +1,184 @@
+/* story css */
+.story-list {
+    position: relative;
+    padding: 45px 0px;
+    padding-top: 0px;
+    @include respond(lg) {
+        padding: 20px 0px;
+        padding-top: 0px;
+    }
+    @include respond(xs) {
+        padding-bottom: 0px;
+    }
+    &::after {
+        @include after;
+        left: 50%;
+        width: 1px;
+        background-color: $border-color-2;
+        @include transform(translateX(-50%));
+        @include respond(md) {
+            @include transform(translateX(0%));
+            left: 20px;
+        }
+        @include respond(xs) {
+            display: none;
+        }
+        @include respond(sm) {
+            display: inline-block;
+        }
+    }
+    &__box {
+        position: relative;
+        margin: 0 auto 430px;
+        width: 40px;
+        @include respond(md) {
+            margin: 0px;
+            margin-bottom: 485px;
+        }
+        @include respond(xs) {
+            width: auto;
+            margin-bottom: 30px;
+        }
+        @include respond(sm) {
+            width: 40px;
+            margin-bottom: 485px;
+        }
+        &--inner {
+            width: 525px;
+            position: absolute;
+            top: 0;
+            right: -567px;
+            box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+            @include respond(lg) {
+                width: 410px;
+                right: -445px;
+            }
+            @include respond(md) {
+                right: -500px;
+            }
+            @include respond(xs) {
+                position: static;
+                right: 0px;
+                width: 100%;
+            }
+            @include respond(sm) {
+                position: absolute;
+                right: -450px;
+                width: 410px;
+            }
+            .thumb {
+                position: relative;
+                border-radius: 10px 10px 0px 0px;
+                overflow: hidden;
+                img {
+                    border-radius: 10px 10px 0px 0px;
+                    @include transition(.3s);
+                }
+                .year {
+                    border-radius: 5px 5px 0px 0px;
+                    color: $white;
+                    background: $theme-color;
+                    font-size: 15px;
+                    letter-spacing: 2px;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 40px;
+                    width: 95px;
+                    text-align: center;
+                    padding: 2px 0px;
+                    font-weight: 500;
+                }
+            }
+            .title {
+                margin-bottom: 5px;
+                font-size: 30px;
+            }
+            .content {
+                background: $white;
+                border-radius: 0px 0px 10px 10px;
+                border: 1px solid $border-color-2;
+                border-top: 0px;
+                padding-top: 35px;
+                padding-left: 40px;
+                padding-right: 60px;
+                padding-bottom: 45px;
+                @include respond(xs) {
+                    padding: 20px;
+                }
+                @include respond(sm) {
+                    padding-top: 35px;
+                    padding-left: 40px;
+                    padding-right: 60px;
+                    padding-bottom: 45px;
+                }
+                p {
+                    color: $pera-color-2;
+                }
+            }
+        }
+        &:nth-child(2n+1) {
+            .story-list__box--inner {
+                right: auto;
+                left: -567px;
+                @include respond(lg) {
+                    left: -445px;
+                }
+                @include respond(md) {
+                    right: -500px;
+                    left: auto;
+                }
+                @include respond(sm) {
+                    right: -445px;
+                }
+            }
+        }
+        &:last-child {
+            @include respond(xs) {
+                margin-bottom: 0px;
+            }
+            @include respond(sm) {
+                margin-bottom: 485px;
+            }
+        }
+        &:hover {
+            .thumb {
+                img {
+                    @include transform(scale(1.1));
+                }
+            }
+        }
+    }
+    .count,
+    .plus {
+        width: 40px;
+        height: 40px;
+        border: 1px solid $border-color-2;
+        border-radius: 5px;
+        color: $black;
+        font-size: 15px;
+        @include d-flex;
+        justify-content: center;
+        align-items: center;
+        background: $white;
+        z-index: 2;
+        position: relative;
+        @include respond(xs) {
+            display: none;
+        }
+        @include respond(sm) {
+            display: flex;
+        }
+    }
+    .plus {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        @include transform(translateX(-50%));
+        font-size: 20px;
+        @include respond(md) {
+            @include transform(translateX(0%));
+            left: 0px;
+        }
+    }
+}

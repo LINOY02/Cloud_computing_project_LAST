@@ -1,0 +1,107 @@
+/* checkout page css */
+.checkout-wrapper {
+    padding: 95px 70px;
+    @include respond(xs) {
+        padding: 35px 30px;
+    }
+    @include respond(sm) {
+        padding: 65px 60px;
+    }
+
+    .checkout-top {
+        @include d-flex;
+        align-items: center;
+        nav {
+            @include respond(xs) {
+                padding-left: 20px;
+            }
+            @include respond(sm) {
+                padding-left: 0px;
+            }
+        }
+        .title {
+            font-size: 24px;
+            font-family: $bodyfont;
+            font-weight: 600;
+            margin-right: 100px;
+            @include respond(md) {
+                margin-bottom: 20px;
+            }
+            @include respond(xs) {
+                margin-right: 0px;
+            }
+            @include respond(sm) {
+                margin-right: 80px;
+            }
+        }
+        nav {
+            a {
+                color: $black;
+                text-decoration: none;
+                font-weight: 500;
+                position: relative;
+                padding: 0px;
+                &::after {
+                    @include after;
+                    width: 18px;
+                    height: 18px;
+                    background: transparent;
+                    left: -32px;
+                    border: 1px solid $black;
+                    border-radius: 50%;
+                    top: 5px;
+                }
+                &::before {
+                    width: 10px;
+                    background-color: $black;
+                    border-radius: 50%;
+                    height: 10px;
+                    position: absolute;
+                    left: -28px;
+                    top: 9px;
+                    content: "";
+                    opacity: 0;
+                    visibility: hidden;
+                    @include transition(.3s);
+                }
+                &:not(:last-child) {
+                    margin-right: 70px;
+                    @include respond(xs) {
+                        margin-right: 050px;
+                    }
+                    @include respond(sm) {
+                        margin-right: 60px;
+                    }
+                }
+            }
+            .active{
+                &::before {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.cart-form {
+    padding-top: 20px;
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: $black;
+        font-weight: 500;
+    }
+    input,
+    textarea {
+        width: 100%;
+        border: none;
+        background-color: #FBFAF7;
+        padding: 10px 15px;
+        color: #848177;
+        @include placeholder(#848177);
+    }
+    textarea {
+        min-height: 160px;
+    }
+}

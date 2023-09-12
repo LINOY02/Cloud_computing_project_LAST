@@ -2,44 +2,364 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Cloud_computing_project_LAST</title>
+    @* <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Cloud_computing_project_LAST.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" /> *@
+
+    <!--========= Required meta tags =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>Cafena - Coffee Shop HTML5 Template</title>
+
+    <!--====== Favicon ======-->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.ico" type="images/x-icon" />
+
+    <!--====== CSS Here ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/lightcase.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cloud_computing_project_LAST</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+    <!-- header start -->
+    <header class="site-header site-header__3 position-absolute">
+        <div class="menu-area menu-area__3">
+            <div class="container-fluid custom-width custom-width__2">
+                <div class="row d-none d-xl-flex">
+                    <div class="col-xl-5 col-lg-4 col-md-5 align-self-center">
+                        <div class="main-menu main-menu__3">
+                            <nav>
+                                <ul>
+                                    <li class="menu-item-has-children active"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="menu.html">Menu</a></li>
+                                    <li><a href="reservation.html">Reservation</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 d-none d-lg-block text-center align-self-center">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="assets/images/logo/logo.png" alt="img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-6 col-md-7 align-self-center">
+                        <div class="menu-area__right menu-area__right--3 d-flex justify-content-end align-items-center">
+                            <div class="main-menu main-menu__3">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="#0">pages</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                                <li><a href="chefs.html">Chefs</a></li>
+                                                <li><a href="faq.html">Faq</a></li>
+                                                <li><a href="story.html">Story</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="shop.html">Shop</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="product-details.html">Shop Details</a></li>
+                                                <li><a href="cart.html">Shop Cart</a></li>
+                                                <li><a href="checkout.html">Shop Checkout</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="wrapper pl-50 d-flex justify-content-end align-items-center">
+                                <div class="search">
+                                    <div class="search__trigger item">
+                                        <span class="open"><i class="far fa-search"></i></span>
+                                        <span class="close"><i class="fal fa-times"></i></span>
+                                    </div>
+                                    <div class="search__form">
+                                        <form role="search" method="get" action="index.html">
+                                            <input type="search" name="s" value="" placeholder="Search Keywords">
+                                            <button type="submit"><i class="far fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="hamburger-trigger item">
+                                    <i class="far fa-bars"></i>
+                                </div>
+                                <div class="cart cart-trigger item position-relative">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <span class="cart__count">3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-lg-flex d-xl-none">
+                    <div class="col-xl-9 col-lg-10 col-6">
+                        <div class="wrapper-for-lg d-flex align-items-center">
+                            <div class="logo d-lg-none">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.png" alt="img">
+                                </a>
+                            </div>
+                            <div class="main-menu main-menu__3">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li class="menu-item-has-children active">
+                                            <a href="index.html">Home</a>
+                                            <ul class="sub-menu">
+                                                <li class="active"><a href="index.html">Home 01</a></li>
+                                                <li><a href="home-2.html">Home 02</a></li>
+                                                <li><a href="home-3.html">Home 03</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="menu.html">Menu</a></li>
+                                        <li><a href="reservation.html">Reservation</a></li>
+                                        <li>
+                                            <a href="#0">pages</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                                <li><a href="chefs.html">Chefs</a></li>
+                                                <li><a href="faq.html">Faq</a></li>
+                                                <li><a href="story.html">Story</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="shop.html">Shop</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="product-details.html">Shop Details</a></li>
+                                                <li><a href="cart.html">Shop Cart</a></li>
+                                                <li><a href="checkout.html">Shop Checkout</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-6 align-self-center">
+                        <div class="menu-area__right d-flex justify-content-end align-items-center">
+                            <div class="search">
+                                <div class="search__trigger item">
+                                    <span class="open"><i class="far fa-search"></i></span>
+                                    <span class="close"><i class="fal fa-times"></i></span>
+                                </div>
+                                <div class="search__form">
+                                    <form role="search" method="get" action="index.html">
+                                        <input type="search" name="s" value="" placeholder="Search Keywords">
+                                        <button type="submit"><i class="far fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="hamburger-trigger item">
+                                <i class="far fa-bars"></i>
+                            </div>
+                            <div class="cart cart-trigger item position-relative">
+                                <i class="fa fa-shopping-basket"></i>
+                                <span class="cart__count">3</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
+    <!-- header end -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Cloud_computing_project_LAST - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="site-footer site-footer__3 pt-115 position-relative bg_img" data-opacity="8" data-overlay="dark" data-background="assets/images/bg/footer-3-1.jpeg">
+        <!-- blog area start -->
+        <div class="blog__area bg_img position-relative pb-120">
+            <div class="container">
+                <div class="row align-items-end mb-60">
+                    <div class="col-lg-12">
+                        <div class="section-heading text-center">
+                            <span class="sub-title">From our blog</span>
+                            <h2 class="title">Our News & Articles</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-none-30">
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="assets/images/blog/blog-1.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a href="blog-details.html">ideal cocktails from our barmen for pefect mood</a>
+                                </h3>
+                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="assets/images/blog/blog-2.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a href="blog-details.html">Build a cool mornig with cafena Coffee</a>
+                                </h3>
+                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="assets/images/blog/blog-3.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a href="blog-details.html">Questions business must be able to answers</a>
+                                </h3>
+                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- blog area end -->
+        <div class="footer__top footer__top--3 pt-155 position-relative">
+            <a href="#" class="go-top position-absolute d-flex align-items-center justify-content-center">
+                <i class="fal fa-long-arrow-up"></i>
+                <span>go to top</span>
+            </a>
+            <div class="container">
+                <div class="row justify-content-center mt-none-30">
+                    <div class="col-xl-3 col-lg-6 mt-30">
+                        <div class="footer__widget footer__info">
+                            <div class="item d-flex align-items-center justify-content-center">
+                                <img src="assets/images/icons/ft-phone.png" alt="">
+                                <span>Phone :</span>
+                                <a href="tel:88019339702520">+88019 339 702 520</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 mt-30 pl-55">
+                        <div class="footer__widget footer__info">
+                            <div class="item d-flex align-items-center justify-content-start">
+                                <img src="assets/images/icons/ft-map-marker.png" alt="">
+                                <span>Address :</span>
+                                <p>30 North West New</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-8 mt-30 pl-55">
+                        <div class="footer__widget">
+                            <div class="subscribe">
+                                <form action="index.html">
+                                    <input type="email" name="email" id="email" placeholder="Enter your email">
+                                    <button type="submit" class="subscribe__btn">Subscribe <i class="fa fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__middle mt-65">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="footer__logo--content">
+                            <img class="mb-15" src="assets/images/logo/logo.png" alt="">
+                            <p>Donec et nibh maximus, congue est eu, mattis nunc. Praesent ut quam quis quam venenatis fringilla. Morbi vestibulum</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 align-self-end">
+                        <div class="social-links d-flex align-items-center justify-content-lg-end">
+                            <a href="#0" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#0" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#0" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="#0" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#0" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__menu-area mt-30 pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="footer__menu">
+                            <nav>
+                                <ul>
+                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="menu.html">Menu</a></li>
+                                    <li><a href="reservation.html">Reservation</a></li>
+                                    <li><a href="#0">pages</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-center text-lg-end">
+                        <a href="#" class="go-top go-top__bottom">
+                            <span>go top</span>
+                            <i class="fal fa-long-arrow-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

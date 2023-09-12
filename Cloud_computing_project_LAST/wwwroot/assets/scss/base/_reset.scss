@@ -1,0 +1,64 @@
+/* reset css start */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $bodyfont;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  line-height: 29px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  transition: all 0.3s ease-out 0s;
+}
+
+button {
+  cursor: pointer;
+}
+
+*:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+  font-family: $bodyfont;
+  @include transition(.3s);
+}
+
+span {
+  font-family: $bodyfont;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  @include transition(.3s);
+  font-family: $bodyfont;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+// span
+//   display: inline-block
+table {
+  width: 100%;
+}
+
+p, li, span {
+  color: $pera-color;
+  margin-bottom: 0;
+}
+
+/* reset css end */

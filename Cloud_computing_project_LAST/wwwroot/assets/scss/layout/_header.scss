@@ -1,0 +1,147 @@
+/* Heder css start*/
+.site-header {
+    width: 100%;
+    z-index: 9;
+    &__3 {
+        border-bottom: 1px solid $border-color;
+        padding: 28px 0px;
+        @include respond(lg) {
+            padding: 0px 0px;
+        }
+        @include respond(md) {
+            padding: 10px 0px;
+        }
+        .wrapper {
+            width: 200px;
+        }
+    }
+    &__4 {
+        border: none;
+        @include respond(lg) {
+            padding: 15px 0px;
+        }
+    }
+}
+
+.header-top {
+    padding: 30.5px 0px;
+    border-bottom: 1px solid $border-color;
+    &__left {
+        @include respond(lg) {
+            justify-content: center;
+        }
+        .logo {
+            @include respond(md) {
+                display: none;
+            }
+        }
+    }
+    &__right {
+        @include respond(xs) {
+            margin-top: 25px;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+        @include respond(sm) {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+        }
+        .tel {
+            color: $white;
+            font-size: 18px;
+            i {
+                color: $theme-color;
+                padding-right: 15px;
+                font-size: 19px;
+            }
+        }
+        .site-btn {
+            margin-left: 80px;
+            @include respond(lg) {
+                margin-left: 40px;
+            }
+            @include respond(xs) {
+                margin-left: 0px;
+                margin-top: 20px;
+            }
+            @include respond(sm) {
+                margin-left: 40px;
+                margin-top: 0px;
+            }
+        }
+        &--2 {
+            @include respond(lg) {
+                margin-top: 20px;
+            }
+        }
+    }
+    &__2 {
+        border-color: $border-color-2;
+        .site-btn {
+            margin-left: 100px;
+            @include respond(lg) {
+                margin-left: 50px;
+            }
+            @include respond(xs) {
+                margin-left: 0px;
+            }
+            @include respond(sm) {
+                margin-left: 50px;
+            }
+        }
+    }
+    &__infos {
+        @include respond(md) {
+            padding-left: 0px;
+        }
+        @include respond(xs) {
+            flex-direction: column;
+            margin-top: -10px;
+        }
+        @include respond(sm) {
+            flex-direction: row;
+            margin-top: 0px;
+        }
+        margin: 0;
+        li {
+            color: $pera-color-2;
+            text-transform: uppercase;
+            font-weight: 500;
+            &:not(:last-child) {
+                margin-right: 65px;
+                @include respond(xs) {
+                    margin-right: 0px;
+                }
+                @include respond(sm) {
+                    margin-right: 55px;
+                }
+            }
+            i {
+                color: $theme-color;
+                padding-right: 10px;
+                font-size: 19px;
+            }
+            a {
+                color: $pera-color-2;
+                text-decoration: none;
+            }
+            @include respond(xs) {
+                margin-top: 10px;
+            }
+            @include respond(sm) {
+                margin-top: 0px;
+            }
+        }
+    }
+}
+
+.logo {
+    img {
+       max-width: 95px;
+    }
+}

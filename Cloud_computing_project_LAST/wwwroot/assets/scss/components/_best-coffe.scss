@@ -1,0 +1,61 @@
+/* best coffe css */
+.best-coffe {
+    &__area {
+        padding-top: 70px;
+        padding-bottom: 75px;
+        .pl-35 {
+            @include respond(xs) {
+                padding-left: 15px;
+            }
+            @include respond(sm) {
+                padding-left: 25px;
+            }
+        }
+    }
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        @include respond(xs) {
+            width: 100%;
+        }
+        @include respond(sm) {
+            width: 50%;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    &__wrapper {
+        position: relative;
+        z-index: 2;
+        background: $white;
+        box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+        border-radius: 10px;
+        border: 1px solid $border-color-2;
+        padding-top: 80px;
+        padding-left: 100px;
+        padding-right: 130px;
+        padding-bottom: 80px;
+        @include respond(md) {
+            padding: 60px;
+        }
+        @include respond(xs) {
+            padding: 30px;
+        }
+        @include respond(sm) {
+            padding: 60px;
+        }
+        p {
+            color: $pera-color-2;
+        }
+        .section-heading {
+            @include respond(md) {
+                text-align: left;
+            }
+        }
+    }
+}

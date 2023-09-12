@@ -1,0 +1,139 @@
+/* blog css */
+.blog {
+    &__area {
+        .shape {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            &__section {
+                top: -20px;
+                z-index: 1;
+            }
+            &__1 {
+                top: 80px;
+                width: auto;
+            }
+            &__2 {
+                bottom: 80px;
+                left: auto;
+                right: 0;
+                top: auto;
+                width: auto;
+            }
+        }
+        &--2 {
+            .shape {
+                &__1 {
+                    bottom: 30px;
+                    top: auto;
+                }
+                &__2 {
+                    top: -60px;
+                    bottom: auto;
+                }
+            }
+        }
+    }
+    &__item {
+        position: relative;
+        z-index: 2;
+        @include transition(.3s);
+        .content {
+            padding-top: 25px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 20px;
+            border: 1px solid $border-color;
+            border-top: 0px;
+            &__2 {
+                border-color: transparent;
+                padding-left: 15px;
+                padding-bottom: 0px;
+            }
+        }
+        .thumb {
+            padding: 5px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            img {
+                width: 100%;
+                @include transition(.3s);
+            }
+            .shape {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+            }
+        }
+        &:hover {
+            .img {
+                img {
+                    @include transform(scale(1.1));
+                }
+            }
+        }
+        &--2 {
+            .thumb {
+                padding: 0px;
+                min-height: 260px;
+                border-radius: 10px;
+                img {
+                    height: 260px;
+                    width: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+            }
+            .read-more,
+            .share-btn {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+    &__meta {
+        margin-bottom: 7px;
+        span {
+            color: $theme-color;
+        }
+        li {
+            color: $pera-color;
+            font-size: 14px;
+            text-transform: uppercase;
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
+        &--2 {
+            span {
+                color: $black;
+            }
+            li {
+                color: $pera-color-2;
+                font-weight: 500;
+            }
+        }
+    }
+    &__title {
+        font-size: 22px;
+        font-family: $bodyfont;
+        text-transform: capitalize;
+        a {
+            text-transform: capitalize;
+            color: $white;
+            text-decoration: none;
+        }
+        &--2 {
+            a {
+                color: $black;
+                font-weight: 500;
+            }
+        }
+    }
+}

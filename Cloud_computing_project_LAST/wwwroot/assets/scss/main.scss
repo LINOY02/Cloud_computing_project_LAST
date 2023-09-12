@@ -1,0 +1,73 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: SiteName - Multipurpose Technology HTML5 Template
+    Template URI: site.com
+    Description: SiteName - Multipurpose Technology HTML5 Template
+    Author: BasicTheme
+    Author URI: site.com
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+	01. Theme default CSS
+
+-----------------------------------------------------------------------------------*/
+// abstracts scss
+@import
+    'abstracts/mixins',
+    'abstracts/variables';
+
+// base scss
+@import
+    'base/fonts',
+    'base/base',
+    'base/spacing',
+    'base/typography',
+    'base/overlay';
+
+// layout scss
+@import
+    'layout/header',
+    'layout/navigation';
+
+
+// components scss
+@import
+    'components/social-links',
+    'components/buttons',
+    'components/search',
+    'components/side-info',
+    'components/cart',
+    'components/hero',
+    'components/feature',
+    'components/about',
+    'components/topgrade',
+    'components/populer-product',
+    'components/testimonial',
+    'components/blog',
+    'components/popup',
+    'components/populer-menu',
+    'components/reservation',
+    'components/breadcrumb',
+    'components/wcu',
+    'components/best-coffe',
+    'components/team',
+    'components/story',
+    'components/faq',
+    'components/form';
+
+// pages scss
+@import
+    'pages/blog-page',
+    'pages/shop-page',
+    'pages/product-details-page',
+    'pages/cart-page',
+    'pages/checkout-page',
+    'pages/contact-page';
+
+// layout scss
+@import
+    'layout/footer';

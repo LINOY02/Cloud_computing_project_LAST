@@ -1,0 +1,240 @@
+/* about css */
+.about {
+    &__area {
+        .shape {
+            &__1 {
+                left: 0;
+                top: 180px;
+                @include respond(laptop) {
+                    width: 35%;
+                }
+                @include respond(lg) {
+                    width: 35%;
+                }
+            }
+            &__2 {
+                right: 0;
+                top: 0;
+                @include respond(xs) {
+                    width: 30%;
+                }
+            }
+        }
+        &--2 {
+            overflow: hidden;
+            .shape {
+                &__1 {
+                    top: 80px;
+                }
+                &__2 {
+                    top: -60px;
+                }
+            }
+        }
+        &--3 {
+            .col-xl-6.d-flex {
+                @include respond(lg) {
+                    display: block !important;
+                }
+            }
+        }
+        &--4 {
+            .mm-reverse {
+                @include respond(lg) {
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+    }
+    &__left {
+        img {
+            max-width: auto;
+            @include respond(lg) {
+                max-width: inherit;
+            }
+            @include respond(md) {
+                max-width: inherit;
+            }
+            @include respond(xs) {
+                max-width: 100%;
+            }
+        }
+        .year {
+            font-size: 130px;
+            line-height: 57px;
+            color: $white;
+            position: absolute;
+            bottom: 160px;
+            right: 0;
+            @include respond(xs) {
+                font-size: 80px;
+                right: 15%;
+            }
+        }
+        &--2 {
+            @include respond(xs) {
+                text-align: center;
+            }
+            .big {
+                max-width: inherit;
+                @include respond(xs) {
+                    width: 100%;
+                }
+            }
+            .small {
+                left: -130px;
+                bottom: 0px;
+                @include respond(lg) {
+                    right: -130px;
+                    left: auto;
+                }
+                @include respond(md) {
+                    right: 0;
+                    left: auto;
+                }
+                @include respond(xs) {
+                    position: static !important;
+                    left: 0;
+                    right: 0;
+                    margin-top: 40px;
+                }
+            }
+        }
+        &--3 {
+            @include respond(lg) {
+                display: block !important;
+            }
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        &--4 {
+            .section-heading {
+                @include respond(md) {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    &__right {
+        position: relative;
+        z-index: 2;
+        text-align: right;
+        @include respond(lg) {
+            padding-left: 0px;
+            text-align: left;
+            margin-top: 70px;
+        }
+        .btns {
+            justify-content: flex-end;
+            @include respond(lg) {
+                justify-content: flex-start;
+            }
+            .video-btn {
+                padding-right: 70px;
+                @include respond(lg) {
+                    padding-right: 40px;
+                }
+            }
+        }
+        .section-heading {
+            @include respond(md) {
+                text-align: left;
+            }
+        }
+        &--2 {
+            text-align: left;
+        }
+        &--5 {
+            border: 1px solid $border-color-2;
+            background: $white;
+            box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+            border-radius: 10px;
+            padding: 60px;
+            @include respond(lg) {
+                margin-top: 0px;
+            }
+            @include respond(xs) {
+                padding: 30px;
+            }
+            @include respond(sm) {
+                padding: 60px;
+            }
+        }
+    }
+    &__history {
+        text-align: left;
+        background: #13131A;
+        padding: 78.5px 100px;
+        border: 1px solid $border-color;
+        border-left: 0px;
+        padding-left: 80px;
+        @include respond(laptop) {
+            padding: 78.5px 80px;
+        }
+        @include respond(lg) {
+            margin-top: 0px;
+            border-left: 1px;
+            border-top: 0px;
+        }
+        @include respond(xs) {
+            padding: 50.5px 30px;
+        }
+        @include respond(sm) {
+            padding: 78.5px 50px;
+        }
+    }
+    &__list {
+        .icon {
+            color: #292d32;
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
+            border: 1px solid $border-color-2;
+            margin-right: 15px;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            @include transition(.3s);
+        }
+        li {
+            color: #1b2026;
+            font-size: 18px;
+            font-weight: 500;
+            @include transition(.3s);
+            &:hover {
+                .icon {
+                    color: $white;
+                    background-color: #292d32;
+                    border-color: #292d32;
+                }
+            }
+            &:not(:last-child) {
+                margin-bottom: 18px;
+            }
+        }
+        .text {
+            @include flexWidth(90%);
+        }
+    }
+}
+
+.wwa-wrapper {
+    position: relative;
+    &__img {
+        position: absolute;
+        top: 125px;
+        right: 0px;
+        height: 100%;
+        border-radius: 10px;
+        @include respond(lg) {
+            margin-top: 50px;
+            position: static;
+            top: 0;
+        }
+        img {
+            border-radius: 10px;
+        }
+    }
+}

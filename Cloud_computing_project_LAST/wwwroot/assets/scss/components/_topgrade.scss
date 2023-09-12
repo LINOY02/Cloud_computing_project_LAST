@@ -1,0 +1,94 @@
+/* topgrade css */
+.topgrade {
+    &__area {
+        &::after {
+            @include after;
+            background: $border-color;
+            height: 1px;
+            bottom: 20px;
+            top: auto;
+        }
+        .shape {
+            &__1 {
+                bottom: 30px;
+                left: 0;
+            }
+            &__2 {
+                bottom: 60px;
+                right: 0;
+            }
+        }
+        &--2 {
+            &::after {
+                display: none;
+            }
+            .shape {
+                &__1 {
+                    top: 0;
+                }
+                &__2 {
+                    top: 35px;
+                }
+            }
+            .mt-85 {
+                @include respond(lg) {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    &__item {
+        position: relative;
+        z-index: 2;
+        .title {
+            color: $white;
+            font-size: 30px;
+        }
+        .count {
+            font-size: 14px;
+            color: $white;
+            height: 40px;
+            width: 40px;
+            @include d-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: 1px solid $border-color;
+            margin: 0 auto;
+            margin-top: 35px;
+            position: relative;
+            z-index: 2;
+            background: $bg-dark;
+        }
+        &--2 {
+            .title {
+                color: $black;
+                margin-bottom: 5px;
+            }
+            p {
+                color: $pera-color-2;
+            }
+            .thumb {
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                position: relative;
+                margin: 0 auto;
+                img {
+                    border-radius: 50%;
+                    height: 160px;
+                }
+                .count {
+                    position: absolute;
+                    top: 0;
+                    left: 10px;
+                    background: $white;
+                    color: $black;
+                    border: 1px solid $border-color-2;
+                    font-weight: 500;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

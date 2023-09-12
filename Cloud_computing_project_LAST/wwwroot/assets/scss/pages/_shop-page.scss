@@ -1,0 +1,249 @@
+/* shop page css */
+.shop-filter-wrapper {
+	border-radius: 10px;
+	border: 1px solid $border-color-2;
+	padding: 5px 20px;
+	@include respond(xs) {
+		flex-direction: column;
+	}
+	@include respond(sm) {
+		flex-direction: row;
+	}
+	.show-text {
+		p {
+			color: $pera-color-2;
+			font-size: 15px;
+		}
+	}
+	.sf-right {
+		a {
+			font-size: 15px;
+			color: $pera-color-2;
+			padding: 7px;
+		}
+		.active {
+			color: $black;
+		}
+		select {
+			border: none;
+			color: $black;
+			font-weight: 500;
+            cursor: pointer;
+		}
+	}
+}
+
+.pp {
+	&__item {
+		border-radius: 10px;
+		&--2 {
+			&::after {
+				border-radius: 10px;
+				opacity: 1;
+				visibility: visible;
+				border-color: $border-color-2 !important;
+			}
+		}
+		&--2.active {
+			border-color: $border-color-2;
+			background-color: $white;
+			box-shadow: 0px 14px 40px 0px rgba(220, 220, 220, 0.3);
+		}
+	}
+	&__action {
+		&--2 {
+			div {
+				width: 35px;
+				height: 35px;
+				border-color: $border-color-2;
+				a {
+					color: $pera-color-2;
+				}
+				&:hover {
+					border-color: $black;
+					a {
+						color: $black;
+					}
+				}
+			}
+		}
+		&--list {
+			div {
+				margin: 0px;
+				&:not(:last-child) {
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+	&__thumb {
+		&--2 {
+			min-height: 150px;
+		}
+	}
+	&__content {
+		&--list {
+			@include respond(xs) {
+				@include d-flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				margin-top: 25px !important;
+			}
+		}
+	}
+	&__title {
+		margin-bottom: 2px;
+		&--2 {
+			a {
+				font-size: 15px;
+				color: $black;
+			}
+		}
+		&--list {
+			text-align: left;
+		}
+	}
+	&__cat {
+		&--2 {
+			a {
+				font-size: 14px;
+			}
+		}
+	}
+	&__price {
+		&--2 {
+			.label {
+				color: $black;
+				font-size: 14px;
+			}
+			.price {
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+#slider-range {
+	position: relative;
+    width: 90%;
+}
+
+.ui-widget.ui-widget-content {
+	border: none;
+    border-radius: 0px;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    top: -5px;
+    width: 6px;
+    margin: 0px;
+    height: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    background-color: $theme-color;
+}
+.ui-slider-horizontal {
+	height: 8px;
+    .ui-slider-range {
+        background: $theme-color;
+        border-radius: 0px;
+    }
+}
+.ui-widget-content {
+	background: #f0f0f0;
+}
+.ui-widget-header {
+	background: #222;
+}
+
+.ui-slider {
+    height: 8px;
+	width: 15px;
+    .ui-slider-handle {
+        top: -5px;
+        &::before {
+            position: absolute;
+            content: "";
+            height: 6px;
+            width: 6px;
+            background: #222;
+            left: 4.5px;
+            top: 4.5px;
+            border-radius: 50%;
+            display: none;
+        }
+    }
+
+}
+.slider-range {
+    background: $theme-color;
+	p {
+        @include flexWidth(90%);
+        line-height: 1;
+	    margin-top: 25px;
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: $pera-color-2;
+            text-transform: uppercase;
+            border: 1px solid $border-color-2;
+            padding: 5px 15px;
+            border-radius: 5px !important;
+        }
+        input {
+            font-size: 14px;
+            font-weight: 500;
+            color: $pera-color-2;
+            border: none !important;
+            padding: 0px !important;
+        }
+    }
+}
+
+/* top product css */
+.top-products {
+    .item {
+        .thumb {
+            border: 1px solid $border-color-2;
+            border-radius: 10px;
+            text-align: center;
+            @include d-flex;
+            align-items: center;
+            justify-content: center;
+            @include flexWidth(70px);
+            height: 70px;
+            img {
+                object-fit: cover;
+                width: 30px;
+                height: auto !important;
+            }
+        }
+        .rating {
+            justify-content: flex-start !important;
+            a {
+                color: $theme-color;
+                font-size: 12px;
+                &:not(:last-child) {
+                    margin-right: 4px;
+                }
+            }
+        }
+        .rp-title {
+            font-size: 16px;
+            margin-bottom: 0px;
+            a {
+                text-transform: capitalize;
+            }
+        }
+        .price {
+            font-size: 14px;
+        }
+    }
+}

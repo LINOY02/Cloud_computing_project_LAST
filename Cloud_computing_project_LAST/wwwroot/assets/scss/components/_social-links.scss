@@ -1,0 +1,33 @@
+/* Social link css */
+.social-links {
+    a {
+        @include d-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 4px;
+        font-size: 13px;
+        border: 1px solid $grey-dark;
+        text-align: center;
+        line-height: 27px;
+        color: $grey-dark;
+        text-decoration: none;
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+        &:hover {
+            border-color: $white;
+            color: $white;
+        }
+    }
+    &__2 {
+        a {
+            border-color: $border-color-2;
+            &:hover {
+                border-color: #999999;
+                color: $black;
+            }
+        }
+    }
+}
