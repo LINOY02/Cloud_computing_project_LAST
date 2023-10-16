@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+<html class="no-js" lang="zxx">
 <head>
-    <meta charset="utf-8" />
-    @* <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication2</title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cloud_computing_project_LAST</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/Cloud_computing_project_LAST.styles.css" asp-append-version="true" />
+
 
     <!--========= Required meta tags =========-->
     <meta charset="utf-8">
@@ -18,82 +20,154 @@
     <title>Cafena - Coffee Shop HTML5 Template</title>
 
     <!--====== Favicon ======-->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.ico" type="images/x-icon" />
+    <link rel="shortcut icon" href="~/assets/images/logo/favicon.ico" type="images/x-icon" />
 
     <!--====== CSS Here ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/meanmenu.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/lightcase.css">
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+
+
 
 </head>
 <body>
-    <!-- header start -->
-    <header class="site-header site-header__3 position-absolute">
-        <div class="menu-area menu-area__3">
+
+    <div >
+        <main role="main" class="pb-3">
+            
+                <!--[if lt IE 8]>
+                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                <![endif]-->
+
+                 <!-- preloader  -->
+                 <div id="preloader">
+        <div id="ctn-preloader" class="ctn-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="C" class="letters-loading">
+                        C
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="F" class="letters-loading">
+                        F
+                    </span>
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                </div>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                <!-- preloader end -->
+
+                <!-- header start -->
+        <header class="site-header site-header__3 site-header__4" >
+        <div class="menu-area menu-area__3 menu-area__4">
             <div class="container-fluid custom-width custom-width__2">
                 <div class="row d-none d-xl-flex">
                     <div class="col-xl-5 col-lg-4 col-md-5 align-self-center">
                         <div class="main-menu main-menu__3">
                             <nav>
                                 <ul>
-                                    <li class="menu-item-has-children active"><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="menu.html">Menu</a></li>
-                                    <li><a href="reservation.html">Reservation</a></li>
+                                            <li><a asp-controller="Home" asp-action="Index" style="color:#C7A17A">Home</a></li>
+                                    <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
+                                            <li><a asp-controller="Home" asp-action="About" style="color:#C7A17A">About</a></li>
+                                    <!--<li><a href="about.html">About</a></li>-->
+                                            <li><a asp-controller="Home" asp-action="Menu" style="color:#C7A17A">Menu</a></li>
+                                    <!--<li><a href="menu.html">Menu</a></li>-->
+                                            <li><a asp-controller="Home" asp-action="Reservation" style="color:#C7A17A">Reservation</a></li>
+                                    <!--<li><a href="reservation.html">Reservation</a></li>-->
+                                            <li><a class="active" style="color:#C7A17A">Login</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2 d-none d-lg-block text-center align-self-center">
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="assets/images/logo/logo.png" alt="img">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/images/logo/logo.png" alt="img">
                             </a>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-6 col-md-7 align-self-center">
-                        <div class="menu-area__right menu-area__right--3 d-flex justify-content-end align-items-center">
-                            <div class="main-menu main-menu__3">
+                        <div class="menu-area__right menu-area__right--3 manu-area__right--4 d-flex justify-content-end align-items-center">
+                            <div class="main-menu main-menu__3 manu-area__4">
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="#0">pages</a>
+                                            <a class="active" style="color:#C7A17A">pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                                <li><a href="chefs.html">Chefs</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="story.html">Story</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
+                                                <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
+                                                <!---<li><a href="blog.html">Blog</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="BlogDetails">Blog Details</a></li>
+                                                <!---<li><a href="blog-details.html">Blog Details</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Chefs">Chefs</a></li>
+                                                <!---<li><a href="chefs.html">Chefs</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Faq">Faq</a></li>
+                                                <!---<li><a href="faq.html">Faq</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Story">Story</a></li>
+                                                <!---<li><a href="story.html">Story</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                                                <!---<li><a href="gallery.html">Gallery</a></li>-->
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="shop.html">Shop</a>
+                                                    <a class="active" style="color:#C7A17A">Shop</a>
                                             <ul class="sub-menu">
-                                                <li><a href="shop.html">Shop</a></li>
+                                                @* <li><a href="shop.html">Shop</a></li>
                                                 <li><a href="product-details.html">Shop Details</a></li>
                                                 <li><a href="cart.html">Shop Cart</a></li>
-                                                <li><a href="checkout.html">Shop Checkout</a></li>
+                                                <li><a href="checkout.html">Shop Checkout</a></li>*@
+                                                <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
+                                                <li><a asp-controller="Home" asp-action="ProductDetails">Shop Details</a></li>
+                                                <li><a asp-controller="Home" asp-action="Cart">Shop Cart</a></li>
+                                                <li><a asp-controller="Home" asp-action="Checkout">Shop Checkout</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                                <li><a asp-controller="Home" asp-action="Contact" style="color:#C7A17A">Contact</a></li>
+                                        <!---<li><a href="contact.html">Contact</a></li>-->
                                     </ul>
                                 </nav>
                             </div>
-                            <div class="wrapper pl-50 d-flex justify-content-end align-items-center">
+                            <div class="wrapper wrapper__2 pl-50 d-flex justify-content-end align-items-center">
                                 <div class="search">
                                     <div class="search__trigger item">
                                         <span class="open"><i class="far fa-search"></i></span>
                                         <span class="close"><i class="fal fa-times"></i></span>
                                     </div>
                                     <div class="search__form">
-                                        <form role="search" method="get" action="index.html">
+                                        <form role="search" method="get" action="Home/Index">
                                             <input type="search" name="s" value="" placeholder="Search Keywords">
                                             <button type="submit"><i class="far fa-search"></i></button>
                                         </form>
@@ -114,59 +188,68 @@
                     <div class="col-xl-9 col-lg-10 col-6">
                         <div class="wrapper-for-lg d-flex align-items-center">
                             <div class="logo d-lg-none">
-                                <a href="index.html">
-                                    <img src="assets/images/logo/logo.png" alt="img">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <!---<a href="index.html">-->
+                                    <img src="~/assets/images/logo/logo.png" alt="img">
                                 </a>
                             </div>
                             <div class="main-menu main-menu__3">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li class="menu-item-has-children active">
-                                            <a href="index.html">Home</a>
+                                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
+                                        <li><a asp-controller="Home" asp-action="About">About</a></li>
+                                        <!--<li><a href="about.html">About</a></li>-->
+                                        <li><a asp-controller="Home" asp-action="Menu">Menu</a></li>
+                                        <!--<li><a href="menu.html">Menu</a></li>-->
+                                        <li><a asp-controller="Home" asp-action="Reservation">Reservation</a></li>
+                                        <!--<li><a href="reservation.html">Reservation</a></li>-->
+                                        <li>
+                                            <a class="=" active>pages</a>
                                             <ul class="sub-menu">
-                                                <li class="active"><a href="index.html">Home 01</a></li>
-                                                <li><a href="home-2.html">Home 02</a></li>
-                                                <li><a href="home-3.html">Home 03</a></li>
+                                                <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
+                                                <!---<li><a href="blog.html">Blog</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="BlogDetails">Blog Details</a></li>
+                                                <!---<li><a href="blog-details.html">Blog Details</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Chefs">Chefs</a></li>
+                                                <!---<li><a href="chefs.html">Chefs</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Faq">Faq</a></li>
+                                                <!---<li><a href="faq.html">Faq</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Story">Story</a></li>
+                                                <!---<li><a href="story.html">Story</a></li>-->
+                                                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                                                <!---<li><a href="gallery.html">Gallery</a></li>-->
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="menu.html">Menu</a></li>
-                                        <li><a href="reservation.html">Reservation</a></li>
                                         <li>
-                                            <a href="#0">pages</a>
+                                            <a class="active">Shop</a>
                                             <ul class="sub-menu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                                <li><a href="chefs.html">Chefs</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="story.html">Story</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Shop</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop.html">Shop</a></li>
+                                                @* <li><a href="shop.html">Shop</a></li>
                                                 <li><a href="product-details.html">Shop Details</a></li>
                                                 <li><a href="cart.html">Shop Cart</a></li>
-                                                <li><a href="checkout.html">Shop Checkout</a></li>
+                                                <li><a href="checkout.html">Shop Checkout</a></li>*@
+                                                <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
+                                                <li><a asp-controller="Home" asp-action="ProductDetails">Shop Details</a></li>
+                                                <li><a asp-controller="Home" asp-action="Cart">Shop Cart</a></li>
+                                                <li><a asp-controller="Home" asp-action="Checkout">Shop Checkout</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                        <!---<li><a href="contact.html">Contact</a></li>-->
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-2 col-6 align-self-center">
-                        <div class="menu-area__right d-flex justify-content-end align-items-center">
+                        <div class="menu-area__right manu-area__right--4 d-flex justify-content-end align-items-center">
                             <div class="search">
                                 <div class="search__trigger item">
                                     <span class="open"><i class="far fa-search"></i></span>
                                     <span class="close"><i class="fal fa-times"></i></span>
                                 </div>
                                 <div class="search__form">
-                                    <form role="search" method="get" action="index.html">
+                                    <form role="search" method="get" action="Home/Index">
                                         <input type="search" name="s" value="" placeholder="Search Keywords">
                                         <button type="submit"><i class="far fa-search"></i></button>
                                     </form>
@@ -185,15 +268,193 @@
             </div>
         </div>
     </header>
-    <!-- header end -->
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+                <!-- header end -->
+
+                <!-- side info for mobile view -->
+                <aside class="side-info-wrapper mm-only">
+                    <nav>
+                        <div class="nav" id="nav-tab" role="tablist">
+                            <a class="nav-link active" id="menu-tab-1-tab" data-bs-toggle="tab"
+                               href="#menu-tab-1" role="tab" aria-controls="menu-tab-1"
+                               aria-selected="true">Menu</a>
+                            <a class="nav-link" id="menu-tab-2-tab" data-bs-toggle="tab" href="#menu-tab-2"
+                               role="tab" aria-controls="menu-tab-2" aria-selected="false">Info</a>
+                        </div>
+                    </nav>
+                    <div class="side-info__wrapper d-flex align-items-center justify-content-between">
+                        <div class="side-info__logo">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/images/logo/logo-black.png" alt="logo">
+                            </a>
+                        </div>
+                        <div class="side-info__close">
+                            <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="menu-tab-1" role="tabpanel"
+                             aria-labelledby="menu-tab-1-tab">
+                            <div class="mobile-menu"></div>
+                        </div>
+                        <div class="tab-pane fade" id="menu-tab-2" role="tabpanel"
+                             aria-labelledby="menu-tab-2-tab">
+                            <div class="side-info">
+                                <div class="side-info__content mb-35">
+                                    <h4 class="title mb-5">About us</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
+                                    <a class="site-btn mt-20" asp-controller="Home" asp-action="Contact">Contant us</a>
+                                    <!--<a class="site-btn mt-20" href="contact.html">Contact us</a>-->
+                                </div>
+                                <div class="contact__info--wrapper mt-15">
+                                    <h4 class="title mb-10">Contact us</h4>
+                                    <ul class="contact__info list-unstyled">
+                                        <li>
+                                            <span><i class="fas fa-map-marker-alt"></i></span>
+                                            <p>Bowery St., New York, NY 10013, USA</p>
+                                        </li>
+                                        <li>
+                                            <span><i class="fas fa-phone"></i></span>
+                                            <p>+1255-568-6523</p>
+                                        </li>
+                                        <li>
+                                            <span><i class="fas fa-envelope-open-text"></i></span>
+                                            <p>information@gmail.com</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="social-links mt-20 d-flex justify-content-start align-items-center">
+                                    <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#0"><i class="fab fa-twitter"></i></a>
+                                    <a href="#0"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="#0"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- side info for desktop view -->
+                <aside class="side-info-wrapper show-all">
+                    <div class="side-info__wrapper d-flex align-items-center justify-content-between">
+                        <div class="side-info__logo">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/images/logo/logo-black.png" alt="logo">
+                            </a>
+                        </div>
+                        <div class="side-info__close">
+                            <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
+                        </div>
+                    </div>
+                    <div class="side-info">
+                        <div class="side-info__content mb-35">
+                            <h4 class="title mb-5">About us</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
+                            <a class="site-btn mt-20" a asp-controller="Home" asp-action="Contact">Contact us</a>
+                        </div>
+                        <div class="contact__info--wrapper mt-15">
+                            <h4 class="title mb-10">Contact us</h4>
+                            <ul class="contact__info list-unstyled">
+                                <li>
+                                    <span><i class="fas fa-map-marker-alt"></i></span>
+                                    <p>Bowery St., New York, NY 10013, USA</p>
+                                </li>
+                                <li>
+                                    <span><i class="fas fa-phone"></i></span>
+                                    <p>+1255-568-6523</p>
+                                </li>
+                                <li>
+                                    <span><i class="fas fa-envelope-open-text"></i></span>
+                                    <p>information@gmail.com</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="social-links mt-20 d-flex justify-content-start align-items-center">
+                            <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#0"><i class="fab fa-twitter"></i></a>
+                            <a href="#0"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#0"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- cart list -->
+                <aside class="cart-bar-wrapper">
+                    <div class="cart-bar__close">
+                        <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);"><i class="fal fa-times"></i></a>
+                    </div>
+                    <div class="cart-bar">
+                        <h4 class="cart-bar__title">Cart Items - <span>4</span></h4>
+                        <div class="cart-bar__lists">
+                            <div class="cart-bar__item position-relative d-flex">
+                                <div class="thumb">
+                                    <img src="assets/images/top-grade/tg-1.png" alt="image_not_found">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
+                                    </h4>
+                                    <span class="price">$19.00</span>
+                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
+                                </div>
+                            </div>
+                            <div class="cart-bar__item position-relative d-flex">
+                                <div class="thumb">
+                                    <img src="assets/images/top-grade/tg-2.png" alt="image_not_found">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
+                                    </h4>
+                                    <span class="price">$36.00</span>
+                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
+                                </div>
+                            </div>
+                            <div class="cart-bar__item position-relative d-flex">
+                                <div class="thumb">
+                                    <img src="assets/images/top-grade/tg-3.png" alt="image_not_found">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
+                                    </h4>
+                                    <span class="price">$20.00</span>
+                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
+                                </div>
+                            </div>
+                            <div class="cart-bar__item position-relative d-flex">
+                                <div class="thumb">
+                                    <img src="assets/images/top-grade/tg-4.png" alt="image_not_found">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
+                                    </h4>
+                                    <span class="price">$20.00</span>
+                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-bar__subtotal d-flex align-items-center justify-content-between">
+                            <span>Sub Total:</span>
+                            <span>$87.00</span>
+                        </div>
+                        <div class="btns d-flex align-items-center justify-content-center">
+                            <a asp-controller="Home" asp-action="Cart" class="site-btn">View Cart</a>
+                            <a asp-controller="Home" asp-action="Checkout" class="site-btn site-btn__borderd">Checkout</a>
+                        </div>
+                    </div>
+                </aside>
+           
+                @*<div class="overlay"></div>*@
+                
+                 @RenderBody()
+                
+            
         </main>
     </div>
 
-    <footer class="site-footer site-footer__3 pt-115 position-relative bg_img" data-opacity="8" data-overlay="dark" data-background="assets/images/bg/footer-3-1.jpeg">
-        <!-- blog area start -->
+    <footer class="site-footer site-footer__3 pt-115 position-relative bg_img" data-opacity="8" data-overlay="dark" data-background="~/assets/images/bg/footer-3-1.jpeg">
+@*        <!-- blog area start -->
         <div class="blog__area bg_img position-relative pb-120">
             <div class="container">
                 <div class="row align-items-end mb-60">
@@ -209,7 +470,7 @@
                         <article class="blog__item">
                             <div class="thumb p-0 position-relative">
                                 <div class="img">
-                                    <img src="assets/images/blog/blog-1.jpeg" alt="">
+                                    <img src="~/assets/images/blog/blog-1.jpeg" alt="">
                                 </div>
                             </div>
                             <div class="content">
@@ -221,9 +482,9 @@
                                     <li>23.01.2017</li>
                                 </ul>
                                 <h3 class="blog__title border-effect">
-                                    <a href="blog-details.html">ideal cocktails from our barmen for pefect mood</a>
+                                    <a asp-controller="Home" asp-action="BlogDetails">ideal cocktails from our barmen for pefect mood</a>
                                 </h3>
-                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
@@ -231,7 +492,7 @@
                         <article class="blog__item">
                             <div class="thumb p-0 position-relative">
                                 <div class="img">
-                                    <img src="assets/images/blog/blog-2.jpeg" alt="">
+                                    <img src="~/assets/images/blog/blog-2.jpeg" alt="">
                                 </div>
                             </div>
                             <div class="content">
@@ -243,9 +504,9 @@
                                     <li>23.01.2017</li>
                                 </ul>
                                 <h3 class="blog__title border-effect">
-                                    <a href="blog-details.html">Build a cool mornig with cafena Coffee</a>
+                                    <a asp-controller="Home" asp-action="BlogDetails">Build a cool mornig with cafena Coffee</a>
                                 </h3>
-                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
@@ -253,7 +514,7 @@
                         <article class="blog__item">
                             <div class="thumb p-0 position-relative">
                                 <div class="img">
-                                    <img src="assets/images/blog/blog-3.jpeg" alt="">
+                                    <img src="~/assets/images/blog/blog-3.jpeg" alt="">
                                 </div>
                             </div>
                             <div class="content">
@@ -265,16 +526,16 @@
                                     <li>23.01.2017</li>
                                 </ul>
                                 <h3 class="blog__title border-effect">
-                                    <a href="blog-details.html">Questions business must be able to answers</a>
+                                    <a asp-controller="Home" asp-action="BlogDetails">Questions business must be able to answers</a>
                                 </h3>
-                                <a href="blog-details.html" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- blog area end -->
+        <!-- blog area end -->*@
         <div class="footer__top footer__top--3 pt-155 position-relative">
             <a href="#" class="go-top position-absolute d-flex align-items-center justify-content-center">
                 <i class="fal fa-long-arrow-up"></i>
@@ -285,7 +546,7 @@
                     <div class="col-xl-3 col-lg-6 mt-30">
                         <div class="footer__widget footer__info">
                             <div class="item d-flex align-items-center justify-content-center">
-                                <img src="assets/images/icons/ft-phone.png" alt="">
+                                <img src="~/assets/images/icons/ft-phone.png" alt="">
                                 <span>Phone :</span>
                                 <a href="tel:88019339702520">+88019 339 702 520</a>
                             </div>
@@ -294,7 +555,7 @@
                     <div class="col-xl-4 col-lg-6 mt-30 pl-55">
                         <div class="footer__widget footer__info">
                             <div class="item d-flex align-items-center justify-content-start">
-                                <img src="assets/images/icons/ft-map-marker.png" alt="">
+                                <img src="~/assets/images/icons/ft-map-marker.png" alt="">
                                 <span>Address :</span>
                                 <p>30 North West New</p>
                             </div>
@@ -303,7 +564,7 @@
                     <div class="col-xl-5 col-lg-8 mt-30 pl-55">
                         <div class="footer__widget">
                             <div class="subscribe">
-                                <form action="index.html">
+                                <form action="Home/Index"> <!--לבדוק את זה. זה היה לפיכן index.html-->
                                     <input type="email" name="email" id="email" placeholder="Enter your email">
                                     <button type="submit" class="subscribe__btn">Subscribe <i class="fa fa-paper-plane"></i></button>
                                 </form>
@@ -318,7 +579,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="footer__logo--content">
-                            <img class="mb-15" src="assets/images/logo/logo.png" alt="">
+                            <img class="mb-15" src="~/assets/images/logo/logo.png" alt="">
                             <p>Donec et nibh maximus, congue est eu, mattis nunc. Praesent ut quam quis quam venenatis fringilla. Morbi vestibulum</p>
                         </div>
                     </div>
@@ -341,13 +602,19 @@
                         <div class="footer__menu">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="menu.html">Menu</a></li>
-                                    <li><a href="reservation.html">Reservation</a></li>
-                                    <li><a href="#0">pages</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                    <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                                    <!--<li><a href="about.html">About</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="Menu">Menu</a></li>
+                                    <!--<li><a href="menu.html">Menu</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="Reservation">Reservation</a></li>
+                                    <!--<li><a href="reservation.html">Reservation</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
+                                    <!--<li><a href="shop.html">Shop</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
+                                    <!---<li><a href="blog.html">Blog</a></li>-->
+                                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -366,5 +633,24 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!--========= JS Here =========-->
+    <script src="~/assets/js/jquery-2.2.4.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/jquery.meanmenu.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/lightcase.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/tilt.jquery.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/jquery.easing.min.js"></script>
+    <script src="~/assets/js/scrollwatch.js"></script>
+    <script src="~/assets/js/sticky-header.js"></script>
+    <script src="~/assets/js/waypoint.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/isotope.pkgd.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfpGBFn5yRPvJrvAKoGIdj1O1aO9QisgQ"></script>
+    <script src="~/assets/js/jquery-ui-slider-range.js"></script>
+    <script src="~/assets/js/main.js"></script>
 </body>
 </html>

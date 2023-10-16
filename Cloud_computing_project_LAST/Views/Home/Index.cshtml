@@ -1,235 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Cafena";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/assets/scss/components/_hero.scss" rel="stylesheet" />
 
-<body class="dark-bg">
+
+<body class=" dark-bg">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <!-- preloader  -->
-    <div id="preloader">
-        <div id="ctn-preloader" class="ctn-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                    <span data-text-preloader="C" class="letters-loading">
-                        C
-                    </span>
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
-                    <span data-text-preloader="F" class="letters-loading">
-                        F
-                    </span>
-                    <span data-text-preloader="E" class="letters-loading">
-                        E
-                    </span>
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
-                </div>
-            </div>
-            <div class="loader">
-                <div class="row">
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- preloader end -->
-    <!-- side info for mobile view -->
-    <aside class="side-info-wrapper mm-only">
-        <nav>
-            <div class="nav" id="nav-tab" role="tablist">
-                <a class="nav-link active" id="menu-tab-1-tab" data-bs-toggle="tab"
-                   href="#menu-tab-1" role="tab" aria-controls="menu-tab-1"
-                   aria-selected="true">Menu</a>
-                <a class="nav-link" id="menu-tab-2-tab" data-bs-toggle="tab" href="#menu-tab-2"
-                   role="tab" aria-controls="menu-tab-2" aria-selected="false">Info</a>
-            </div>
-        </nav>
-        <div class="side-info__wrapper d-flex align-items-center justify-content-between">
-            <div class="side-info__logo">
-                <a href="index.html">
-                    <img src="assets/images/logo/logo-black.png" alt="logo">
-                </a>
-            </div>
-            <div class="side-info__close">
-                <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
-            </div>
-        </div>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="menu-tab-1" role="tabpanel"
-                 aria-labelledby="menu-tab-1-tab">
-                <div class="mobile-menu"></div>
-            </div>
-            <div class="tab-pane fade" id="menu-tab-2" role="tabpanel"
-                 aria-labelledby="menu-tab-2-tab">
-                <div class="side-info">
-                    <div class="side-info__content mb-35">
-                        <h4 class="title mb-5">About us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
-                        <a class="site-btn mt-20" href="contact.html">Contact us</a>
-                    </div>
-                    <div class="contact__info--wrapper mt-15">
-                        <h4 class="title mb-10">Contact us</h4>
-                        <ul class="contact__info list-unstyled">
-                            <li>
-                                <span><i class="fas fa-map-marker-alt"></i></span>
-                                <p>Bowery St., New York, NY 10013, USA</p>
-                            </li>
-                            <li>
-                                <span><i class="fas fa-phone"></i></span>
-                                <p>+1255-568-6523</p>
-                            </li>
-                            <li>
-                                <span><i class="fas fa-envelope-open-text"></i></span>
-                                <p>information@gmail.com</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="social-links mt-20 d-flex justify-content-start align-items-center">
-                        <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#0"><i class="fab fa-twitter"></i></a>
-                        <a href="#0"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#0"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- side info for desktop view -->
-    <aside class="side-info-wrapper show-all">
-        <div class="side-info__wrapper d-flex align-items-center justify-content-between">
-            <div class="side-info__logo">
-                <a href="index.html">
-                    <img src="assets/images/logo/logo-black.png" alt="logo">
-                </a>
-            </div>
-            <div class="side-info__close">
-                <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
-            </div>
-        </div>
-        <div class="side-info">
-            <div class="side-info__content mb-35">
-                <h4 class="title mb-5">About us</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
-                <a class="site-btn mt-20" href="contact.html">Contact us</a>
-            </div>
-            <div class="contact__info--wrapper mt-15">
-                <h4 class="title mb-10">Contact us</h4>
-                <ul class="contact__info list-unstyled">
-                    <li>
-                        <span><i class="fas fa-map-marker-alt"></i></span>
-                        <p>Bowery St., New York, NY 10013, USA</p>
-                    </li>
-                    <li>
-                        <span><i class="fas fa-phone"></i></span>
-                        <p>+1255-568-6523</p>
-                    </li>
-                    <li>
-                        <span><i class="fas fa-envelope-open-text"></i></span>
-                        <p>information@gmail.com</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="social-links mt-20 d-flex justify-content-start align-items-center">
-                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                <a href="#0"><i class="fab fa-twitter"></i></a>
-                <a href="#0"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#0"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </aside>
-
-    <!-- cart list -->
-    <aside class="cart-bar-wrapper">
-        <div class="cart-bar__close">
-            <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);"><i class="fal fa-times"></i></a>
-        </div>
-        <div class="cart-bar">
-            <h4 class="cart-bar__title">Cart Items - <span>4</span></h4>
-            <div class="cart-bar__lists">
-                <div class="cart-bar__item position-relative d-flex">
-                    <div class="thumb">
-                        <img src="assets/images/top-grade/tg-1.png" alt="image_not_found">
-                    </div>
-                    <div class="content">
-                        <h4 class="title">
-                            <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
-                        </h4>
-                        <span class="price">$19.00</span>
-                        <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                    </div>
-                </div>
-                <div class="cart-bar__item position-relative d-flex">
-                    <div class="thumb">
-                        <img src="assets/images/top-grade/tg-2.png" alt="image_not_found">
-                    </div>
-                    <div class="content">
-                        <h4 class="title">
-                            <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
-                        </h4>
-                        <span class="price">$36.00</span>
-                        <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                    </div>
-                </div>
-                <div class="cart-bar__item position-relative d-flex">
-                    <div class="thumb">
-                        <img src="assets/images/top-grade/tg-3.png" alt="image_not_found">
-                    </div>
-                    <div class="content">
-                        <h4 class="title">
-                            <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
-                        </h4>
-                        <span class="price">$20.00</span>
-                        <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                    </div>
-                </div>
-                <div class="cart-bar__item position-relative d-flex">
-                    <div class="thumb">
-                        <img src="assets/images/top-grade/tg-4.png" alt="image_not_found">
-                    </div>
-                    <div class="content">
-                        <h4 class="title">
-                            <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
-                        </h4>
-                        <span class="price">$20.00</span>
-                        <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-bar__subtotal d-flex align-items-center justify-content-between">
-                <span>Sub Total:</span>
-                <span>$87.00</span>
-            </div>
-            <div class="btns d-flex align-items-center justify-content-center">
-                <a href="cart.html" class="site-btn">View Cart</a>
-                <a href="checkout.html" class="site-btn site-btn__borderd">Checkout</a>
-            </div>
-        </div>
-    </aside>
-    <div class="overlay"></div>
-
     <main>
         <!-- hero area start -->
-        <section class="hero__area hero__area--3 bg_img" data-overlay="dark" data-opacity="4" data-background="assets/images/hero/hero-img-3-1.jpeg">
+        <section class="hero__area hero__area--3 bg_img" data-overlay="dark" data-opacity="4" style="padding-top:25px; background-position:center;
+                 padding-bottom:30px;" data-background="assets/images/hero/hero-img-3-1.jpg">
             <div class="container-fluid custom-width custom-width__2">
                 <div class="row">
                     <div class="col-xl-6 col-lg-7 col-md-8 align-self-center">
@@ -240,8 +23,8 @@
                             </h1>
                             <p>The coffee is brewed by first roasting the green coffee beans over hot <br> coals in a brazier. given an opportunity to sample.</p>
                             <div class="btns mt-45 d-flex align-items-center justify-content-start">
-                                <a href="about.html" class="site-btn">testy Coffee</a>
-                                <a href="contact.html" class="site-btn site-btn__borderd site-btn__borderd--double">Read More</a>
+                                <a asp-controller="Home" asp-action="About" class="site-btn">testy Coffee</a>
+                                <a asp-controller="Home" asp-action="Contact" class="site-btn site-btn__borderd site-btn__borderd--double">Read More</a>
                             </div>
                             <div class="social-links mt-60 d-flex justify-content-start align-items-center">
                                 <a href="#0"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
@@ -422,7 +205,7 @@
                                 </p>
                             </div>
                             <div class="btns mt-45 d-flex align-items-center">
-                                <a href="about.html" class="site-btn">Discover now</a>
+                                <a asp-controller="Home" asp-action="About" class="site-btn">Discover now</a>
                             </div>
                         </div>
                     </div>
@@ -455,7 +238,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="btns-wrapper text-center text-lg-end">
-                            <a href="shop.html" class="site-btn mt-none-10">View all Product</a>
+                            <a asp-controller="Home" asp-action="Shop" class="site-btn mt-none-10">View all Product</a>
                         </div>
                     </div>
                 </div>
@@ -491,7 +274,7 @@
                                     </div>
                                 </div>
                                 <h4 class="pp__title mt-10">
-                                    <a href="product-details.html">BRAZIL COFFEE GRED</a>
+                                    <a asp-controller="Home" asp-action="ProductDetails">BRAZIL COFFEE GRED</a>
                                 </h4>
                                 <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
                                     <h6 class="label">Price - </h6>
@@ -531,7 +314,7 @@
                                     </div>
                                 </div>
                                 <h4 class="pp__title mt-10">
-                                    <a href="product-details.html">vicaragua Coffee Beans</a>
+                                    <a asp-controller="Home" asp-action="ProductDetails">vicaragua Coffee Beans</a>
                                 </h4>
                                 <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
                                     <h6 class="label">Price - </h6>
@@ -571,7 +354,7 @@
                                     </div>
                                 </div>
                                 <h4 class="pp__title mt-10">
-                                    <a href="product-details.html">AMERICANO COFFEE</a>
+                                    <a asp-controller="Home" asp-action="ProductDetails">AMERICANO COFFEE</a>
                                 </h4>
                                 <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
                                     <h6 class="label">Price - </h6>
@@ -791,24 +574,5 @@
         </section>
         <!-- reservation area end -->
     </main>
-
-    <!--========= JS Here =========-->
-    <script src="assets/js/jquery-2.2.4.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.meanmenu.min.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/tilt.jquery.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/scrollwatch.js"></script>
-    <script src="assets/js/sticky-header.js"></script>
-    <script src="assets/js/waypoint.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfpGBFn5yRPvJrvAKoGIdj1O1aO9QisgQ"></script>
-    <script src="assets/js/jquery-ui-slider-range.js"></script>
-    <script src="assets/js/main.js"></script>
 
 </body>
