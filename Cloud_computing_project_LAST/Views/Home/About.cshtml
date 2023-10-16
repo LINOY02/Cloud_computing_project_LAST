@@ -4,9 +4,9 @@
 }
 
 
-<body>
+<body class=" dark-bg">
         <!-- breadcrumb area start -->
-        <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="assets/images/bg/breadcrumb-bg-1.jpeg" data-overlay="dark" data-opacity="5">
+    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="assets/images/bg/breadcrumb-bg-1.jpeg" data-overlay="dark" data-opacity="5">
             <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
             <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
             <div class="container">
@@ -33,25 +33,39 @@
                 <div class="row">
                     <div class="col-xl-5 col-lg-7">
                         <div class="about__left about__left--2 position-relative">
-                            <img class="big" src="~/assets/images/about/about-img-2-1.png" alt="img">
-                            <img class="small position-absolute" src="~/assets/images/about/about-img-2-2.png" alt="img">
+                            <img class="big" src="~/assets/images/about/about-img21.png" alt="img">
+                            <img class="small position-absolute" src="~/assets/images/about/about-img22.png" alt="img">
                         </div>
                     </div>
                     <div class="col-xl-6 offset-xl-1">
                         <div class="about__right about__right--2 pl-45 pt-45">
                             <div class="section-heading section-heading__black">
-                                <span class="sub-title">about Cafena</span>
-                                <h2 class="title mb-25">
+                            <span class="sub-title" style="color:white">about Cafena</span>
+                            <h2 class="title mb-25" style="color:white">
                                     one of the best coffee house
                                     in your home town
                                 </h2>
-                                <p>Mauris rhoncus orci in imperdiet placerat. Vestibulum euismod nisl suscipit ligula volutpat, a feugiat urna maximus. Cras massa nibhtincidunt.</p>
+                            <p style="color:white">Welcome to Cafena – Your Hometown Coffee Haven!</p>
+                            <p style="color:white">
+                                Cafena is more than just a coffee shop; it's a community, a creative hub, and your go-to place for exceptional coffee. Our journey began with a simple dream: to create a haven for coffee enthusiasts and provide a warm, inviting space for your coffee moments.
+                            </p>
+                            <h3 style="color:white">Crafting Exceptional Coffee</h3>
+                            <p style ="color:white">
+                                At Cafena, we take pride in sourcing the finest coffee beans from around the world and meticulously crafting each cup with passion. Our baristas are artists, ensuring that every sip is a masterpiece.
+                            </p>
+                            <h3 style="color:white">A Home Away from Home</h3>
+                            <p style="color:white"> 
+                                But Cafena is not just about coffee. It's a place where friendships are made, ideas are born, and memories are cherished. Whether you're working, catching up with friends, or enjoying a peaceful moment, Cafena is your welcoming sanctuary.
+                            </p>
+                            <h3 style="color:white">Community at Our Core</h3>
+                            <p style="color:white">
+                                We're committed to being an active part of your community. We support local artists, host events, and collaborate with nearby businesses to create a vibrant neighborhood.
+                            </p>
+                            <h3 style="color:white">Join the Cafena Experience</h3>
+                            <p style="color:white">
+                                Cafena is your neighborhood's favorite coffee house. Whether you're a coffee connoisseur or simply seeking a cozy spot to unwind, we're here to cater to your cravings and create memorable experiences. Join our Cafena family today and let's brew some memories together.
+                            </p>
                             </div>
-                            <ul class="about__list list-unstyled mt-25">
-                                <li><span class="icon"><i class="fal fa-check"></i></span> What is Lorem Ipsum Lorem Ipsum is simply.</li>
-                                <li><span class="icon"><i class="fal fa-check"></i></span> Dummy text of the printing text.</li>
-                                <li><span class="icon"><i class="fal fa-check"></i></span> Typesetting industry Lorem Ipsum has been the industry's</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -64,8 +78,8 @@
                 <div class="row">
                     <div class="col-xl-12 text-center">
                         <div class="section-heading section-heading__black mb-60">
-                            <span class="sub-title">why choose us</span>
-                            <h2 class="title">
+                        <span class="sub-title" style="color:white">why choose us</span>
+                        <h2 class="title" style="color:white">
                                 We are Provide Best Service <br>
                                 in your city
                             </h2>
@@ -76,36 +90,36 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
                         <div class="wcu__item">
                             <div class="icon">
-                                <img src="~/assets/images/icons/wcu-1.png" alt="">
+                                <img src="~/assets/images/icons/wcu1.png" alt="">
                             </div>
                             <div class="content">
-                                <h2 class="title">testy coffee recipe</h2>
-                                <p>Accumsa nfringilla. Morbi vestibulum id tellus mmodo mattis. Aliquam erat volutpat. Aenean accumsany.</p>
-                                <a asp-controller="Home" asp-action="About class="inline-btn"><i class="fal fa-long-arrow-right"></i></a>
+                            <h2 class="title" style="color:white">testy coffee recipe</h2>
+                            <p style="color:white">Discover the Magic of "Tasty Coffee Recipe" with Our Step-by-Step Guide.</p>
+                            <a href="@Url.Action("About","Home")#Best-coffee" class="inline-btn"><i class="fal fa-long-arrow-right" style="color:white"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
                         <div class="wcu__item">
                             <div class="icon">
-                                <img src="~/assets/images/icons/wcu-2.png" alt="">
+                                <img src="~/assets/images/icons/wcu2.png" alt="">
                             </div>
                             <div class="content">
-                                <h2 class="title">Great Location</h2>
-                                <p>Accumsa nfringilla. Morbi vestibulum id tellus mmodo mattis. Aliquam erat volutpat. Aenean accumsany.</p>
-                                <a asp-controller="Home" asp-action="About class="inline-btn"><i class="fal fa-long-arrow-right"></i></a>
+                            <h2 class="title" style="color:white">Great Location</h2>
+                            <p style="color:white">Discover Easy Access: Getting to Our "Great Location" Has Never Been Easier.</p>
+                            <a href="@Url.Action("About","Home")#end" class="inline-btn"><i class="fal fa-long-arrow-right" style="color:white"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
                         <div class="wcu__item">
                             <div class="icon">
-                                <img src="~/assets/images/icons/wcu-1.png" alt="">
+                            <img src="~/assets/images/icons/wcu3.png" alt="">
                             </div>
                             <div class="content">
-                                <h2 class="title">Professional Chef</h2>
-                                <p>Accumsa nfringilla. Morbi vestibulum id tellus mmodo mattis. Aliquam erat volutpat. Aenean accumsany.</p>
-                                <a asp-controller="Home" asp-action="About class="inline-btn"><i class="fal fa-long-arrow-right"></i></a>
+                            <h2 class="title" style="color:white">Professional Chef</h2>
+                            <p style="color:white">Meet Our Culinary Mastermind: The Professional Chef Behind the Magic.</p>
+                            <a href="@Url.Action("About","Home")#our-chefs" class="inline-btn"><i class="fal fa-long-arrow-right" style="color:white"></i></a>
                             </div>
                         </div>
                     </div>
@@ -114,36 +128,50 @@
         </section>
         <!-- wcu section end -->
         <!-- best-coffe section start -->
-        <div class="best-coffe__area position-relative">
-            <div class="best-coffe__bg">
-                <img src="~/assets/images/bg/best-coffe-1.jpeg" alt="">
-            </div>
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-8 pl-35">
-                        <div class="best-coffe__wrapper">
-                            <div class="section-heading section-heading__black">
-                                <h2 class="title mb-25">
-                                    Try the best coffee in the
-                                    housing city
-                                </h2>
-                                <p>Mauris rhoncus orci in imperdiet placerat. Vestibulum euismod nisl suscipit ligula volutpat, a feugiat urna maximus. Cras massa nibhtincidunt.</p>
-                                <p>Donec et nibh maximus, congue est eu, mattis nunc. Praesent ut quam quis quam venenatis fringilla. Morbi vestibulum id tellus mmodo mattis. Aliquam erat volutpat. Aenean</p>
-                            </div>
+    <div class="best-coffe__area position-relative">
+        <div class="best-coffe__bg" id="Best-coffee">
+            <img src="~/assets/images/bg/best-coffe1.jpeg">
+        </div>
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-xl-8 pl-35">
+                    <div class="best-coffe__wrapper" style="background:black; border:1px solid white">
+                        <div class="section-heading section-heading__black">
+                            <h2 class="title mb-25" style="color:white">
+                                Try the best coffee in the
+                                housing city
+                            </h2>
+                            <h3 style="color:white">Ingredients:</h3>
+                            <ul style="color:white">
+                                <li>2 tablespoons of freshly ground high-quality coffee beans</li>
+                                <li>1 cup of pure, filtered water</li>
+                                <li>2 tablespoons of whole milk or your preferred milk alternative</li>
+                                <li>1 teaspoon of pure vanilla extract (optional)</li>
+                                <li>1 teaspoon of your favorite sweetener (e.g., sugar, honey)</li>
+                            </ul>
+                            <h3 style="color:white">Instructions:</h3>
+                            <ol style="color:white">
+                                <li>Brew 2 tbsp coffee grounds with 1 cup hot, not boiling, water.</li>
+                                <li>Warm 2 tbsp of milk and add it to your coffee.</li>
+                                <li>Enhance the flavor with 1 tsp vanilla extract if desired.</li>
+                                <li>Sweeten to taste with 1 tsp of your preferred sweetener.</li>
+                                <li>Sip and savor the best coffee in town!</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         <!-- best-coffe section end -->
         <!-- team section start -->
-        <div class="team__area pt-115 pb-120">
+        <div class="team__area pt-115 pb-120" id="our-chefs">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 text-center">
                         <div class="section-heading section-heading__black mb-60">
-                            <span class="sub-title">Our Chef</span>
-                            <h2 class="title">Meet our Professional</h2>
+                        <span class="sub-title" style="color:white">Our Chef</span>
+                        <h2 class="title" style="color:white">Meet our Professional</h2>
                         </div>
                     </div>
                 </div>
@@ -165,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h4 class="name">Rasalina de willamson</h4>
+                            <h4 class="name" style="color:white">Rasalina de willamson</h4>
                                 <span class="experience">12 year experience</span>
                             </div>
                         </div>
@@ -187,7 +215,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h4 class="name">Alextina Jimiey</h4>
+                            <h4 class="name" style="color:white">Alextina Jimiey</h4>
                                 <span class="experience">09 year experience</span>
                             </div>
                         </div>
@@ -195,7 +223,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
                         <div class="team__box">
                             <div class="thumb mb-30">
-                                <img src="~/assets/images/team/team-1.jpeg" alt="">
+                                <img src="~/assets/images/team/team-3.jpeg" alt="">
                                 <div class="social-links">
                                     <button class="social-links__trigger" type="button">
                                         <i class="fal fa-plus"></i>
@@ -209,7 +237,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h4 class="name">Jimmey Aenderson</h4>
+                            <h4 class="name" style="color:white">Jimmey Aenderson</h4>
                                 <span class="experience">05 year experience</span>
                             </div>
                         </div>
@@ -218,7 +246,5 @@
             </div>
         </div>
         <!-- team section end -->
-
-    
 </body>
  

@@ -16,7 +16,7 @@
                     <div class="cafena-breadcrumb breadcrumbs">
                         <ul class="list-unstyled d-flex align-items-center justify-content-center">
                             <li class="cafenabcrumb-item duxinbcrumb-end">
-                                <span>menu</span>
+                                <span>Take your seat</span>
                             </li>
                         </ul>
                     </div>
@@ -37,11 +37,11 @@
                         <h2 class="title">Reservation form</h2>
                     </div>
                     <div class="reservation__form reservation__form--2 mt-none-30 text-center">
-                        <form action="index.html">
+                            <form action="index.html" id="reservationForm">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="text" name="name" placeholder="Enter your name">
+                                        <input type="text" name="name" id="name" placeholder="Enter your name">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
@@ -69,17 +69,47 @@
                                         <input type="time" id="time" name="time">
                                     </div>
                                 </div>
+                                    <script>
+                                        document.getElementById("time").addEventListener("input", function () {
+                                            var inputTime = this.value;
+                                            var minTime = "08:00";
+                                            var maxTime = "23:00";
+
+                                            if (inputTime < minTime || inputTime > maxTime) {
+                                                alert("Sorry we are closed during these hours If you wish, we are available between 08:00 and 23:00");
+                                                this.value = ""; // Clear the input if the selected time is outside the allowed range
+                                            }
+                                        });
+                                    </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
                                         <input type="email" id="2email" name="2email" placeholder="Enter your mail">
                                     </div>
                                 </div>
                                 <div class="col-xl-12 text-center">
-                                    <button type="submit" class="site-btn mt-30">Submit you request</button>
+                                    <button type="submit" class="site-btn mt-30" action="">Submit you request</button>
                                 </div>
                             </div>
                         </form>
-                    </div>
+                            <script>
+                                document.getElementById("reservationForm").addEventListener("submit", function (event) {
+                                    event.preventDefault(); // Prevent the form from submitting
+
+                                    // Clear input fields
+                                    document.getElementById("name").value = "";
+                                    document.getElementById("tel").value = "";
+                                    document.getElementById("subject").value = "";
+                                    document.getElementById("date").value = "";
+                                    document.getElementById("time").value = "";
+                                    document.getElementById("2email").value = "";
+
+                                    // Add similar lines to clear other input fields
+
+                                    // Optionally, you can display a confirmation message to the user
+                                    alert("Reservation submitted successfully!");
+                                });
+                            </script>
+                        </div>
                 </div>
             </div>
         </div>
