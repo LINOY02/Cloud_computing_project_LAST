@@ -54,16 +54,36 @@
                                         <select name="subject" id="subject">
                                             <option data-display="Service Category">Seates*</option>
                                             <option value="1">For 2 Persons</option>
+                                            <option value="1">For 3 Persons</option>
+                                            <option value="1">For 4 Persons</option>
                                             <option value="2">For 5 Persons</option>
                                             <option value="3">For 6 Persons</option>
+                                            <option value="1">For 10 Persons</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="date" id="date" name="date">
+                                            <input type="date" id="date" name="date" oninput="validateDate()">
                                     </div>
                                 </div>
+                                    <script>
+                                        function validateDate() {
+                                            var selectedDate = new Date(document.querySelector('input[type="date"]').value);
+                                            var currentDate = new Date();
+
+                                            if ((selectedDate < currentDate) || (selectedDate.getDate === 6)) {
+                                                alert("Please choose a date equal to or later than today.");
+                                                document.querySelector('input[type="date"]').value = ""; // Clear the date field
+                                            }
+                                        }
+
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            // Set the min attribute for the date input to the current date
+                                            var today = new Date().toISOString().split('T')[0];
+                                            document.querySelector('input[type="date"]').min = today;
+                                        });
+                                    </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
                                         <input type="time" id="time" name="time">
