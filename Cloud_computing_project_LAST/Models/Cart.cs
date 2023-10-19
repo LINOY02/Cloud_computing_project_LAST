@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
-        public List<CartItem>? CartItem { get; set; }
+        //public List<CartItem>? CartItem { get; set; }
     }
 }
