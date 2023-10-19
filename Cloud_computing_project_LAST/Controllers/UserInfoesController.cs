@@ -10,87 +10,87 @@ using Cloud_computing_project_LAST.Models;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
-    public class CartsController : Controller
+    public class UserInfoesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CartsController(ApplicationDbContext context)
+        public UserInfoesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Carts
+        // GET: UserInfoes
         public async Task<IActionResult> Index()
         {
-              return _context.Cart != null ? 
-                          View(await _context.Cart.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+              return _context.UsersInfo != null ? 
+                          View(await _context.UsersInfo.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.UsersInfo'  is null.");
         }
 
-        // GET: Carts/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: UserInfoes/Details/5
+        public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.UsersInfo == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart
+            var userInfo = await _context.UsersInfo
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
+            if (userInfo == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(userInfo);
         }
 
-        // GET: Carts/Create
+        // GET: UserInfoes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Carts/Create
+        // POST: UserInfoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ItemId,Quantity,Price,DateCreated,OrderId")] Cart cart)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,PhoneNumber,City,Street,StreetNum,ZIPCode")] UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cart);
+                _context.Add(userInfo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cart);
+            return View(userInfo);
         }
 
-        // GET: Carts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: UserInfoes/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.UsersInfo == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart.FindAsync(id);
-            if (cart == null)
+            var userInfo = await _context.UsersInfo.FindAsync(id);
+            if (userInfo == null)
             {
                 return NotFound();
             }
-            return View(cart);
+            return View(userInfo);
         }
 
-        // POST: Carts/Edit/5
+        // POST: UserInfoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ItemId,Quantity,Price,DateCreated,OrderId")] Cart cart)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,PhoneNumber,City,Street,StreetNum,ZIPCode")] UserInfo userInfo)
         {
-            if (id != cart.Id)
+            if (id != userInfo.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 try
                 {
-                    _context.Update(cart);
+                    _context.Update(userInfo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CartExists(cart.Id))
+                    if (!UserInfoExists(userInfo.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace Cloud_computing_project_LAST.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cart);
+            return View(userInfo);
         }
 
-        // GET: Carts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: UserInfoes/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.UsersInfo == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart
+            var userInfo = await _context.UsersInfo
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
+            if (userInfo == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(userInfo);
         }
 
-        // POST: Carts/Delete/5
+        // POST: UserInfoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Cart == null)
+            if (_context.UsersInfo == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.UsersInfo'  is null.");
             }
-            var cart = await _context.Cart.FindAsync(id);
-            if (cart != null)
+            var userInfo = await _context.UsersInfo.FindAsync(id);
+            if (userInfo != null)
             {
-                _context.Cart.Remove(cart);
+                _context.UsersInfo.Remove(userInfo);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CartExists(int id)
+        private bool UserInfoExists(string id)
         {
-          return (_context.Cart?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.UsersInfo?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
