@@ -14,5 +14,6 @@ namespace Cloud_computing_project_LAST.Data
         public DbSet<Cafe> Cafe { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<UserInfo> UsersInfo { get; set; }
+        public DbSet<Cloud_computing_project_LAST.Models.Product>? Product { get; set; }
     }
 }
