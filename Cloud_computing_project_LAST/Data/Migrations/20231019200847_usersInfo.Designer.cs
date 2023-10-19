@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cloud_computing_project_LAST.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231019191657_user")]
-    partial class user
+    [Migration("20231019200847_usersInfo")]
+    partial class usersInfo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,61 +51,6 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cafe");
-                });
-
-            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Cart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cart");
-                });
-
-            modelBuilder.Entity("Cloud_computing_project_LAST.Models.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("InStock")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("Cloud_computing_project_LAST.Models.Order", b =>
@@ -389,13 +334,6 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Cloud_computing_project_LAST.Models.CartItem", b =>
-                {
-                    b.HasOne("Cloud_computing_project_LAST.Models.Cart", null)
-                        .WithMany("CartItem")
-                        .HasForeignKey("CartId");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -445,11 +383,6 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Cart", b =>
-                {
-                    b.Navigation("CartItem");
                 });
 #pragma warning restore 612, 618
         }
