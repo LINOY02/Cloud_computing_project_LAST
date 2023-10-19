@@ -6,7 +6,7 @@
 
 <body class=" dark-bg">
     <!-- breadcrumb area start -->
-    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="~/assets/images/bg/breadcrumb-bg-1.jpeg" data-overlay="dark" data-opacity="5">
+    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
         <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
         <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
         <div class="container">
@@ -41,17 +41,17 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="text" name="name" id="name" placeholder="Enter your name">
+                                            <input type="text" name="name" id="name" placeholder="Enter your name" aria-required="true">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="tel" name="tel" id="tel" placeholder="Enter your number">
+                                            <input type="tel" name="tel" id="tel" placeholder="Enter your number" aria-required="true">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <select name="subject" id="subject">
+                                            <select name="subject" id="subject" aria-required="true" placeholder="Seates*">
                                             <option data-display="Service Category">Seates*</option>
                                             <option value="1">For 2 Persons</option>
                                             <option value="1">For 3 Persons</option>
@@ -64,15 +64,16 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="date" id="date" name="date" oninput="validateDate()">
+                                            <input type="date" id="date" name="date" oninput="validateDate()" aria-required="true">
                                     </div>
                                 </div>
                                     <script>
                                         function validateDate() {
                                             var selectedDate = new Date(document.querySelector('input[type="date"]').value);
                                             var currentDate = new Date();
+                                            var blockedDay = 6;
 
-                                            if ((selectedDate < currentDate) || (selectedDate.getDate === 6)) {
+                                            if ((selectedDate < currentDate) || (selectedDate.getDate === blockedDay)) {
                                                 alert("Please choose a date equal to or later than today.");
                                                 document.querySelector('input[type="date"]').value = ""; // Clear the date field
                                             }
@@ -86,7 +87,7 @@
                                     </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="time" id="time" name="time">
+                                            <input type="time" id="time" name="time" aria-required="true">
                                     </div>
                                 </div>
                                     <script>
@@ -103,7 +104,7 @@
                                     </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                        <input type="email" id="2email" name="2email" placeholder="Enter your mail">
+                                            <input type="email" id="2email" name="2email" placeholder="Enter your mail" aria-required="true">
                                     </div>
                                 </div>
                                 <div class="col-xl-12 text-center">
@@ -126,7 +127,8 @@
                                     // Add similar lines to clear other input fields
 
                                     // Optionally, you can display a confirmation message to the user
-                                    alert("Reservation submitted successfully!");
+                                    ModelState.AddModelError(string.Empty, "Reservation submitted successfully!");
+                                    //alert("Reservation submitted successfully!");
                                 });
                             </script>
                         </div>
