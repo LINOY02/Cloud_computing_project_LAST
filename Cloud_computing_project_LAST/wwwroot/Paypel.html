@@ -1,0 +1,41 @@
+﻿
+
+@page
+@model IndexModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PayPal Integration</title>
+</head>
+<body>
+    <h1>PayPal Integration Example</h1>
+
+    <button id="paypal-button">Pay with PayPal</button>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '10.00' // Set the amount to charge
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    // TODO: Add code to handle successful payment (e.g., update your database)
+                });
+            },
+            onError: function (err) {
+                console.error('Error: ' + err);
+            }
+        }).render('#paypal-button');
+    </script>
+</body>
+</html>
