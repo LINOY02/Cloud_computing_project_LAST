@@ -1,10 +1,721 @@
-﻿
-@{
-    ViewData["Title"] = "Try";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewData["Title"] = "Cafena";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<body>
-    <h1>try</h1>
-</body>
 
+
+<body class=" dark-bg">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <main>
+        <!-- hero area start -->
+        <section class="hero__area hero__area--3 bg_img" data-overlay="dark" data-opacity="4" style="padding-top:20px; background-position:center;
+                 padding-bottom:30px;" data-background="assets/images/hero/hero-img-31.jpg">
+            <div class="container-fluid custom-width custom-width__2">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-8 align-self-center">
+                        <div class="hero__content hero__content--3 position-relative">
+                            <h1 class="title mb-20">
+                                rosted coffee <br>
+                                for you
+                            </h1>
+                            <p>The coffee is brewed by first roasting the green coffee beans over hot <br> coals in a brazier. given an opportunity to sample.</p>
+                            <div class="btns mt-45 d-flex align-items-center justify-content-start">
+                                <a asp-controller="Home" asp-action="Manu" class="site-btn">testy Coffee</a>
+                                <a asp-controller="Home" asp-action="About" class="site-btn site-btn__borderd site-btn__borderd--double">Read More</a>
+                            </div>
+                            <div class="social-links mt-60 d-flex justify-content-start align-items-center">
+                                <a href="#0"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
+                                <a href="#0"><i class="fab fa-twitter"></i> <span>Twitter</span></a>
+                                <a href="https://instagram.com/_cafena_ny?igshid=MzRlODBiNWFlZA=="><i class="fab fa-instagram"></i> <span>instagram</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-5 col-md-4">
+                        <div class="vide-wrapper">
+                            <a href="//www.youtube.com/embed/4xe72U7mXNg?rel=0&amp;controls=0&amp;showinfo=0" data-rel="lightcase:myCollection" data-animation="fadeInLeft" class="video-btn video-btn__2 video-btn__2--white d-flex align-items-center"><i class="fas fa-play"></i><span class="border-effect">play video</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero area end -->
+        <!-- feature slider start -->
+        <div class="feature__area feature__area--3 dark-bg pt-120" data-overlay="dark" data-opacity="9">
+            <div class="container-fluid custom-width custom-width__2">
+                <div class="row mt-none-30">
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <div class="feature__item feature__item--3 bg_img" data-background="assets/images/products/f1.jpeg">
+                            <div class="shape"><img src="assets/images/shape/f-shape-1.png" alt=""></div>
+                            <div class="content">
+                                <span class="count">01</span>
+                                <h2 class="title mb-10">Best Coffee flavour</h2>
+                                <p>Its rich taste, spectacular aroma and full body, provides a quality and fine coffee experience with every drink.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <div class="feature__item feature__item--3 bg_img" data-background="assets/images/products/f2.jpeg">
+                            <div class="shape"><img src="assets/images/shape/f-shape-1.png" alt=""></div>
+                            <div class="content">
+                                <span class="count">02</span>
+                                <h2 class="title mb-10">Place to Get Lost</h2>
+                                <p>
+                                    The different sources of flavors, such as sweetness, warmth create a spectacular sensual
+                                    experience that evokes deep feelings of recognition and appreciation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <div class="feature__item feature__item--3 bg_img" data-background="assets/images/products/f3.jpeg">
+                            <div class="shape"><img src="assets/images/shape/f-shape-1.png" alt=""></div>
+                            <div class="content">
+                                <span class="count">03</span>
+                                <h2 class="title mb-10">Proper Roesting</h2>
+                                <p>Roasting coffee at high temperatures and at precise times produces the rich taste and special aroma of coffee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- feature slider end -->
+        <!-- history area start -->
+        <section class="about__area about__area--3 dark-bg position-relative pt-120">
+            <div class="container-fluid custom-width custom-width__2">
+                <div class="row g-0">
+                    <div class="col-xl-6 d-flex">
+                        <div class="about__left about__left--3 d-flex align-items-stretch">
+                            <img src="assets/images/about/about-bg-31.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about__right about__history">
+                            <div class="section-heading">
+                                <span class="sub-title">our history</span>
+                                <h2 class="title mb-25">Create a new story with us</h2>
+                                <p>------------------------------------------------------------------------------------------------------------------------------------</p>
+                                <p>
+                                    With over 27 years of dedication, our coffee shop is more than just a place for great coffee.
+                                    We've perfected the art of brewing and creating a warm, welcoming space that's been at the heart of our community for decades.
+                                    Join us in celebrating our rich history and the countless memories we've shared over the years.
+                                    Thank you for being a part of our journey.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- history area end -->
+        <!-- menu area start -->
+        <section class="popular-menu__area popular-menu__area--2 dark-bg position-relative pt-115">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 text-center">
+                        <div class="section-heading mb-60">
+                            <span class="sub-title">menu</span>
+                            <h2 class="title">Cafena Popular Menu</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-none-30 justify-content-between">
+                    <div class="col-xl-12">
+                        <div class="pm-list-wrapper">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-1.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">Americano Rosted GRED</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-2.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">JAPANIS COFFEE GRED</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-3.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">VIRGIN COFFEE GRED</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-4.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">JAPANIS COFFEE GRED</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-5.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">CAFÈ AU LAIT Coffee</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src="assets/images/menu/menu-2-6.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect"><a href="#0">ESPRESSO RISTRETTO</a></h3>
+                                            <span class="price">$12.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- menu area end -->
+        <!-- about area start -->
+        <section class="about__area about__area--4 dark-bg position-relative pt-120 pb-120" id="aboutarea">
+            <div class="container">
+                <div class="row mm-reverse">
+                    <div class="col-xl-6">
+                        <div class="about__left about__left--4">
+                            <div class="section-heading">
+                                <h2 class="title mb-25">Coffee machine,Buy for home</h2>
+                                <p>
+                                    The coffee machine intended for use at home is a great solution for coffee lovers.
+                                    With the ability to prepare your favorite coffee conveniently and quickly, the machine offers a quality culinary experience.
+                                    Its innovative and easy-to-operate design, together with the customization options,
+                                    provide stability and quality in the entire coffee experience.
+                                </p>
+                            </div>
+                            <div class="btns mt-45 d-flex align-items-center">
+                                <a asp-controller="Home" asp-action="Cart" class="site-btn">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 offset-xl-2">
+                        <div class="big-product-wrapper position-relative">
+                            <img src="assets/images/products/product_big.png" alt="img">
+                            <div class="ph-wrapper">
+                                <div class="product-highlight">
+                                    <span class="product-highlight__trigger"><i class="fal fa-plus"></i></span>
+                                </div>
+                                <div class="product-highlight">
+                                    <span class="product-highlight__trigger"><i class="fal fa-plus"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+        <!-- populer product area start -->
+        <section class="pp__area pp__area--2 dark-bg position-relative pt-120 bg_img" data-opacity="6" data-overlay="dark" data-background="assets/images/bg/pp-bg-31.jpg">
+            <div class="container">
+                <div class="row align-items-end mb-60">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <span class="sub-title">Popular Product</span>
+                            <h2 class="title">cafena Popular Product</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="btns-wrapper text-center text-lg-end">
+                            <a asp-controller="Home" asp-action="Shop" class="site-btn mt-none-10">View all Product</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-none-30">
+                    <div class="col-xl-4 col-lg-6 mt-30">
+                        <div class="pp__item pp__item--3 active text-center pt-30 pb-25">
+                            <div class="pp__action d-flex align-items-center justify-content-center">
+                                <div class="cart d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
+                                </div>
+                                <div class="wishlist d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-heart"></i></a>
+                                </div>
+                                <div class="view d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-eye"></i></a>
+                                </div>
+
+                            </div>
+                            <div class="pp__thumb mt-30">
+                                <img class="default" src="assets/images/products/pp-1.png" alt="">
+                                <img class="on-hover" src="assets/images/products/pp2.png" alt="">
+                            </div>
+                            <div class="pp__content mt-40">
+                                <div class="pp__c-top d-flex align-items-center justify-content-center">
+                                    <div class="pp__cat">
+                                        <a href="#0">Coffee</a>
+                                    </div>
+                                    <div class="pp__rating d-flex align-items-center justify-content-center">
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                    </div>
+                                </div>
+                                <h4 class="pp__title mt-10">
+                                    <a asp-controller="Home" asp-action="ProductDetails">BRAZIL COFFEE GRED</a>
+                                </h4>
+                                <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
+                                    <h6 class="label">Price - </h6>
+                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 mt-30">
+                        <div class="pp__item pp__item--3 text-center pt-30 pb-25">
+                            <div class="pp__action d-flex align-items-center justify-content-center">
+                                <div class="cart d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
+                                </div>
+                                <div class="wishlist d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-heart"></i></a>
+                                </div>
+                                <div class="view d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="pp__thumb mt-30">
+                                <img class="default" src="assets/images/products/pp-2.png" alt="">
+                                <img class="on-hover" src="assets/images/products/pp-1.png" alt="">
+                            </div>
+                            <div class="pp__content mt-40">
+                                <div class="pp__c-top d-flex align-items-center justify-content-center">
+                                    <div class="pp__cat">
+                                        <a href="#0">Coffee</a>
+                                    </div>
+                                    <div class="pp__rating d-flex align-items-center justify-content-center">
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                    </div>
+                                </div>
+                                <h4 class="pp__title mt-10">
+                                    <a asp-controller="Home" asp-action="ProductDetails">vicaragua Coffee Beans</a>
+                                </h4>
+                                <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
+                                    <h6 class="label">Price - </h6>
+                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 mt-30">
+                        <div class="pp__item pp__item--3 text-center pt-30 pb-25">
+                            <div class="pp__action d-flex align-items-center justify-content-center">
+                                <div class="cart d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
+                                </div>
+                                <div class="wishlist d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-heart"></i></a>
+                                </div>
+                                <div class="view d-flex align-items-center justify-content-center">
+                                    <a href="#0"><i class="fal fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="pp__thumb mt-30">
+                                <img class="default" src="assets/images/products/pp-3.png" alt="">
+                                <img class="on-hover" src="assets/images/products/pp-2.png" alt="">
+                            </div>
+                            <div class="pp__content mt-40">
+                                <div class="pp__c-top d-flex align-items-center justify-content-center">
+                                    <div class="pp__cat">
+                                        <a href="#0">Coffee</a>
+                                    </div>
+                                    <div class="pp__rating d-flex align-items-center justify-content-center">
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fas fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                        <a href="#0"><i class="fal fa-star"></i></a>
+                                    </div>
+                                </div>
+                                <h4 class="pp__title mt-10">
+                                    <a asp-controller="Home" asp-action="ProductDetails">AMERICANO COFFEE</a>
+                                </h4>
+                                <div class="pp__price mt-10 d-flex align-items-center justify-content-center">
+                                    <h6 class="label">Price - </h6>
+                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- testimonail area start -->
+            <div class="testimonial__area testimonial__area--2 pt-115 pb-115 position-relative">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12 text-center">
+                            <div class="section-heading mb-40">
+                                <span class="sub-title">customer feedback</span>
+                                <h2 class="title">Our customer review</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-xl-12">
+                            <div class="testimonial__active owl-carousel slider-nav">
+                                <div class="testimonial__item text-center">
+                                    <div class="row g-0 justify-content-center">
+                                        <div class="col-xl-8">
+                                            <span class="quote mb-20">
+                                                <img src="assets/images/icons/t-quote.png" alt="">
+                                            </span>
+                                            <p>Very good quality of food and service. Vast menu with child friendly items as well as local seafood and even entrees for those who dont like seafood. Great place! Thanks. We absolutely love everything there!</p>
+                                            <div class="author-info mt-35">
+                                                <div class="thumb mb-25">
+                                                    <img src="assets/images/author/tm_author.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <h4 class="name">Rasalina De Willamson</h4>
+                                                    <span class="designation">Founder & co</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial__item text-center">
+                                    <div class="row g-0 justify-content-center">
+                                        <div class="col-xl-8">
+                                            <span class="quote mb-20">
+                                                <img src="assets/images/icons/t-quote.png" alt="">
+                                            </span>
+                                            <p>Very good quality of food and service. Vast menu with child friendly items as well as local seafood and even entrees for those who dont like seafood. Great place! Thanks. We absolutely love everything there!</p>
+                                            <div class="author-info mt-35">
+                                                <div class="thumb mb-25">
+                                                    <img src="assets/images/author/tm-author.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <h4 class="name">Rasalina De Willamson</h4>
+                                                    <span class="designation">Founder & co</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- testimonail area end -->
+        </section>
+        <!-- populer product area end -->
+        <!-- product popup start -->
+        <div class="product-popup product-popup-1">
+            <div class="view-background">
+                <div class="row">
+                    <div class="col-md-4 align-self-center">
+                        <div class="quickview d-flex align-items-center justify-content-center">
+                            <div class="quickview__thumb">
+                                <img src="assets/images/products/pp-1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="viewcontent">
+                            <div class="viewcontent__header">
+                                <h2>VICARAGUA COFFEE BEANS</h2>
+                                <a class="view_close product-p-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
+                            </div>
+                            <div class="viewcontent__rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fal fa-star"></i>
+                            </div>
+                            <div class="viewcontent__price">
+                                <h4><span>$</span>99.00</h4>
+                            </div>
+                            <div class="viewcontent__stock">
+                                <h4>Available :<span> In stock</span></h4>
+                            </div>
+                            <div class="viewcontent__details">
+                                <p>Anlor sit amet, consectetur adipiscing elit. Fusce condimentum est lacus, non pretium risus lacinia vel. Fusce eget turpis orci.</p>
+                            </div>
+                            <div class="viewcontent__action">
+                                <span>Qty</span>
+                                <input type="number" placeholder="1">
+                                <a class="site-btn" href="#">add to cart</a>
+                            </div>
+                            <div class="viewcontent__footer">
+                                <ul class="list-unstyled">
+                                    <li>Category:</li>
+                                    <li>SKU:</li>
+                                    <li>Brand:</li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li>Watches</li>
+                                    <li>2584-MK63</li>
+                                    <li>Brenda</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product popup end -->
+        <!-- product popup start -->
+        <div class="product-popup popup-coffe-mechine">
+            <div class="view-background">
+                <div class="row">
+                    <div class="col-md-4 align-self-center">
+                        <div class="quickview d-flex align-items-center justify-content-center">
+                            <div class="quickview__thumb">
+                                <img src="assets/images/products/product-big.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="viewcontent">
+                            <div class="viewcontent__header">
+                                <h2>VICARAGUA COFFEE BEANS</h2>
+                                <a class="view_close product-p-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
+                            </div>
+                            <div class="viewcontent__rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fal fa-star"></i>
+                            </div>
+                            <div class="viewcontent__price">
+                                <h4><span>$</span>99.00</h4>
+                            </div>
+                            <div class="viewcontent__stock">
+                                <h4>Available :<span> In stock</span></h4>
+                            </div>
+                            <div class="viewcontent__details">
+                                <p>Anlor sit amet, consectetur adipiscing elit. Fusce condimentum est lacus, non pretium risus lacinia vel. Fusce eget turpis orci.</p>
+                            </div>
+                            <div class="viewcontent__action">
+                                <span>Qty</span>
+                                <input type="number" placeholder="1">
+                                <a class="site-btn" href="#">add to cart</a>
+                            </div>
+                            <div class="viewcontent__footer">
+                                <ul class="list-unstyled">
+                                    <li>Category:</li>
+                                    <li>SKU:</li>
+                                    <li>Brand:</li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li>Watches</li>
+                                    <li>2584-MK63</li>
+                                    <li>Brenda</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product popup end -->
+        <!-- reservation area start -->
+        <section class="reservation__area pt-120 pb-120 dark-bg">
+            <div class="container-fluid custom-width">
+                <div class="row g-0">
+                    <div class="col-xl-6">
+                        <div id="reservemap"></div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="reservation__wrapper">
+                            <div class="section-heading text-center mb-50">
+                                <span class="sub-title">Reservation</span>
+                                <h2 class="title">booking a table</h2>
+                            </div>
+                            <div class="reservation__form mt-none-20 text-center">
+                                <form id="reservationForm">
+                                    <div class="from-group position-relative mt-20">
+                                        <input id="name" type="text" name="name" placeholder=" " style="color:black; background-color:white; padding: 8px 30px;">
+                                        <span class="icon"><i class="fal fa-user-alt"></i></span>
+                                    </div>
+                                    <div class="from-group position-relative mt-20">
+                                        <select name="subject" id="subject" style="color:black; background-color:white; padding: 9px 30px;">
+                                            <option data-display="Service Category">Seates*</option>
+                                            <option value="1">For 2 Persons</option>
+                                            <option value="2">For 3 Persons</option>
+                                            <option value="3">For 4 Persons</option>
+                                            <option value="4">For 5 Persons</option>
+                                            <option value="5">For 6 Persons</option>
+                                        </select>
+                                        <span class="icon"><i class="fal fa-user-alt"></i></span>
+                                    </div>
+                                    <div class="from-group mt-20">
+                                        <input type="date" name="date" oninput="validateDate()" placeholder=" " style="color:black; background-color:white; padding: 8px 30px;">
+                                        <script>
+                                            function validateDate() {
+                                                var selectedDate = new Date(document.querySelector('input[type="date"]').value);
+                                                var currentDate = new Date();
+
+                                                if (selectedDate < currentDate) {
+                                                    alert("Please choose a date equal to or later than today.");
+                                                    document.querySelector('input[type="date"]').value = ""; // Clear the date field
+                                                }
+                                            }
+
+                                            document.addEventListener('DOMContentLoaded', function () {
+                                                // Set the min attribute for the date input to the current date
+                                                var today = new Date().toISOString().split('T')[0];
+                                                document.querySelector('input[type="date"]').min = today;
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="from-group mt-20">
+                                        <input id="time" type="time" name="time" placeholder=" " style="color:black; background-color:white; padding: 8px 30px;">
+
+                                    </div>
+                                    <script>
+                                        document.getElementById("time").addEventListener("input", function () {
+                                            var inputTime = this.value;
+                                            var minTime = "08:00";
+                                            var maxTime = "23:00";
+
+                                            if (inputTime < minTime || inputTime > maxTime) {
+                                                alert("Sorry we are closed during these hours If you wish, we are available between 08:00 and 23:00");
+                                                this.value = ""; // Clear the input if the selected time is outside the allowed range
+                                            }
+                                        });
+                                    </script>
+                                    <div class="col-xl-12 text-center">
+                                        <button type="button" class="site-btn mt-30" onclick="submitForm()">Book A Table</button>
+                                    </div>
+                                </form>
+                                <script>
+                                    function submitForm() {
+                                        // Reset the form
+                                        document.getElementById("reservationForm").reset();
+                                        // Optionally, you can display a confirmation message to the user
+                                        alert("Reservation submitted successfully!");
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- reservation area end -->
+        <!-- blog area start -->
+        <div class="blog__area bg_img position-relative pb-120">
+            <div class="container">
+                <div class="row align-items-end mb-60">
+                    <div class="col-lg-12">
+                        <div class="section-heading text-center">
+                            <span class="sub-title">From our blog</span>
+                            <h2 class="title">Our News & Articles</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-none-30">
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="~/assets/images/blog/blog1.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a asp-controller="Home" asp-action="BlogDetails">ideal cocktails from our barmen for pefect mood</a>
+                                </h3>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="~/assets/images/blog/blog2.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a asp-controller="Home" asp-action="BlogDetails">Build a cool mornig with cafena Coffee</a>
+                                </h3>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                        <article class="blog__item">
+                            <div class="thumb p-0 position-relative">
+                                <div class="img">
+                                    <img src="~/assets/images/blog/blog3.jpeg" alt="">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
+                                    <li><span>By: </span> Rasalina</li>
+                                    <li> \ </li>
+                                    <li>Life</li>
+                                    <li> \ </li>
+                                    <li>23.01.2017</li>
+                                </ul>
+                                <h3 class="blog__title border-effect">
+                                    <a asp-controller="Home" asp-action="BlogDetails">Questions business must be able to answers</a>
+                                </h3>
+                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- blog area end -->
+
+    </main>
+
+</body>

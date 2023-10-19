@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Cloud_computing_project_LAST.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        body {
+            margin: col-xl-12 text-center;
+            background-color: black;
+            color: white
+        }
+    </style>
+</head>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.ShipDate)
+            </th>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th style="color: white">
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.Name)
+            </th >
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th style="color: white">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Cloud_computing_project_LAST.styles.css" asp-append-version="true" />
-
+	<link href="~/assets/css/stylecafe.css" rel="stylesheet" />
 
     <!--========= Required meta tags =========-->
     <meta charset="utf-8">
@@ -32,9 +32,28 @@
     <link rel="stylesheet" href="~/assets/css/animate.min.css">
     <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
     <link rel="stylesheet" href="~/assets/css/main.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
+        aside {
+            height: 100vh;
+            width: 250px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            top: 0;
+            right: -250px;
+            transition: right 0.3s ease-in-out;
+        }
 
+            aside.open {
+                right: 0;
+            }
 
+    </style>
 </head>
 <body>
 
@@ -93,7 +112,7 @@
 
                 <!-- header start -->
         <header class="site-header site-header__3 site-header__4" >
-        <div class="menu-area menu-area__3 menu-area__4">
+                <div class="menu-area menu-area__3 menu-area__4" style="background:black">
             <div class="container-fluid custom-width custom-width__2">
                 <div class="row d-none d-xl-flex">
                     <div class="col-xl-5 col-lg-4 col-md-5 align-self-center">
@@ -108,7 +127,6 @@
                                     <!--<li><a href="menu.html">Menu</a></li>-->
                                             <li><a asp-controller="Home" asp-action="Reservation" style="color:#C7A17A">Reservation</a></li>
                                     <!--<li><a href="reservation.html">Reservation</a></li>-->
-                                            <li><a class="active" style="color:#C7A17A">Login</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -143,7 +161,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                                    <a class="active" style="color:#C7A17A">Shop</a>
+                                            <a class="active" style="color:#C7A17A">Shop</a>
                                             <ul class="sub-menu">
                                                 @* <li><a href="shop.html">Shop</a></li>
                                                 <li><a href="product-details.html">Shop Details</a></li>
@@ -167,23 +185,88 @@
                                         <span class="close"><i class="fal fa-times"></i></span>
                                     </div>
                                     <div class="search__form">
-                                        <form role="search" method="get" action="Home/Index">
-                                            <input type="search" name="s" value="" placeholder="Search Keywords">
+                                                <form role="search" method="get" onsubmit="return redirectToSearchResults()">
+                                                    <input type="search" id="searchInput" name="s" value="" placeholder="Search Page">
+                                                    <input type="text" id="selectedPath" placeholder="Product">
                                             <button type="submit"><i class="far fa-search"></i></button>
                                         </form>
+                                                <script>
+                                                    function redirectToSearchResults() {
+                                                        var searchValue = document.getElementById('searchInput').value;
+                                                        var selectedPath = document.getElementById('selectedPath');
+
+                                                        if (!searchValue && (!selectedPath || !selectedPath.value)) {
+                                                            return false;
+                                                        }
+
+                                                        if (selectedPath && selectedPath.value) {
+                                                            window.location.href = '/Home/' + encodeURIComponent(searchValue) + '#' + encodeURIComponent(selectedPath.value) ;
+                                                        } else {
+                                                            window.location.href = '/Home/' + encodeURIComponent(searchValue);
+                                                            
+                                                           
+                                                            var existingPaths = ['/Home/About', '/Home/Shop#Rosted%20Coffee']; 
+                                                            if (!existingPaths.includes(searchValue.toLowerCase())) {
+                                                                alert("The entered path does not exist. Please select a valid path before searching.");
+                                                                return false; 
+                                                            }
+                                                        }
+
+                                                        return false;
+                                                    }
+                                                </script>
                                     </div>
                                 </div>
-                                <div class="hamburger-trigger item">
+                                        <div class="login-trigger item" id="loginTrigger">
+                                            <i class="far fa-user-alt" style="color:white"></i>
+                                        </div>
+                                        <aside id="loginAside" class="side-info-wrapper show-all">
+                                            <div class="side-info__wrapper d-flex align-items-center justify-content-between" style="background-color:white">
+                                                <div class="side-info__logo">
+                                                    <a asp-controller="Home" asp-action="Index">
+                                                        <img src="~/assets/images/logo/logo-black.png" alt="logo">
+                                                    </a>
+                                                </div>
+                                                <div class="side-info__close">
+
+                                                    <a href="javascript:void(0);" onclick="closeAside();"><i class="fal fa-times"></i></a>
+                      
+                                                    <script>
+                                                        function closeAside() {
+                                                            const loginAside = document.getElementById('loginAside');
+                                                            loginAside.classList.remove('open');
+                                                        }
+
+                                                      </script>
+                                                      <!------------->
+
+                                                </div>
+                                            </div>
+                                        </aside>
+                                 <script>
+                                       document.addEventListener('DOMContentLoaded', function () {
+                                                const loginTrigger = document.getElementById('loginTrigger');
+                                                const loginAside = document.getElementById('loginAside');
+                                                
+                                                loginTrigger.addEventListener('click', function () {
+                                                    loginAside.classList.toggle('open');
+                                                });
+                                            });
+                                          
+                                 </script>
+
+                                        <div class="hamburger-trigger item">
                                     <i class="far fa-bars"></i>
                                 </div>
                                 <div class="cart cart-trigger item position-relative">
                                     <i class="fa fa-shopping-basket"></i>
-                                    <span class="cart__count">3</span>
+                                        <span class="cart__count">0</span>
+                                        </div>        
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                
                 <div class="row d-lg-flex d-xl-none">
                     <div class="col-xl-9 col-lg-10 col-6">
                         <div class="wrapper-for-lg d-flex align-items-center">
@@ -255,12 +338,15 @@
                                     </form>
                                 </div>
                             </div>
+                                    <div class="hamburger-trigger item">
+                                        <i class="far fa-lock" style="color:white"></i>
+                                    </div>
                             <div class="hamburger-trigger item">
                                 <i class="far fa-bars"></i>
                             </div>
                             <div class="cart cart-trigger item position-relative">
                                 <i class="fa fa-shopping-basket"></i>
-                                <span class="cart__count">3</span>
+                                <span class="cart__count">0</span>
                             </div>
                         </div>
                     </div>
@@ -301,8 +387,17 @@
                             <div class="side-info">
                                 <div class="side-info__content mb-35">
                                     <h4 class="title mb-5">About us</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
-                                    <a class="site-btn mt-20" asp-controller="Home" asp-action="Contact">Contant us</a>
+                        <p style="font-size:12px">
+                            Welcome to Cafena – Your Hometown Coffee Haven!
+                            Cafena is more than just a coffee shop; it's a community, 
+                            a creative hub, and your go-to place for exceptional coffee. 
+                            Our journey began with a simple dream: 
+                            to create a haven for coffee enthusiasts and provide a warm, 
+                            inviting space for your coffee moments.
+                            <a asp-controller="Home" asp-action="About" style="font-size:12px">for more..</a>
+                        </p>
+                         
+                                <a class="site-btn mt-20" asp-controller="Home" asp-action="Contact">Contant us</a>
                                     <!--<a class="site-btn mt-20" href="contact.html">Contact us</a>-->
                                 </div>
                                 <div class="contact__info--wrapper mt-15">
@@ -310,7 +405,7 @@
                                     <ul class="contact__info list-unstyled">
                                         <li>
                                             <span><i class="fas fa-map-marker-alt"></i></span>
-                                            <p>Bowery St., New York, NY 10013, USA</p>
+                                            <p>Central Part, New York City</p>
                                         </li>
                                         <li>
                                             <span><i class="fas fa-phone"></i></span>
@@ -325,8 +420,7 @@
                                 <div class="social-links mt-20 d-flex justify-content-start align-items-center">
                                     <a href="#0"><i class="fab fa-facebook-f"></i></a>
                                     <a href="#0"><i class="fab fa-twitter"></i></a>
-                                    <a href="#0"><i class="fab fa-google-plus-g"></i></a>
-                                    <a href="#0"><i class="fab fa-instagram"></i></a>
+                                <a href="https://instagram.com/_cafena_ny?igshid=MzRlODBiNWFlZA=="><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -334,7 +428,7 @@
                 </aside>
 
                 <!-- side info for desktop view -->
-                <aside class="side-info-wrapper show-all">
+                <aside class="side-info-wrapper show-all" id="nav-tab">
                     <div class="side-info__wrapper d-flex align-items-center justify-content-between">
                         <div class="side-info__logo">
                             <a asp-controller="Home" asp-action="Index">
@@ -348,7 +442,15 @@
                     <div class="side-info">
                         <div class="side-info__content mb-35">
                             <h4 class="title mb-5">About us</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  nisi ut aliquip ex ea commodo consequat.</p>
+                <p style="font-size:12px">
+                    Welcome to Cafena – Your Hometown Coffee Haven!
+                    Cafena is more than just a coffee shop; it's a community,
+                    a creative hub, and your go-to place for exceptional coffee.
+                    Our journey began with a simple dream:
+                    to create a haven for coffee enthusiasts and provide a warm,
+                    inviting space for your coffee moments.
+                    <a asp-controller="Home" asp-action="About" style="font-size:12px">for more..</a>
+                </p>
                             <a class="site-btn mt-20" a asp-controller="Home" asp-action="Contact">Contact us</a>
                         </div>
                         <div class="contact__info--wrapper mt-15">
@@ -356,7 +458,7 @@
                             <ul class="contact__info list-unstyled">
                                 <li>
                                     <span><i class="fas fa-map-marker-alt"></i></span>
-                                    <p>Bowery St., New York, NY 10013, USA</p>
+                                    <p>Central Park, New York City</p>
                                 </li>
                                 <li>
                                     <span><i class="fas fa-phone"></i></span>
@@ -371,8 +473,7 @@
                         <div class="social-links mt-20 d-flex justify-content-start align-items-center">
                             <a href="#0"><i class="fab fa-facebook-f"></i></a>
                             <a href="#0"><i class="fab fa-twitter"></i></a>
-                            <a href="#0"><i class="fab fa-google-plus-g"></i></a>
-                            <a href="#0"><i class="fab fa-instagram"></i></a>
+                        <a href="https://instagram.com/_cafena_ny?igshid=MzRlODBiNWFlZA=="><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </aside>
@@ -383,7 +484,24 @@
                         <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);"><i class="fal fa-times"></i></a>
                     </div>
                     <div class="cart-bar">
-                        <h4 class="cart-bar__title">Cart Items - <span>4</span></h4>
+                    <h4 class="cart-bar__title">Cart Items - <span id="cartItemCount"> </span></h4>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                           
+                            updateCartItemCount();
+
+                            function updateCartItemCount() {
+                               
+                                const cartItemCount = document.querySelectorAll('.cart-bar__item').length;
+
+                               
+                                const pluralSuffix = cartItemCount === 1 ? '' : 's';
+
+                               
+                                document.getElementById('cartItemCount').textContent = `${cartItemCount} item${pluralSuffix}`;
+                            }
+                        });
+                    </script>
                         <div class="cart-bar__lists">
                             <div class="cart-bar__item position-relative d-flex">
                                 <div class="thumb">
@@ -415,7 +533,7 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">
-                                        <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
+                                    <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
                                     </h4>
                                     <span class="price">$20.00</span>
                                     <a href="#0" class="remove"><i class="fal fa-times"></i></a>
@@ -427,7 +545,7 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">
-                                        <a href="product-details.html">Rorem ipsum dolor sit amet.</a>
+                                    <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
                                     </h4>
                                     <span class="price">$20.00</span>
                                     <a href="#0" class="remove"><i class="fal fa-times"></i></a>
@@ -440,7 +558,7 @@
                         </div>
                         <div class="btns d-flex align-items-center justify-content-center">
                             <a asp-controller="Home" asp-action="Cart" class="site-btn">View Cart</a>
-                            <a asp-controller="Home" asp-action="Checkout" class="site-btn site-btn__borderd">Checkout</a>
+                            <a asp-controller="Orders" asp-action="Create" class="site-btn site-btn__borderd">Checkout</a>
                         </div>
                     </div>
                 </aside>
@@ -454,89 +572,7 @@
     </div>
 
     <footer class="site-footer site-footer__3 pt-115 position-relative bg_img" data-opacity="8" data-overlay="dark" data-background="~/assets/images/bg/footer-3-1.jpeg">
-@*        <!-- blog area start -->
-        <div class="blog__area bg_img position-relative pb-120">
-            <div class="container">
-                <div class="row align-items-end mb-60">
-                    <div class="col-lg-12">
-                        <div class="section-heading text-center">
-                            <span class="sub-title">From our blog</span>
-                            <h2 class="title">Our News & Articles</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-none-30">
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
-                        <article class="blog__item">
-                            <div class="thumb p-0 position-relative">
-                                <div class="img">
-                                    <img src="~/assets/images/blog/blog-1.jpeg" alt="">
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
-                                    <li><span>By: </span> Rasalina</li>
-                                    <li> \ </li>
-                                    <li>Life</li>
-                                    <li> \ </li>
-                                    <li>23.01.2017</li>
-                                </ul>
-                                <h3 class="blog__title border-effect">
-                                    <a asp-controller="Home" asp-action="BlogDetails">ideal cocktails from our barmen for pefect mood</a>
-                                </h3>
-                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
-                        <article class="blog__item">
-                            <div class="thumb p-0 position-relative">
-                                <div class="img">
-                                    <img src="~/assets/images/blog/blog-2.jpeg" alt="">
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
-                                    <li><span>By: </span> Rasalina</li>
-                                    <li> \ </li>
-                                    <li>Life</li>
-                                    <li> \ </li>
-                                    <li>23.01.2017</li>
-                                </ul>
-                                <h3 class="blog__title border-effect">
-                                    <a asp-controller="Home" asp-action="BlogDetails">Build a cool mornig with cafena Coffee</a>
-                                </h3>
-                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
-                        <article class="blog__item">
-                            <div class="thumb p-0 position-relative">
-                                <div class="img">
-                                    <img src="~/assets/images/blog/blog-3.jpeg" alt="">
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="blog__meta list-unstyled d-flex align-items-center justify-content-start">
-                                    <li><span>By: </span> Rasalina</li>
-                                    <li> \ </li>
-                                    <li>Life</li>
-                                    <li> \ </li>
-                                    <li>23.01.2017</li>
-                                </ul>
-                                <h3 class="blog__title border-effect">
-                                    <a asp-controller="Home" asp-action="BlogDetails">Questions business must be able to answers</a>
-                                </h3>
-                                <a asp-controller="Home" asp-action="BlogDetails" class="read-more mt-20">Read more <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- blog area end -->*@
-        <div class="footer__top footer__top--3 pt-155 position-relative">
+        <div class="footer__top footer__top--3 pt-155 position-relative" id="end">
             <a href="#" class="go-top position-absolute d-flex align-items-center justify-content-center">
                 <i class="fal fa-long-arrow-up"></i>
                 <span>go to top</span>
@@ -556,8 +592,8 @@
                         <div class="footer__widget footer__info">
                             <div class="item d-flex align-items-center justify-content-start">
                                 <img src="~/assets/images/icons/ft-map-marker.png" alt="">
-                                <span>Address :</span>
-                                <p>30 North West New</p>
+                                <span>Address:</span>
+                                <a href="https://maps.app.goo.gl/3XmgpuT63MFC741Z6">Central Park, New York City</a>
                             </div>
                         </div>
                     </div>
@@ -580,7 +616,10 @@
                     <div class="col-lg-7">
                         <div class="footer__logo--content">
                             <img class="mb-15" src="~/assets/images/logo/logo.png" alt="">
-                            <p>Donec et nibh maximus, congue est eu, mattis nunc. Praesent ut quam quis quam venenatis fringilla. Morbi vestibulum</p>
+                            <p>
+                                The coffee is brewed by first roasting the green coffee beans over hot
+                                coals in a brazier. given an opportunity to sample.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-5 align-self-end">
@@ -588,8 +627,7 @@
                             <a href="#0" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="#0" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <a href="#0" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="#0" target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                            <a href="#0" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://instagram.com/_cafena_ny?igshid=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

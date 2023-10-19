@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "GraphCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="get" action="/Orders/Graph">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="start" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="end" required>
+
+    <button type="submit">Generate Graph</button>
+</form>

@@ -10,7 +10,9 @@ namespace Cloud_computing_project_LAST.Data
             : base(options)
         {
         }
-        public DbSet<Cloud_computing_project_LAST.Models.Coffee>? Coffee { get; set; }
-        public DbSet<Cloud_computing_project_LAST.Models.Cafe>? Cafe { get; set; }
+        public DbSet<Cafe> Cafe { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Cart> Cart { get; set; }
+        //public DbSet<UserInfo> UsersInfo { get; set; }
     }
 }

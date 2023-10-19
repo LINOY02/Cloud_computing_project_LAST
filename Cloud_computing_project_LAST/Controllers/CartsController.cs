@@ -10,87 +10,87 @@ using Cloud_computing_project_LAST.Models;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
-    public class CafesController : Controller
+    public class CartsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CafesController(ApplicationDbContext context)
+        public CartsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Cafes
+        // GET: Carts
         public async Task<IActionResult> Index()
         {
-              return _context.Cafe != null ? 
-                          View(await _context.Cafe.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Cafe'  is null.");
+              return _context.Cart != null ? 
+                          View(await _context.Cart.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
         }
 
-        // GET: Cafes/Details/5
+        // GET: Carts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Cafe == null)
+            if (id == null || _context.Cart == null)
             {
                 return NotFound();
             }
 
-            var cafe = await _context.Cafe
+            var cart = await _context.Cart
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cafe == null)
+            if (cart == null)
             {
                 return NotFound();
             }
 
-            return View(cafe);
+            return View(cart);
         }
 
-        // GET: Cafes/Create
+        // GET: Carts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cafes/Create
+        // POST: Carts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageUrl,Price")] Cafe cafe)
+        public async Task<IActionResult> Create([Bind("Id,ItemId,Quantity,Price,DateCreated,OrderId")] Cart cart)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cafe);
+                _context.Add(cart);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cafe);
+            return View(cart);
         }
 
-        // GET: Cafes/Edit/5
+        // GET: Carts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Cafe == null)
+            if (id == null || _context.Cart == null)
             {
                 return NotFound();
             }
 
-            var cafe = await _context.Cafe.FindAsync(id);
-            if (cafe == null)
+            var cart = await _context.Cart.FindAsync(id);
+            if (cart == null)
             {
                 return NotFound();
             }
-            return View(cafe);
+            return View(cart);
         }
 
-        // POST: Cafes/Edit/5
+        // POST: Carts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageUrl,Price")] Cafe cafe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ItemId,Quantity,Price,DateCreated,OrderId")] Cart cart)
         {
-            if (id != cafe.Id)
+            if (id != cart.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 try
                 {
-                    _context.Update(cafe);
+                    _context.Update(cart);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CafeExists(cafe.Id))
+                    if (!CartExists(cart.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace Cloud_computing_project_LAST.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cafe);
+            return View(cart);
         }
 
-        // GET: Cafes/Delete/5
+        // GET: Carts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Cafe == null)
+            if (id == null || _context.Cart == null)
             {
                 return NotFound();
             }
 
-            var cafe = await _context.Cafe
+            var cart = await _context.Cart
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cafe == null)
+            if (cart == null)
             {
                 return NotFound();
             }
 
-            return View(cafe);
+            return View(cart);
         }
 
-        // POST: Cafes/Delete/5
+        // POST: Carts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Cafe == null)
+            if (_context.Cart == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Cafe'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
             }
-            var cafe = await _context.Cafe.FindAsync(id);
-            if (cafe != null)
+            var cart = await _context.Cart.FindAsync(id);
+            if (cart != null)
             {
-                _context.Cafe.Remove(cafe);
+                _context.Cart.Remove(cart);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CafeExists(int id)
+        private bool CartExists(int id)
         {
-          return (_context.Cafe?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Cart?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
 
 <h4>Cafe</h4>
 <hr />
@@ -30,6 +29,11 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -37,6 +41,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <div class="col-xl-12 text-center" style="margin-bottom:1px">
+        <a asp-action="Index" type="submit" class="site-btn mt-30" style="padding-top:10px">Bact to list</a>
+    </div>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
