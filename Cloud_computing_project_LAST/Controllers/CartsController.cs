@@ -22,9 +22,9 @@ namespace Cloud_computing_project_LAST.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-              return _context.Cart != null ? 
-                          View(await _context.Cart.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+            return _context.Cart != null ?
+                        View(await _context.Cart.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
         }
 
         // GET: Carts/Details/5
@@ -62,6 +62,7 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 _context.Add(cart);
                 await _context.SaveChangesAsync();
+              
                 return RedirectToAction(nameof(Index));
             }
             return View(cart);
@@ -150,14 +151,18 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 _context.Cart.Remove(cart);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CartExists(int id)
         {
-          return (_context.Cart?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Cart?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
+
+
+
 }
+
