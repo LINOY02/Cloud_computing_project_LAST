@@ -37,34 +37,34 @@
                         <h2 class="title">Reservation form</h2>
                     </div>
                     <div class="reservation__form reservation__form--2 mt-none-30 text-center">
-                            <form action="index.html" id="reservationForm">
+                            <form id="reservationForm" asp-controller="Home" asp-action="Reservation" method="post">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="text" name="name" id="name" placeholder="Enter your name" aria-required="true">
+                                            <input type="text" name="name" id="name" placeholder="Enter your name" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="tel" name="tel" id="tel" placeholder="Enter your number" aria-required="true">
+                                            <input type="tel" name="tel" id="tel" placeholder="Enter your number" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <select name="subject" id="subject" aria-required="true" placeholder="Seates*">
-                                            <option data-display="Service Category">Seates*</option>
+                                            <select name="subject" id="subject" required>
+                                                <option value="" disabled selected>Seats*</option>
                                             <option value="1">For 2 Persons</option>
-                                            <option value="1">For 3 Persons</option>
-                                            <option value="1">For 4 Persons</option>
-                                            <option value="2">For 5 Persons</option>
-                                            <option value="3">For 6 Persons</option>
-                                            <option value="1">For 10 Persons</option>
+                                            <option value="2">For 3 Persons</option>
+                                            <option value="3">For 4 Persons</option>
+                                            <option value="4">For 5 Persons</option>
+                                            <option value="5">For 6 Persons</option>
+                                            <option value="6">For 10 Persons</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="date" id="date" name="date" oninput="validateDate()" aria-required="true">
+                                            <input type="date" id="date" name="date" oninput="validateDate()" required>
                                     </div>
                                 </div>
                                     <script>
@@ -87,7 +87,7 @@
                                     </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="time" id="time" name="time" aria-required="true">
+                                            <input type="time" id="time" name="time" required>
                                     </div>
                                 </div>
                                     <script>
@@ -104,7 +104,7 @@
                                     </script>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="from-group mt-30">
-                                            <input type="email" id="2email" name="2email" placeholder="Enter your mail" aria-required="true">
+                                            <input type="email" id="2email" name="2email" placeholder="Enter your mail" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-12 text-center">

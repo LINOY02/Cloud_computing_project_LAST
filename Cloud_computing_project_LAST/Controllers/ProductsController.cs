@@ -27,6 +27,13 @@ namespace Cloud_computing_project_LAST.Controllers
                           Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
+        //public ActionResult FilterProducts(double minPrice, double maxPrice)
+        //{
+        //    var filteredProducts = _context.Product!.Where(p => p.Price >= minPrice && p.Price <= maxPrice).ToList();
+        //    return PartialView("_ProductListPartial", filteredProducts);
+        //}
+
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
