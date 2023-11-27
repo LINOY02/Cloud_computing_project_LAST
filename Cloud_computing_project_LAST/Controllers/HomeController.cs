@@ -1,6 +1,8 @@
 ﻿using Cloud_computing_project_LAST.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
@@ -36,6 +38,81 @@ namespace Cloud_computing_project_LAST.Controllers
         public IActionResult Reservation()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reservation(FormCollection form)
+        {
+            var person = new
+            {
+                Name = form["name"],
+                Tel = form["tel"],
+                Seates = form["subject"],
+                Date = form["date"],
+                Time = form["time"],
+                Email = form["2email"]
+            };
+
+            if (ModelState.IsValid)
+            {
+                await SendResevationConfirmationEmail(person.Name!, person.Tel!, person.Seates!, person.Date!, person.Time!, person.Email!);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(person);
+        }
+
+        private async Task SendResevationConfirmationEmail(string name, string tel, string seats, string date, string time, string email)
+        {
+            // Replace these values with your SMTP server details
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587;
+            string smtpUsername = "caffena100@gmail.com";
+            string smtpPassword = "zybc owcy vprg vmcb";
+
+            using (var client = new SmtpClient(smtpServer, smtpPort))
+            {
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                client.EnableSsl = true;
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress("caffena100@gmail.com"),
+                    Subject = "Reservation Confirmation",
+                    Body = $@"Dear {name},
+
+We are delighted to confirm your reservation at Cafena for the date and time requested. We look forward to hosting you for a memorable dining experience.
+
+Reservation Details:
+- Reservation Name: {name}
+- Phone Number: {tel}
+- Date: {date}
+- Time: {time}
+- Number of Seats Reserved: {seats}
+
+Should you need to make any changes to your reservation or if you have any special requests, please do not hesitate to contact us at 052-5381648. We will do our best to accommodate your needs.
+
+Please note that your reservation is confirmed for date at time. We kindly ask that you arrive on time to ensure the best possible dining experience.
+
+Thank you for choosing Cafena. We are committed to providing you with excellent service and a delightful culinary journey.
+
+If you have any questions or require further assistance, please feel free to get in touch with us. We look forward to serving you and making your visit exceptional.
+
+Sincerely,
+
+LAST
+Meneger
+Cafena
+052-5381648
+caffena100@gmail.com
+https://localhost:7227/",
+                    IsBodyHtml = false
+                };
+                message.To.Add(email);
+                await client.SendMailAsync(message);
+            }
         }
 
 
