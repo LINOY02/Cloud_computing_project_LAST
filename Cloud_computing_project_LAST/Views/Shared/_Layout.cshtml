@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <html class="no-js" lang="zxx">
 <head>
@@ -127,7 +128,26 @@
                                     <!--<li><a href="menu.html">Menu</a></li>-->
                                             <li><a asp-controller="Home" asp-action="Reservation" style="color:#C7A17A">Reservation</a></li>
                                     <!--<li><a href="reservation.html">Reservation</a></li>-->
-                                </ul>
+                                          @if (User.IsInRole("Manager"))
+                                            {
+                                                <li>
+                                                    <a class="active" style="color:#C7A17A"> <i class="fas fa-user-shield"></i></a>
+                                                    <ul class="sub-menu">
+                                                        @* <li><a href="shop.html">Shop</a></li>
+                                                    <li><a href="product-details.html">Shop Details</a></li>
+                                                    <li><a href="cart.html">Shop Cart</a></li>
+                                                    <li><a href="checkout.html">Shop Checkout</a></li>*@
+                                                        <li><a asp-controller="Orders" asp-action="Graph">Graph</a></li>
+                                                        <li>
+                                                             <a class="active">Info</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
                             </nav>
                         </div>
                     </div>
@@ -188,6 +208,7 @@
                                                 <form role="search" method="get" onsubmit="return redirectToSearchResults()">
                                                     <input type="search" id="searchInput" name="s" value="" placeholder="Search Page">
                                                     <input type="text" id="selectedPath" placeholder="Product">
+                                                    <div id="error-message" class="text-danger"></div>
                                             <button type="submit"><i class="far fa-search"></i></button>
                                         </form>
                                                 <script>
@@ -205,9 +226,10 @@
                                                             window.location.href = '/Home/' + encodeURIComponent(searchValue);
                                                             
                                                            
-                                                            var existingPaths = ['/Home/About', '/Home/Shop#Rosted%20Coffee']; 
+                                                            var existingPaths = ['about', 'Shop#Rosted%20Coffee','reservation','menu', 'contact','gallery','blog','chefs','blogdetails','faq','story','shop']; 
                                                             if (!existingPaths.includes(searchValue.toLowerCase())) {
                                                                 alert("The entered path does not exist. Please select a valid path before searching.");
+                                                               // errorMessageElement.textContent = "The entered path does not exist. Please select a valid path before searching.";
                                                                 return false; 
                                                             }
                                                         }
@@ -228,32 +250,36 @@
                                                     </a>
                                                 </div>
                                                 <div class="side-info__close">
-
-                                                    <a href="javascript:void(0);" onclick="closeAside();"><i class="fal fa-times"></i></a>
-                      
-                                                    <script>
+                                                   <a href="javascript:void(0);" onclick="closeAside();"><i class="fal fa-times"></i></a>
+                                                     <script>
                                                         function closeAside() {
                                                             const loginAside = document.getElementById('loginAside');
                                                             loginAside.classList.remove('open');
                                                         }
-
                                                       </script>
-                                                      <!------------->
-
-                                                </div>
+                                                    
+                                                     </div>
+                                               
+                                            </div>
+                                            <div class="side-info__conten" id="loginContent">
+                                               @* @await Html.PartialAsync("/Areas/Identity/Pages/Account/Login.cshtml")*@
+                                                <partial name="_LoginPartial" />
                                             </div>
                                         </aside>
-                                 <script>
-                                       document.addEventListener('DOMContentLoaded', function () {
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function () {
                                                 const loginTrigger = document.getElementById('loginTrigger');
                                                 const loginAside = document.getElementById('loginAside');
-                                                
+
                                                 loginTrigger.addEventListener('click', function () {
-                                                    loginAside.classList.toggle('open');
+                                                    loginAside.classList.toggle('open'); // Show the aside
                                                 });
+
                                             });
-                                          
-                                 </script>
+
+                                        </script>
+
 
                                         <div class="hamburger-trigger item">
                                     <i class="far fa-bars"></i>

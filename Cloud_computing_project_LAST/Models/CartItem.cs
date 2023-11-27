@@ -9,5 +9,19 @@
         public string? ImageUrl { get; set; }
         public double Price { get; set; }
         public int Amount { get; set; }
+
+
+        public CartItem()
+        {
+            Id = 123;
+            Name = "coffee";
+            Description = "good";
+            InStock = 5;
+            ImageUrl = "ayala";
+            Price = 25;
+            Amount = 3;
+        }
+
+
     }
 }

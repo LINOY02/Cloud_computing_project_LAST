@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+@model List<CartItem>
+
 <body>
     <main>
         <!-- breadcrumb area start -->
@@ -36,9 +39,10 @@
                     <div class="col-xl-12">
                         <div class="cart-wrapper">
                             <div class="table-content table-responsive">
+                                
                                 <table class="table">
                                     <thead>
-                                        <tr>
+                                        <tr>  
                                             <th class="product-thumbnail">Product Image</th>
                                             <th class="cart-product-name">Product Name</th>
                                             <th class="product-price">Price</th>
@@ -63,7 +67,7 @@
                                         </tr>
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#" class="img">
+                                                <a hef="#" class="img">
                                                     <img src="~/assets/images/products/t-p-2.png" alt="">
                                                 </a>
                                                 <a href="#" class="product-remove"><i class="fal fa-times"></i></a>
@@ -79,8 +83,23 @@
                                             <td class="product-thumbnail">
                                                 <a href="#" class="img">
                                                     <img src="assets/images/products/t-p-3.png" alt="">
-                                                </a>
+
+
+                                    <tbody>
+                                        <tr data-product-id="1">
+                                            <!-- Add a data attribute to store the product ID -->
+                                            <!-- ... other columns ... -->
+                                            <td class="product-thumbnail">
                                                 <a href="#" class="product-remove"><i class="fal fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                        <!-- ... other product rows ... -->
+                                    </tbody>
+
+
+
+                                              @*  </a>
+                                                <a href="#" class="product-remove"><i class="fal fa-times"></i></a>*@
                                             </td>
                                             <td class="product-name"><a href="#">CAFFÈ LATTE</a></td>
                                             <td class="product-price"><span class="amount">$130.00</span></td>
@@ -107,19 +126,6 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="cart-bottom-wrapper d-flex align-items-center">
-                            <div class="coupon d-flex align-items-center">
-                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                <button class="site-btn site-btn site-btn__bghide" name="apply_coupon" type="submit">
-                                    Apply
-                                    coupon
-                                </button>
-                            </div>
-                            <div class="clear-update d-flex align-items-center">
-                                <a href="#0" class="site-btn site-btn__bghide">clear cart</a>
-                                <a href="#0" class="site-btn site-btn__bghide">update cart</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="row justify-content-end">
@@ -144,5 +150,36 @@
 
 
     </main>
+
+    <script>
+        // Add a click event listener to all elements with the class "product-remove"
+        document.querySelectorAll('.product-remove').forEach(function (removeLink) {
+            removeLink.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the link from navigating
+
+                // Find the parent table row (tr) and get the product ID from the data attribute
+                var row = event.target.closest('tr');
+                var productId = row.dataset.productId;
+
+                // Remove the row from the table
+                row.remove();
+
+                // You can also send an AJAX request to update the server-side cart or perform any other actions
+                // For example, you can use fetch or jQuery.ajax to send the product ID to the server to update the cart.
+                // Example using fetch:
+                // fetch('/cart/remove/' + productId, { method: 'POST' })
+                //     .then(response => {
+                //         if (response.ok) {
+                //             // Product was removed from the cart on the server
+                //         } else {
+                //             // Handle the error
+                //         }
+                //     })
+            });
+        });
+    </script>
+
+
+
 </body>
 

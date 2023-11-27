@@ -1,28 +1,65 @@
 ﻿@page
 @model LoginModel
 
+<style>
+    .custom-input-group {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        font-size: 18px; /* Adjust the font size to make the icon bigger */
+        cursor: pointer;
+    }
+
+    .form-control {
+        padding-right: 40px; /* Adjust as needed to make room for the bigger icon on the right */
+    }
+</style>
+
 @{
     ViewData["Title"] = "Log in";
 }
 
 <h1>@ViewData["Title"]</h1>
+
 <div class="row">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
                 <h2>Use a local account to log in.</h2>
+                
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
+                <div class="from-group mt-15">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
-                <div class="form-floating">
+                <div class="from-group mt-15">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility(this)"></i>
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
+                <script>
+                    function togglePasswordVisibility(icon) {
+                        const input = icon.previousElementSibling; // Get the input field
+                        if (input.type === 'password') {
+                            input.type = 'text'; // Change the input type to text to show the password
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
+                        } else {
+                            input.type = 'password'; // Change the input type back to password
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye'); // Change the icon back to an eye icon
+                        }
+                    }
+
+                </script>
                 <div>
                     <div class="checkbox">
                         <label asp-for="Input.RememberMe" class="form-label">
@@ -32,17 +69,17 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="site-btn">Log in</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword" style="color:black">Forgot your password?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color:black">Register as a new user</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="color:black">Resend email confirmation</a>
                     </p>
                 </div>
             </form>
@@ -55,25 +92,25 @@
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
+                                    <div>
+                                        <p>
+                                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                                            about setting up this ASP.NET application to support logging in via external services</a>.
+                                        </p>
+                                    </div>
                 }
                 else
                 {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
+                                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                        <div>
+                                            <p>
+                                                @foreach (var provider in Model.ExternalLogins!)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
-                            </p>
-                        </div>
-                    </form>
+                                            </p>
+                                        </div>
+                                    </form>
                 }
             }
         </section>
@@ -83,3 +120,4 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+   
