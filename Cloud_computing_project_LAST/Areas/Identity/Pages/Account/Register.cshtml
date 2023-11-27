@@ -29,112 +29,213 @@
 <link rel="stylesheet" href="assets/css/main.css">
 
 
+<style>
+    .custom-input-group {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        font-size: 18px; /* Adjust the font size to make the icon bigger */
+        cursor: pointer;
+    }
+
+    .form-control {
+        padding-right: 40px; /* Adjust as needed to make room for the bigger icon on the right */
+    }
+
+      table {
+            width: 18%; /* Set the width of the table */
+        }
+        td {
+            width: 18%; /* Set the width of the table cells */
+        }
+             .custom-input-group {
+            display: flex;
+        }
+
+        .custom-input-group input[type="password"] {
+            flex: 1;
+        }
+
+        .custom-eye-icon {
+            cursor: pointer;
+            margin-left: -30px;
+        }
+</style>
 
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.FirstName" class="form-control" aria-required="true" />
-                <label asp-for="Input.FirstName"></label>
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.LastName" class="form-control" aria-required="true" />
-                <label asp-for="Input.LastName"></label>
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-             <div class="form-floating">
-                <input asp-for="Input.PhoneNumber" class="form-control" aria-required="true" />
-                <label asp-for="Input.PhoneNumber"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.City" class="form-control" aria-required="true" />
-                <label asp-for="Input.City"></label>
-                <span asp-validation-for="Input.City" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Street" class="form-control" aria-required="true" />
-                <label asp-for="Input.Street"></label>
-                <span asp-validation-for="Input.Street" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.StreetNum" class="form-control" aria-required="true" />
-                <label asp-for="Input.StreetNum"></label>
-                <span asp-validation-for="Input.StreetNum" class="text-danger"></span>
-            </div>
-             <div class="form-floating">
-                <input asp-for="Input.ZIPCode" class="form-control" aria-required="true" />
-                <label asp-for="Input.ZIPCode"></label>
-                <span asp-validation-for="Input.ZIPCode" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
 
-            @if (User.IsInRole("Manager"))
-            {
-
-                <div class="form-group">
-                    <label asp-for="Input.IsManager">Is manager?</label>
-                    <input asp-for="Input.IsManager" type="checkbox" />
-                </div>
-
-            }
-
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
+<body class="dark-bg">
+     <!-- breadcrumb area start -->
+    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+        <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+        <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <h2 class="page-title">Register</h2>
+                    <div class="cafena-breadcrumb breadcrumbs">
+                        <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                            <li class="cafenabcrumb-item duxinbcrumb-end">
+                                <span>Register</span>
+                            </li>
+                        </ul>
                     </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+    <h1>@ViewData["Title"]</h1>
+
+    <main>
+        <div class="checkout-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cart-wrapper checkout-wrapper" style="background: white;">
+                            <div class="row">
+                                <div class="col-xl-9">
+                                    <div class="checkout-top">
+                                        <h4 class="title">Register</h4>
+                                        <div class="cart-form">
+                                            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                                <div class="row">
+                                                    <div class="col-xl-6">
+                                                        <div class="from-group mt-30">
+                                                            <label for="fname">First Name*</label>
+                                                            <input asp-for="Input.FirstName" class="form-control" aria-required="true" placeholder="First Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="from-group mt-30">
+                                                            <label for="lname">Last Name*</label>
+                                                            <input asp-for="Input.LastName" class="form-control" aria-required="true" placeholder="Last Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <label for="tname">Town / City *</label>
+                                                            <input asp-for="Input.City" class="form-control" aria-required="true" placeholder="Town / City">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <label for="rname">Address *</label>
+                                                            <input asp-for="Input.Street" class="form-control" aria-required="true" placeholder="Name of street">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <label for="hname">Street Number *</label>
+                                                            <input asp-for="Input.StreetNum" class="form-control" aria-required="true" placeholder="House number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <label for="zname">Postcode / ZIP (optional)*</label>
+                                                            <input asp-for="Input.ZIPCode" class="form-control" placeholder="Postcode / ZIP">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="from-group mt-30">
+                                                            <label for="tel">Phone</label>
+                                                            <input asp-for="Input.PhoneNumber" class="form-control" aria-required="true" placeholder="Enter your phone number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="from-group mt-30">
+                                                            <label for="email">Email</label>
+                                                            <input asp-for="Input.Email" class="form-control" aria-required="true" autocomplete="username" placeholder="Enter your email">
+                                                         </div>
+                                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="form-group mt-30">
+                                                            <label for="password">Password</label>
+                                                            <div class="custom-input-group">
+                                                                <input asp-for="Input.Password" type="password" class="form-control" autocomplete="new-password" aria-required="true">
+                                                                <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility(this)"></i>
+                                                            </div>
+                                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="form-group mt-30">
+                                                            <label for="confirmPassword">Confirm Password</label>
+                                                            <div class="custom-input-group">
+                                                                <input asp-for="Input.ConfirmPassword" type="password" class="form-control" autocomplete="new-password" aria-required="true">
+                                                                <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility(this)"></i>
+                                                            </div>
+                                                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script>
+                                                        function togglePasswordVisibility(icon) {
+                                                            const input = icon.previousElementSibling; // Get the input field
+                                                            if (input.type === 'password') {
+                                                                input.type = 'text'; // Change the input type to text to show the password
+                                                                icon.classList.remove('fa-eye');
+                                                                icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
+                                                            } else {
+                                                                input.type = 'password'; // Change the input type back to password
+                                                                icon.classList.remove('fa-eye-slash');
+                                                                icon.classList.add('fa-eye'); // Change the icon back to an eye icon
+                                                            }
+                                                        }
+
+                                                    </script>
+
+                                                <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <label for="ainfo">Additional Information*</label>
+                                                            <input for="Input.AdditionalInfo" class="form-control" placeholder="Note about your order, Special note for delivery!"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if (User.IsInRole("Manager"))
+                                                {
+                                                    <div class="col-xl-12">
+                                                        <div class="from-group mt-30">
+                                                            <table>
+                                                            <tr>
+                                                                 <td>
+                                                                    <label asp-for="Input.IsManager">Is manager?</label>
+                                                                </td>
+                                                                 <td>
+                                                                    <input asp-for="Input.IsManager" type="checkbox" id="customCheck">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                <div class="from-group mt-20" asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <div class="from-group mt-30">
+                                                    <button id="registerSubmit" type="submit" class="site-btn">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
