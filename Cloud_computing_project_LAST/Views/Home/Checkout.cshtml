@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<body>
+<body class="dark-bg">
     <main>
         <!-- breadcrumb area start -->
         <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="cart-wrapper checkout-wrapper">
+                        <div class="cart-wrapper checkout-wrapper" style=" background:white">
                             <div class="row">
                                 <div class="col-xl-9">
                                     <div class="checkout-top">
@@ -41,15 +41,14 @@
                                                 <a class="nav-link active" id="pd-1-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-1" aria-selected="true">
                                                     New Payment Card
                                                 </a>
-                                                <a class="nav-link" id="pd-2-tab" data-bs-toggle="tab" href="#pd-2" role="tab" aria-controls="pd-2" aria-selected="true">
+                                                <a class="nav-link" id="pd-2-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-2" aria-selected="true">
                                                     Paypal
                                                 </a>
-                                                <a class="nav-link" id="pd-3-tab" data-bs-toggle="tab" href="#pd-3" role="tab" aria-controls="pd-3" aria-selected="true">
+                                                <a class="nav-link" id="pd-3-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-3" aria-selected="true">
                                                     Cash on Delivery
                                                 </a>
                                             </div>
                                         </nav>
-
                                         <div class="tab-content" id="pdContent">
                                             <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab">
                                                 <div class="cart-form">
@@ -67,30 +66,31 @@
                                                                     <input type="text" name="lname" id="lname" placeholder="Last Name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-12">
+                                                           @* <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="cname">Company name (optional)</label>
                                                                     <input type="text" name="cname" id="cname" placeholder="Company Name">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="rname">Country / Region *</label>
-                                                                    <input type="text" name="rname" id="rname" placeholder="Country">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="hname">Street address *</label>
-                                                                    <input type="text" name="hname" id="hname" placeholder="House number & State">
-                                                                </div>
-                                                            </div>
+                                                            </div>*@
                                                             <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="tname">Town / City *</label>
                                                                     <input type="text" name="tname" id="tname">
                                                                 </div>
                                                             </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="rname">Address *</label>
+                                                                    <input type="text" name="rname" id="rname" placeholder="name of street">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="hname">Street Number *</label>
+                                                                    <input type="text" name="hname" id="hname" placeholder="House number">
+                                                                </div>
+                                                            </div>
+                                      
                                                             <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="zname">Postcode / ZIP (optional)*</label>
@@ -121,7 +121,7 @@
                                             </div>
                                             <div class="tab-pane fade" id="pd-2" role="tabpanel" aria-labelledby="pd-2-tab">
                                                 <div class="cart-form">
-                                                    <form action="checkout.html">
+                                                    <form action="Home/checkout">
                                                         <div class="row">
                                                             <div class="col-xl-6">
                                                                 <div class="from-group mt-30">
@@ -135,30 +135,31 @@
                                                                     <input type="text" name="lname2" id="lname2" placeholder="Last Name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-12">
+                                                           @* <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="cname2">Company name (optional)</label>
                                                                     <input type="text" name="cname2" id="cname2" placeholder="Company Name">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="rname2">Country / Region *</label>
-                                                                    <input type="text" name="rname2" id="rname2" placeholder="Company Name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="hname2">Street address *</label>
-                                                                    <input type="text" name="hname2" id="hname2" placeholder="House number & State">
-                                                                </div>
-                                                            </div>
+                                                            </div>*@
                                                             <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="tname2">Town / City *</label>
                                                                     <input type="text" name="tname2" id="tname2">
                                                                 </div>
                                                             </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="rname2">Street *</label>
+                                                                    <input type="text" name="rname2" id="rname2" placeholder="Company Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="hname2">Street Number *</label>
+                                                                    <input type="text" name="hname2" id="hname2" placeholder="House number & State">
+                                                                </div>
+                                                            </div>
+                                                            
                                                             <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="zname2">Postcode / ZIP (optional)*</label>
@@ -189,7 +190,7 @@
                                             </div>
                                             <div class="tab-pane fade" id="pd-3" role="tabpanel" aria-labelledby="pd-3-tab">
                                                 <div class="cart-form">
-                                                    <form action="checkout.html">
+                                                    <form action="checkout">
                                                         <div class="row">
                                                             <div class="col-xl-6">
                                                                 <div class="from-group mt-30">
@@ -203,30 +204,31 @@
                                                                     <input type="text" name="lname3" id="lname3" placeholder="Last Name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-12">
+                                                           @* <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="cname3">Company name (optional)</label>
                                                                     <input type="text" name="cname3" id="cname3" placeholder="Company Name">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="rname3">Country / Region *</label>
-                                                                    <input type="text" name="rname3" id="rname3" placeholder="Company Name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="from-group mt-30">
-                                                                    <label for="hname3">Street address *</label>
-                                                                    <input type="text" name="hname3" id="hname3" placeholder="House number & State">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
+                                                            </div>*@
+                                                                <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="tname3">Town / City *</label>
                                                                     <input type="text" name="tname3" id="tname3">
                                                                 </div>
                                                             </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="rname3">Street *</label>
+                                                                    <input type="text" name="rname3" id="rname3" placeholder="Company Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="from-group mt-30">
+                                                                    <label for="hname3">Street Number *</label>
+                                                                    <input type="text" name="hname3" id="hname3" placeholder="House number & State">
+                                                                </div>
+                                                            </div>
+                                                        
                                                             <div class="col-xl-12">
                                                                 <div class="from-group mt-30">
                                                                     <label for="zname3">Postcode / ZIP (optional)*</label>
