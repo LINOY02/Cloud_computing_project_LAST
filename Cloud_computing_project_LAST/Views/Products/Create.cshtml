@@ -4,50 +4,134 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <style>
+        body {
+            background-color: black
+        }
+        .custom-link {
+           color: black; /* Set the text color to white */
+        }
+        .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+        }
+        .btn.btn-primary {
+            /* Your primary button styles */
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: #C7A17A;
+            padding: 9.5px 34px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            border: 1px solid #C7A17A;
+            font-weight: 500;
+        }
 
-<h1>Create</h1>
-
-<h4>Product</h4>
+        /* Hover effect for the primary button */
+        .btn.btn-primary:hover {
+            background: black;
+            border-color: black;
+            color: white;
+        }
+    </style>
+    
+</head>
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+    <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+    <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">PRODUCTS</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span>create product</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="reservation__wrapper reservation__wrapper--2">
+                <div class="section-heading section-heading__black text-center mb-35">
+                    <h3 class="title">Create Product</h3>
+                </div>
+                <div class="reservation__form reservation__form--2 mt-none-30 text-center">
+                    <div class="cart-form">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Name" class="form-control" placeholder="Name" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Price" class="form-control" placeholder="Price" />
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="InStock" class="form-control" placeholder="In Stock" />
+                                        <span asp-validation-for="InStock" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Description" class="form-control" placeholder="Description" />
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="ImageUrl" class="form-control" placeholder="Image Url" />
+                                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mt-30">
+                                        <input class="form-control" placeholder="Lable" />
+                                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mt-30">
+                                <div class="col-xl-2 offset-xl-5 text-center">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3 offset-xl-9 text-right">
+                                    <a asp-action="Index" class="custom-link">Back to List</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InStock" class="control-label"></label>
-                <input asp-for="InStock" class="form-control" />
-                <span asp-validation-for="InStock" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
