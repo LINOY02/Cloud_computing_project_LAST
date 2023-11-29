@@ -144,6 +144,7 @@
                                                                 <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
                                                             </ul>
                                                         </li>
+                                                        <li><a asp-controller="Products" asp-action="Index">Products list</a></li>
                                                     </ul>
                                                 </li>
                                             }
@@ -180,19 +181,20 @@
                                                 <!---<li><a href="gallery.html">Gallery</a></li>-->
                                             </ul>
                                         </li>
-                                        <li>
+                                        <li><a asp-controller="Products" asp-action="ShopIndex" style="color:#C7A17A">Shop</a></li>
+                                        @* <li>
                                             <a class="active" style="color:#C7A17A">Shop</a>
-                                            <ul class="sub-menu">
+                                            <ul class="sub-menu"> *@
                                                 @* <li><a href="shop.html">Shop</a></li>
                                                 <li><a href="product-details.html">Shop Details</a></li>
                                                 <li><a href="cart.html">Shop Cart</a></li>
                                                 <li><a href="checkout.html">Shop Checkout</a></li>*@
-                                                <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
+                                                @* <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
                                                 <li><a asp-controller="Home" asp-action="ProductDetails">Shop Details</a></li>
                                                 <li><a asp-controller="Home" asp-action="Cart">Shop Cart</a></li>
                                                 <li><a asp-controller="Home" asp-action="Checkout">Shop Checkout</a></li>
                                             </ul>
-                                        </li>
+                                        </li> *@
                                                 <li><a asp-controller="Home" asp-action="Contact" style="color:#C7A17A">Contact</a></li>
                                         <!---<li><a href="contact.html">Contact</a></li>-->
                                     </ul>

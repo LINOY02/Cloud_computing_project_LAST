@@ -5,290 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<head>
+    <link href="~/assets/css/stylecafe.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: black
+        }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+        .custom-link {
+            color: white; /* Set the text color to white */
+            text-decoration: none; /* Remove underline */
+        }
 
-<body class=" dark-bg">
-    <!-- breadcrumb area start -->
-    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
-        <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
-        <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 text-center">
-                    <h2 class="page-title">Cafena Product</h2>
-                    <div class="cafena-breadcrumb breadcrumbs">
-                        <ul class="list-unstyled d-flex align-items-center justify-content-center">
-                            <li class="cafenabcrumb-item duxinbcrumb-end">
-                                <span>Product</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb area end -->
-    <!-- blog area start -->
-    <div class="blog-area pt-120 pb-105">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="shop-filter-wrapper d-flex justify-content-between align-items-center mb-30">
-                        <div class="sf-right d-flex justify-content-end align-items-center">
-                            <nav>
-                                <div class="nav" id="shop-filter-tab" role="tablist">
-                                    <a class="nav-link active" id="shop-tab-1-tab" data-bs-toggle="tab"
-                                       href="#shop-tab-1" role="tab" aria-controls="shop-tab-1"
-                                       aria-selected="true"><i class="fas fa-th"></i></a>
-                                    <a class="nav-link" id="shop-tab-2-tab" data-bs-toggle="tab" href="#shop-tab-2"
-                                       role="tab" aria-controls="shop-tab-2" aria-selected="false"><i class="fas fa-list-ul"></i></a>
-                                </div>
-                            </nav>
-                            <div class="sort-wrapper ml-45">
-                                <select name="select" id="select" style="color:white;background-color:black">
-                                    <option value="1">Short By New</option>
-                                    <option value="2">Short By New</option>
-                                    <option value="3">Short By New</option>
-                                    <option value="4">Short By New</option>
-                                    <option value="5">Short By New</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-8 col-lg-8">
-                    <div class="tab-content" id="shop-tabContent">
-                        <div class="tab-pane fade show mt-none-30 active" id="shop-tab-1" role="tabpanel" aria-labelledby="shop-tab-1-tab">
-                            <div class="row">
-                                @foreach (var product in Model)
-                                {
-                                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
-                                        <div class="pp__item pp__item--2 active text-center pt-20 pb-20" style="background-color:black">
-                                            <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
-                                                <div class="cart d-flex align-items-center justify-content-center" style="background-color:black">
-                                                    <a href="#0" style="color:white"><i class="fal fa-shopping-basket"></i></a>
-                                                </div>
-                                                <div class="view d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:void(0);" style="color:white" class="view-product" data-product-id="@product.Id">
-                                                        <i class="fal fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="pp__thumb pp__thumb--2 mt-35">
-                                                <img src="@product.ImageUrl" alt="">
-                                            </div>
-                                            <div class="pp__content pp__content--2 mt-25">
-                                                <h4 class="pp__title pp__title--2">
-                                                    <a href="ProductDetails.cshtml" style="color:white">@product.Name</a>
-                                                </h4>
-                                                <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
-                                                    <h6 class="label" style="color:white">Price - </h6>
-                                                    <span class="price"> $@product.Price </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                                <!-- product popup start -->
-                                <div class="product-popup product-popup-1">
-                                    <div class="view-background" style="background-color:black">
-                                        <div class="row">
-                                            <div class="col-md-4 align-self-center">
-                                                <div class="quickview d-flex align-items-center justify-content-center">
-                                                    <div class="quickview__thumb">
-                                                        <img class="my_img" src="" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="viewcontent">
-                                                    <div class="viewcontent__header">
-                                                        <h2 class="my_name" style="color:white"></h2>
-                                                        <a class="view_close product-p-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
-                                                    </div>
-                                                    <div class="viewcontent__price">
-                                                        <h4 class="my_price" style="color:white"><span>$</span></h4>
-                                                    </div>
-                                                    <div class="viewcontent__stock">
-                                                        <h4 style="color:white">Available :<span id="availabilityLabel" class="my_inStock" @* id="availabilityLabel" *@></span></h4>
-                                                    </div>
-                                                    @* <script>
-                                                    // Get the quantity in inventory from the model
-                                                    var quantityInInventory = @product.InStock;
-
-                                                    // Get the availability label element
-                                                    var availabilityLabel = document.getElementById("availabilityLabel");
-
-                                                    // Check the quantity and set the label text accordingly
-                                                    if (quantityInInventory > 0) {
-                                                    availabilityLabel.textContent = "In Stock";
-                                                    availabilityLabel.style.color = "white";
-                                                    } else {
-                                                    availabilityLabel.textContent = "Out of Stock";
-                                                    availabilityLabel.style.color = "#a7a7a7";
-                                                    }
-                                                    </script> *@
-                                                    <div class="viewcontent__details">
-                                                        <p class="my_description"></p>
-                                                    </div>
-                                                    <div class="viewcontent__action">
-                                                        <span style="color:white">Qty</span>
-                                                        <input type="number" placeholder="1">
-                                                        <a class="site-btn" href="#">add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product popup end -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4">
-                    <div class="blog__sidebar blog__sidebar--shop mt-none-30">
-                        <div class="widget mt-30" style="background-color:black">
-                            <h2 class="title" style="color:white">Search Here</h2>
-                            <form asp-controller="Home" asp-action="Index" class="search-widget">
-                                <input type="search" name="search" id="search" placeholder="Serach Product">
-                                <button type="submit"><i class="fal fa-search"></i></button>
-                            </form>
-                            <script>
-                                function redirectToSearchResults() {
-                                    var searchValue = document.getElementById('search').value;
-
-                                    if (!searchValue) {
-                                        return false;
-                                    }
-                                    else {
-                                        // Make an AJAX request to check if the path exists on your website
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open("HEAD", '/Home/Shop' + encodeURIComponent(searchValue), true);
-
-                                        xhr.onload = function () {
-                                            if (xhr.status == 200) {
-                                                // Path exists, navigate to it
-                                                window.location.href = '/Home/Shop' + encodeURIComponent(searchValue);
-                                            } else {
-                                                // Path does not exist, display an error message or change styling
-                                                var errorMessageElement = document.getElementById('error-message');
-                                                errorMessageElement.innerText = "The entered path does not exist. Please select a valid path before searching.";
-                                                // You can also change styling or add a red border to the search input.
-                                            }
-                                        };
-
-                                        xhr.send();
-                                    }
-
-                                    return false;
-                                }
-                            </script>
-                        </div>
-                        <div class="widget slider-range mt-30" style="background-color:black">
-                            <h2 class="title" style="color:white">Price Filter</h2>
-                            <div id="slider-range"></div>
-                            <p class="d-flex justify-content-between align-items-center">
-                                <input type="text" id="amount" style="color:white;background-color:black" readonly>
-                                <button class="site-btn" id="filterButton" for="amount">Filter</button>
-                            </p>
-                        </div>
-                        @* <div id="productList">
-                            @foreach (var product in Model)
-                            {
-                                <div class="product-card">
-                                    <p>@product.Name - $@product.Price</p>
-                                </div>
-                            }
-                        </div> *@
-                        <!-- Add this script tag to your HTML to include jQuery -->
-                       @*  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-                        <script>
-                            $(document).ready(function () {
-                                // Initialize the price range slider
-                                $("#slider-range").slider({
-                                    range: true,
-                                    min: 0, // Set the minimum price
-                                    max: 100, // Set the maximum price
-                                    values: [0, 100], // Set the initial values
-                                    slide: function (event, ui) {
-                                        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                                    }
-                                });
-
-                                // Handle the filter button click event
-                                $("#filter-button").click(function () {
-                                    // Get the selected price range
-                                    var minPrice = $("#slider-range").slider("values", 0);
-                                    var maxPrice = $("#slider-range").slider("values", 1);
-
-                                    // Send an AJAX request to your controller to fetch filtered products
-                                    $.ajax({
-                                        url: "/filter-products", // Update with the actual URL of your controller
-                                        type: "GET",
-                                        data: { minPrice: minPrice, maxPrice: maxPrice },
-                                        success: function (data) {
-                                            // Display the filtered products on your website
-                                            $("#filtered-products").html(data);
-                                        }
-                                    });
-                                });
-                            });
-                        </script> *@
-                    </div>
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+    </style>
+</head>
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+    <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+    <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">PRODUCTS</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span>List of products</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- blog area end -->
-    <script>
-        var products = @Html.Raw(Json.Serialize(Model));
-
-        // Add a click event listener to all "eye" buttons with the class 'view-product'
-        // var viewButtons = document.querySelectorAll('.view-product');
-        var viewButtons = document.querySelectorAll('.view-product');
-
-        viewButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                // Get the product ID from the data-product-id attribute
-                var productId = this.getAttribute('data-product-id');
-
-                // Find the product data in the model
-                var product = products.find(product => product.Id === productId) || null;
-
-                // If the product data was found, populate the popup window with it
-                if (product) {
-                    var popup = document.querySelector('.product-popup' + productId);
-
-                    // Set the product image
-                    popup.querySelector('.my_img').src = product.ImageUrl;
-
-                    // Set the product name
-                    popup.querySelector('.my_name').textContent = product.Name;
-
-                    popup.querySelector('.my_price').textContent = '$' + product.Price;
-                    // Set the product description
-                    popup.querySelector('my_description').textContent = product.Description;
-
-                    var availabilityLabel = popup.querySelector('.my_inStock');
-
-                    if (product.InStock > 0) {
-                        availabilityLabel.textContent = "In Stock";
-                        availabilityLabel.style.color = "white";
-                    } else {
-                        availabilityLabel.textContent = "Out of Stock";
-                        availabilityLabel.style.color = "#a7a7a7";
-                    }
-                }
-            });
-        });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</body>
+</section>
+<!-- breadcrumb area end -->
+<div class="from-group mt-15">
+<p>
+        <a asp-action="Create" class="site-btn">Create New</a>
+</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:150px">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="width:200px">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.InStock)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a class="custom-link" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="custom-link" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="custom-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

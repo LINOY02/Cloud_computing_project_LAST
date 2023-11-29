@@ -20,14 +20,14 @@ namespace Cloud_computing_project_LAST.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ShopIndex()
         {
               return _context.Product != null ? 
                           View(await _context.Product.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
-        public async Task<IActionResult> AIndex()
+        public async Task<IActionResult> Index()
         {
             return _context.Product != null ?
                         View(await _context.Product.ToListAsync()) :
