@@ -197,7 +197,7 @@ namespace Cloud_computing_project_LAST.Controllers
         {
             var orderCounts = new List<int>
     ();
-            var orders = _context.Order?.Where(orderr => orderr.OrderDate >= start && orderr.OrderDate <= end).ToList();
+            var orders = _context.Orderr?.Where(orderr => orderr.OrderDate >= start && orderr.OrderDate <= end).ToList();
 
             // Prepare data for the view model
             var dateLabels = orders.Select(orderr => orderr.OrderDate?.ToShortDateString()).Distinct().ToList();

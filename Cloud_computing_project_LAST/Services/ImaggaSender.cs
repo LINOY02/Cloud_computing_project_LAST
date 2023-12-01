@@ -25,7 +25,7 @@ namespace Cloud_computing_project_LAST.Services
 
                 using (var responseStream = await response.Content.ReadAsStreamAsync())
                 {
-                    var result = await JsonSerializer.DeserializeAsync<ImaggaResponse>(responseStream);
+                   // var result = await JsonSerializer.DeserializeAsync<ImaggaResponse>(responseStream);
 
                     // Process the result and return true or false based on your logic
                     // You can use result.Tags for the list of tags
