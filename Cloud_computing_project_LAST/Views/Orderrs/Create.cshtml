@@ -5,82 +5,188 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<body class="dark-bg">
+    <main>
+        <!-- breadcrumb area start -->
+        <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+            <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+            <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 text-center">
+                        <h2 class="page-title">Cafena Checkout</h2>
+                        <div class="cafena-breadcrumb breadcrumbs">
+                            <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                                <li class="cafenabcrumb-item duxinbcrumb-end">
+                                    <span>order detials</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb area end -->
+        <div class="checkout-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cart-wrapper checkout-wrapper" style="background:white">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="checkout-top">
+                                        <h4 class="title">Payment Mathod</h4>
+                                        <nav>
+                                            <div class="nav" id="shop-filter-tab" role="tablist">
+                                                <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" href="~/Paypel.html" role="tab" aria-controls="pd-1" aria-selected="true">
+                                                    Paypal
+                                                </a>
 
-<h4>Orderr</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="OrderDate" class="control-label"></label>
-                <input asp-for="OrderDate" class="form-control" />
-                <span asp-validation-for="OrderDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeliveryDate" class="control-label"></label>
-                <input asp-for="DeliveryDate" class="form-control" />
-                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalPrice" class="control-label"></label>
-                <input asp-for="TotalPrice" class="form-control" />
-                <span asp-validation-for="TotalPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="streetNum" class="control-label"></label>
-                <input asp-for="streetNum" class="form-control" />
-                <span asp-validation-for="streetNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ZIPCode" class="control-label"></label>
-                <input asp-for="ZIPCode" class="form-control" />
-                <span asp-validation-for="ZIPCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Info" class="control-label"></label>
-                <input asp-for="Info" class="form-control" />
-                <span asp-validation-for="Info" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                                                <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-1" aria-selected="true">
+                                                    Cash on Delivery
+                                                </a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="pdContent">
+                                            <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab">
+                                                <div class="cart-form">
+                                        <form asp-action="Create">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="row">
+                                                            <div class="col-xl-6">
+                                           @* <div class="form-group">
+                                                <label asp-for="OrderDate" class="control-label">Order Date:</label>
+                                                <label asp-for="OrderDate" id="currentDateTimeLabel" class="form-control" />
+                                                <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                            </div>*@
+                                                                <div class="form-group" style="display: flex; align-items: center;">
+                                                                    <label asp-for="OrderDate" class="control-label" style="margin-right: 10px; border: none !important;">Order Date:</label>
+                                                                    <div style="flex: 1;">
+                                                                         <label asp-for="OrderDate" id="currentDateTimeLabel" class="form-control" style="border: none"></label>
+                                                                    </div>
+                                                                    <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                function updateCurrentDateTime() {
+                                                                    var currentDateTime = new Date();
+                                                                    var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+                                                                    var formattedDateTime = currentDateTime.toLocaleString([], options);
+                                                                    document.getElementById('currentDateTimeLabel').textContent = formattedDateTime;
+                                                                }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                                                                // קריאה לפונקציה כעת
+                                                                updateCurrentDateTime();
+                                                                // קביעת זמן קבוע לעדכון - כל 1000 מילי-שניות (1 שנייה)
+                                                                setInterval(updateDeliveryDate, 1000);
+                                                            </script>
+                                                            <div class="col-xl-6">
+                                          @*  <div class="form-group">
+                                                                    <label asp-for="DeliveryDate" class="control-label">Delivery Date:</label>
+                                                <label id="deliveryDateLabel" class="form-control" />
+                                                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                                            </div>*@
+                                                                <div class="form-group" style="display: flex; align-items: center; ;">
+                                                                    <label asp-for="DeliveryDate" class="control-label" style="margin-right: 10px;">Delivery Date:</label>
+                                                                    <div style="flex: 1; ">
+                                                                        <label id="deliveryDateLabel" class="form-control" style="border: none"></label>
+                                                                    </div>
+                                                                    <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                function updateDeliveryDate() {
+                                                                    var tomorrow = new Date();
+                                                                    tomorrow.setDate(tomorrow.getDate() + 1);
 
+                                                                    // גריל שעה בטווח 6:00 עד 10:00
+                                                                    var randomHour = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
+
+                                                                    tomorrow.setHours(randomHour);
+                                                                    tomorrow.setMinutes(0);
+                                                                    var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+                                                                    var formattedDeliveryDate = tomorrow.toLocaleString([], options);
+                                                                    document.getElementById('deliveryDateLabel').textContent = formattedDeliveryDate;
+                                                                }
+
+                                                                // קריאה לפונקציה כעת
+                                                                updateDeliveryDate();
+                                                            </script>
+                                                            <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label asp-for="Name" class="control-label">First Name*</label>
+                                                <input asp-for="Name" class="form-control" />
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+                                                            </div>
+                                                                <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label asp-for="LastName" class="control-label">Last Name*</label>
+                                                <input asp-for="LastName" class="form-control" />
+                                                <span asp-validation-for="LastName" class="text-danger"></span>
+                                            </div>
+                                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="City" class="control-label">City Name*</label>
+                                                <input asp-for="City" class="form-control" />
+                                                <span asp-validation-for="City" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Address" class="control-label">Street Name*</label>
+                                                <input asp-for="Address" class="form-control" />
+                                                <span asp-validation-for="Address" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="streetNum" class="control-label">Street Number*</label>
+                                                <input asp-for="streetNum" class="form-control" />
+                                                <span asp-validation-for="streetNum" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="ZIPCode" class="control-label">ZIP Code*</label>
+                                                <input asp-for="ZIPCode" class="form-control" />
+                                                <span asp-validation-for="ZIPCode" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneNumber" class="control-label">Phone Number*</label>
+                                                <input asp-for="PhoneNumber" class="form-control" />
+                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                            </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label asp-for="Email" class="control-label">Email Adress*</label>
+                                                <input asp-for="Email" class="form-control" />
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Info" class="control-label"></label>
+                                                <input asp-for="Info" class="form-control" />
+                                                <span asp-validation-for="Info" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-xl-12 text-center"  @*class="form-group"*@>
+                                            <div class="site-btn mt-30">
+                                            <input type="submit" value="Create" style="font-size: 16px; color: black; background: none;" @*class="btn btn-primary"*@ />
+                                            </div>
+                                            </div>
+                                                        <div class="form-group">
+                                                            <label asp-for="TotalPrice" class="control-label"></label>
+                                                            <input asp-for="TotalPrice" class="form-control" />
+                                                            <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                                                        </div>
+                                            </div>
+                                        </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>

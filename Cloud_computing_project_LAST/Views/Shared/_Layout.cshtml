@@ -124,7 +124,7 @@
                                     <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
                                             <li><a asp-controller="Home" asp-action="About" style="color:#C7A17A">About</a></li>
                                     <!--<li><a href="about.html">About</a></li>-->
-                                            <li><a asp-controller="Home" asp-action="Menu" style="color:#C7A17A">Menu</a></li>
+                                            <li><a asp-controller="Menus" asp-action="MenuIndex" style="color:#C7A17A">Menu</a></li>
                                     <!--<li><a href="menu.html">Menu</a></li>-->
                                             <li><a asp-controller="Home" asp-action="Reservation" style="color:#C7A17A">Reservation</a></li>
                                     <!--<li><a href="reservation.html">Reservation</a></li>-->
@@ -141,7 +141,7 @@
                                                         <li>
                                                              <a class="active">Info</a>
                                                             <ul class="sub-menu">
-                                                                <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
+                                                                <li><a asp-controller="Orderrs" asp-action="Index">Orders</a></li>
                                                             </ul>
                                                         </li>
                                                         <li><a asp-controller="Products" asp-action="Index">Products list</a></li>
@@ -586,7 +586,7 @@
                         </div>
                         <div class="btns d-flex align-items-center justify-content-center">
                             <a asp-controller="Home" asp-action="Cart" class="site-btn">View Cart</a>
-                            <a asp-controller="Orders" asp-action="Create" class="site-btn site-btn__borderd">Checkout</a>
+                            <a asp-controller="Orderrs" asp-action="Create" class="site-btn site-btn__borderd">Checkout</a>
                         </div>
                     </div>
                 </aside>
@@ -612,7 +612,7 @@
                             <div class="item d-flex align-items-center justify-content-center">
                                 <img src="~/assets/images/icons/ft-phone.png" alt="">
                                 <span>Phone :</span>
-                                <a href="tel:88019339702520">+88019 339 702 520</a>
+                                <a href="tel:0584000146">0584000146</a>
                             </div>
                         </div>
                     </div>
@@ -621,17 +621,16 @@
                             <div class="item d-flex align-items-center justify-content-start">
                                 <img src="~/assets/images/icons/ft-map-marker.png" alt="">
                                 <span>Address:</span>
-                                <a href="https://maps.app.goo.gl/3XmgpuT63MFC741Z6">Central Park, New York City</a>
+                                <a href="https://maps.app.goo.gl/3gmoLHCQNdk7sHiY9">Acadia Beach, Herzliya</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-8 mt-30 pl-55">
-                        <div class="footer__widget">
-                            <div class="subscribe">
-                                <form action="Home/Index"> <!--לבדוק את זה. זה היה לפיכן index.html-->
-                                    <input type="email" name="email" id="email" placeholder="Enter your email">
-                                    <button type="submit" class="subscribe__btn">Subscribe <i class="fa fa-paper-plane"></i></button>
-                                </form>
+                        <div class="footer__widget footer__info">
+                            <div class="item d-flex align-items-center justify-content-start">
+                                <img src="~/assets/images/icons/ft-phone.png" alt="">
+                                    <span>Email:</span>
+                                    <a href="mailto:Caffena100@gmail.com">caffena100@gmail.com</a>
                             </div>
                         </div>
                     </div>

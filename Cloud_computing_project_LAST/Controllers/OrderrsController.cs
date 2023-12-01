@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
+using System.Net.Mail;
+using System.Net;
+using Cloud_computing_project_LAST.Data.Migrations;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
@@ -62,6 +65,7 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 _context.Add(orderr);
                 await _context.SaveChangesAsync();
+                await SendOrderConfirmationEmail(orderr);
                 return RedirectToAction(nameof(Index));
             }
             return View(orderr);
@@ -159,5 +163,62 @@ namespace Cloud_computing_project_LAST.Controllers
         {
           return (_context.Orderr?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        private async Task SendOrderConfirmationEmail(Orderr orderr)
+        {
+            // Replace these values with your SMTP server details
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587;
+            string smtpUsername = "caffena100@gmail.com";
+            string smtpPassword = "zybc owcy vprg vmcb";
+
+            using (var client = new SmtpClient(smtpServer, smtpPort))
+            {
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                client.EnableSsl = true;
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress("caffena100@gmail.com"),
+                    Subject = "Order Confirmation",
+                    Body = $" Dear {orderr.Name}, Your order successfully received. Your total price is {orderr.TotalPrice:C}.",
+                    IsBodyHtml = false
+                };
+                message.To.Add(orderr.Email);
+                await client.SendMailAsync(message);
+            }
+        }
+        public IActionResult GraphCreate()
+        {
+            return View();
+        }
+        public IActionResult Graph(DateTime? start, DateTime? end)
+        {
+            var orderCounts = new List<int>
+    ();
+            var orders = _context.Order?.Where(orderr => orderr.OrderDate >= start && orderr.OrderDate <= end).ToList();
+
+            // Prepare data for the view model
+            var dateLabels = orders.Select(orderr => orderr.OrderDate?.ToShortDateString()).Distinct().ToList();
+            var totalPrices = new List<double>
+                ();
+
+            foreach (var dateLabel in dateLabels)
+            {
+                orderCounts.Add(orders.Count(order => order.OrderDate?.ToShortDateString() == dateLabel));
+                totalPrices.Add(orders.Where(order => order.OrderDate?.ToShortDateString() == dateLabel).Sum(orderr => orderr.TotalPrice));
+            }
+
+            var viewModel = new OrderGraphViewModel
+            {
+                DateLabels = dateLabels,
+                TotalPrices = totalPrices,
+                OrderCounts = orderCounts
+            };
+
+            return View(viewModel); // Pass the view model to the view
+        }
     }
 }
+

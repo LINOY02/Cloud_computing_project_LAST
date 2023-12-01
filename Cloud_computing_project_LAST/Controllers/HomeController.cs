@@ -9,10 +9,11 @@ namespace Cloud_computing_project_LAST.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IConfiguration _configuration;
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -121,6 +122,55 @@ https://localhost:7227/",
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Contant(FormCollection form)
+        {
+            var person = new
+            {
+                Name = form["name"],
+                Email = form["email"],
+                Seates = form["subject"],
+                Massage = form["massage"]
+            };
+
+            if (ModelState.IsValid)
+            {
+                await SendContactConfirmationEmail(person.Name!, person.Email!, person.Seates!, person.Massage! );
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(person);
+        }
+
+        private async Task SendContactConfirmationEmail(string name, string email, string seats, string message)
+        {
+            var smtpHost = "smtp.gmail.com";
+            var smtpPort = 587;
+            var smtpUsername = "caffena100@gmail.com";
+            var smtpPassword = "zybc owcy vprg vmcb";
+            var smtpRecipient = "your-recipient@example.com";
+
+            using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
+            {
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                smtpClient.EnableSsl = true;
+
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress(email),
+                    Subject = "Contact Form Submission Confirmation",
+                    Body = $"Name: {name}\nEmail: {email}\nSeats: {seats}\nMessage: {message}"
+                };
+
+                mailMessage.To.Add(smtpRecipient);
+
+                await smtpClient.SendMailAsync(mailMessage);
+            }
+        }
+
+
         public IActionResult Gallery()
         {
             return View();
@@ -166,15 +216,6 @@ https://localhost:7227/",
             return View();
         }
 
-        public IActionResult ProductDetails()
-        {
-            return View();
-        }
-
-        public IActionResult Try()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -182,4 +223,4 @@ https://localhost:7227/",
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-}
+ }

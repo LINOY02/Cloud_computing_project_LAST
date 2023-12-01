@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Graph";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Order Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-bg">
+
+    <!-- Form for selecting date range -->
+    <form method="get" action="/Orders/Graph">
+        <div class="col-xl-12 text-center">
+            <label for="startDate" style="color:white">Start Date:</label>
+            <input type="date" id="startDate" name="start" required>
+
+            <label for="endDate" style="color:white">End Date:</label>
+            <input type="date" id="endDate" name="end" required>
+        </div>
+        <div class="col-xl-12 text-center">
+            <button type="submit" class="site-btn mt-30">Generate Graph</button>
+        </div>
+    </form>
+    <!-- Canvas for the Chart.js chart -->
+    <div style="max-width: 700px; margin: auto;">
+        <canvas id="orderChart" width="700" height="500"></canvas>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('orderChart').getContext('2d');
+
+            var chartData = {
+                labels: @Html.Raw(Json.Serialize(Model.DateLabels)),
+                datasets: [
+                    {
+                        label: 'Total Price',
+
+
+                        data: @Html.Raw(Json.Serialize(Model.TotalPrices)),
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: 'rgba(255, 255, 255, 1)',
+                        borderWidth: 1,
+                        categoryPercentage: 0.8,
+                        barPercentage: 0.8
+                    },
+                    {
+                        label: 'Order Count',
+
+
+                        data: @Html.Raw(Json.Serialize(Model.OrderCounts)),
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: 'rgba(255, 255, 255, 1)',
+                        borderWidth: 1,
+                        categoryPercentage: 0.8,
+                        barPercentage: 0.8
+                    }
+                ]
+            };
+
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                            //    ticks: {
+                            //color: 'white'
+                            //    }
+
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                            //labels: true
+                            //{
+                            //    color: 'white', // צבע הטקסט של הלייבלים
+                            //    font: {
+                            //        size: 16 // גודל הטקסט של הלייבלים
+                            //    }
+                            //}
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            bottom: 20 // Adjust as needed to give more room for the labels
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
