@@ -74,6 +74,17 @@ namespace Cloud_computing_project_LAST.Controllers
         {
             if (ModelState.IsValid)
             {
+                ImaggaService imaggaService = new ImaggaService();
+                string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!);
+
+                // Process the imaggaResponse as needed
+                // For example, check if the response indicates an error
+                if (imaggaResponse.Contains("Error"))
+                {
+                    ViewBag.ImageCheckError = "Image check failed. Please provide a valid image.";
+                    return View(product);
+                }
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -113,6 +124,17 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 try
                 {
+                    ImaggaService imaggaService = new ImaggaService();
+                    string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!);
+
+                    // Process the imaggaResponse as needed
+                    // For example, check if the response indicates an error
+                    if (imaggaResponse is "Error: Problem, this is not an image of coffee")
+                    {
+                        ModelState.AddModelError("ImageUrl", "Image check failed. Please provide a valid image.");
+                        return View(product);
+                    }
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
