@@ -1,9 +1,60 @@
-﻿
+﻿@model Cloud_computing_project_LAST.Models.Product
+
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <style>
+        .big-img img {
+            width: 250px; /* Set the width */
+            height: 237px; /* Set the height */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+        }
+        /* Styling for the stock labels */
+        .stock-label {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 5px; /* Add space between icon and text */
+        }
 
+        /* Styling for the "In Stock" text and icon */
+        .in-stock {
+            color: #C7A17A; /* Change the color to green for in stock */
+        }
+
+        /* Styling for the "Out of Stock" text and icon */
+        .out-of-stock {
+            color: #a7a7a7; /* Light gray color for out of stock */
+         }
+
+        /* Styling for the stock text */
+        .stock-text {
+            margin-left: 5px; /* Add space between icon and text */
+            font-size: 25px; /* Change the font size */
+        }
+        .stock-icon {
+            font-size: 25px; /* Match the font size of the text */
+            margin-right: 3px; /* Add space between icon and text */
+        }
+
+        .out-btn {
+            font-size: 12px;
+        text-transform: uppercase;
+        color: #ffffff;
+        letter-spacing: 2px;
+        background: #343a40;
+        padding: 9.5px 34px;
+        text-decoration: none;
+        border-radius: 5px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        border: 1px solid #343a40;
+        font-weight: 500;
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
 <body class=" dark-bg">
     <main>
         <!-- breadcrumb area start -->
@@ -31,30 +82,19 @@
             <div class="view-background">
                 <div class="row">
                     <div class="col-md-4 align-self-center">
-                        <div class="quickview d-flex align-items-center justify-content-center">
-                            <div class="quickview__thumb">
-                                <img src="~/assets/images/products/pp-1.png" alt="">
-                            </div>
-                        </div>
+                       <img src="@Html.DisplayFor(model => model.ImageUrl)">
                     </div>
                     <div class="col-md-8">
                         <div class="viewcontent">
                             <div class="viewcontent__header">
-                                <h2>VICARAGUA COFFEE BEANS</h2>
+                                <h2 style="color:white">@Html.DisplayFor(model => model.Name)</h2>
                                 <a class="view_close product-p-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
                             </div>
-                            <div class="viewcontent__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                            </div>
                             <div class="viewcontent__price">
-                                <h4><span>$</span>99.00</h4>
+                                <label style="background-color:white"><span>$</span>8888</label>
                             </div>
                             <div class="viewcontent__stock">
-                                <h4>Available :<span> In stock</span></h4>
+                                <h4 style="background-color:white">Available :<span> In stock</span></h4>
                             </div>
                             <div class="viewcontent__details">
                                 <p>Anlor sit amet, consectetur adipiscing elit. Fusce condimentum est lacus, non pretium risus lacinia vel. Fusce eget turpis orci.</p>
@@ -90,85 +130,51 @@
                         <div class="product-details__wrapper">
                             <div class="pd-img">
                                 <div class="tab-content" id="pdContent">
-                                    <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab">
+                                    <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab" style="border: 15px solid white"> 
                                         <div class="big-img">
-                                            <img src="~/assets/images/products/pp-1.png" alt="">
+                                            <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="">
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="pd-2" role="tabpanel" aria-labelledby="pd-2-tab">
-                                        <div class="big-img">
-                                            <img src="~/assets/images/products/pp-2.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pd-3" role="tabpanel" aria-labelledby="pd-3-tab">
-                                        <div class="big-img">
-                                            <img src="~/assets/images/products/pp-3.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pd-4" role="tabpanel" aria-labelledby="pd-4-tab">
-                                        <div class="big-img">
-                                            <img src="~/assets/images/products/pp-1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pd-5" role="tabpanel" aria-labelledby="pd-5-tab">
-                                        <div class="big-img">
-                                            <img src="~/assets/images/products/pp-2.png" alt="">
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
-                            <div class="pd-tab">
-                                <nav>
-                                    <div class="nav" id="shop-filter-tab" role="tablist">
-                                        <a class="nav-link active" id="pd-1-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-1" aria-selected="true">
-                                            <img src="~/assets/images/products/shop/s-p-1.png" alt="">
-                                        </a>
-                                        <a class="nav-link" id="pd-2-tab" data-bs-toggle="tab" href="#pd-2" role="tab" aria-controls="pd-2" aria-selected="true">
-                                            <img src="~/assets/images/products/shop/s-p-2.png" alt="">
-                                        </a>
-                                        <a class="nav-link" id="pd-3-tab" data-bs-toggle="tab" href="#pd-3" role="tab" aria-controls="pd-3" aria-selected="true">
-                                            <img src="~/assets/images/products/shop/s-p-3.png" alt="">
-                                        </a>
-                                        <a class="nav-link" id="pd-4-tab" data-bs-toggle="tab" href="#pd-4" role="tab" aria-controls="pd-4" aria-selected="true">
-                                            <img src="~/assets/images/products/shop/s-p-4.png" alt="">
-                                        </a>
-                                        <a class="nav-link" id="pd-5-tab" data-bs-toggle="tab" href="#pd-5" role="tab" aria-controls="pd-5" aria-selected="true">
-                                            <img src="~/assets/images/products/shop/s-p-5.png" alt="">
-                                        </a>
-                                    </div>
-                                </nav>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="product-details__content">
                             <div class="tr-wrapper d-flex align-items-center justify-content-between">
-                                <h2 class="title">Americano Coffee Beans</h2>
-                                <div class="rating-wrapper d-flex align-items-center justify-content-center">
-                                    <div class="rattings d-flex align-items-center">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fal fa-star"></i>
-                                    </div>
-                                    <span class="rt-number">04 - Customar Review</span>
-                                </div>
+                                <h1 class="title" style="color:white">@Html.DisplayFor(model => model.Name)</h1>
                             </div>
-                            <p>The coffee is brewed by first roasting the green coffee beans over hot coals in  brazier.Once the beans are roasted each participant is given an opportunity to sample The coffee is brewed.</p>
-                            <span class="in-stock">
-                                <i class="fal fa-check"></i> In Stock
-                            </span>
-                            <h3 class="price">$25</h3>
-                            <div class="variations">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div class="product-quantity d-flex align-items-center">
+                            <p style ="color:white">
+                                @Html.DisplayFor(model => model.Description)</p>
+                             <hr/>
+                            @if (Model.InStock > 0)
+                            {
+                                <span class="stock-label in-stock">
+                                    <i class="fal fa-check stock-icon" style=" color: #C7A17A"></i>
+                                    <span class="stock-text">In Stock</span>
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="stock-label out-of-stock">
+                                    <i class="fal fa-times stock-icon" style=" color: #a7a7a7"></i>
+                                    <span class="stock-text">Out of Stock</span>
+                                </span>
+                            }
+                            <h3 class="price" style="color:white">@Html.DisplayFor(model => model.Price)&#8378;</h3>
+                            <<div class="product-quantity d-flex align-items-center">
                                 <span>Quantity</span>
-                                <input type="number" placeholder="1">
-                                <a class="site-btn" href="#">add to cart</a>
+                                <input type="number" id="quantityInput" placeholder="0">
+                                @if (Model.InStock > 0)
+                                {
+                                    <button class="site-btn" id="addToCartBtn">Add to Cart</button>
+                                }
+                                else
+                                {
+                                    <botton class="out-btn" id="addToCartBtnOut" disabled >Add to Cart</botton>
+                                }
                             </div>
                             <a href="#0" class="wishlist"><i class="fas fa-heart"></i> Add to watch list</a>
                             <div class="pd-social-wrapper">
@@ -186,6 +192,52 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('#addToCartBtnOut').on('click', function (e) {
+                    e.preventDefault();
+                    if ($(this).is(':disabled')) {
+                        return false; // Prevent action if the button is disabled
+                    }
+
+                    // Perform your AJAX request or other actions
+                    // Example AJAX code...
+                });
+            });
+
+            $(document).ready(function () {
+                $('#addToCartBtn').on('click', function (e) {
+                    e.preventDefault(); // Prevent the default form submission
+
+                    console.log('Add to Cart button clicked.');
+
+                    // Get the product ID and quantity values
+                    var productId = '@Model.Id'; // Replace with your actual product ID
+                    var quantity = $('#quantityInput').val();
+
+                    // Prepare data to be sent
+                    var data = {
+                        productId: productId,
+                        quantity: quantity
+                    };
+
+                    // Send an AJAX request to your controller
+                    $.ajax({
+                        url: '/Carts/AddToCart', // Replace with your actual controller action route
+                        type: 'POST',
+                        data: data,
+                        success: function (response) {
+                            // Handle the success response here (if needed)
+                           alert(response.message);
+                        },
+                        error: function (error) {
+                            // Handle any errors that occur during the AJAX request
+                            console.error('Error adding product to cart:', error);
+                        }
+                    });
+                });
+            });
+        </script>
         <!-- product details area end -->
         <!-- product info start -->
         <div class="container">

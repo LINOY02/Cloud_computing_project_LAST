@@ -195,5 +195,21 @@ namespace Cloud_computing_project_LAST.Controllers
         {
           return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            if (id == null || _context.Product == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
     }
 }

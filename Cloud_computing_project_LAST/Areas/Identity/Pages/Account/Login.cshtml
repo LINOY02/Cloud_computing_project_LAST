@@ -3,120 +3,154 @@
 
 <style>
     .custom-input-group {
-        position: relative;
-    }
+          position: relative;
+      }
 
-    .toggle-password {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 10px;
-        font-size: 18px; /* Adjust the font size to make the icon bigger */
-        cursor: pointer;
-    }
+      .toggle-password {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 10px;
+          font-size: 18px; /* Adjust the font size to make the icon bigger */
+          cursor: pointer;
+      }
 
-    .form-control {
-        padding-right: 40px; /* Adjust as needed to make room for the bigger icon on the right */
-    }
+      .form-control {
+          padding-right: 40px; /* Adjust as needed to make room for the bigger icon on the right */
+      }
+
+        table {
+              width: 18%; /* Set the width of the table */
+          }
+          td {
+              width: 18%; /* Set the width of the table cells */
+          }
+               .custom-input-group {
+              display: flex;
+          }
+
+          .custom-input-group input[type="password"] {
+              flex: 1;
+          }
+
+          .custom-eye-icon {
+              cursor: pointer;
+              margin-left: -30px;
+          }
+
+    .custom-link {
+           color: black; /* Set the text color to white */
+        }
+        .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+        }
 </style>
 
 @{
     ViewData["Title"] = "Log in";
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
-                
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="from-group mt-15">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                    <label asp-for="Input.Email" class="form-label"></label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="from-group mt-15">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                    <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility(this)"></i>
-                    <label asp-for="Input.Password" class="form-label"></label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <script>
-                    function togglePasswordVisibility(icon) {
-                        const input = icon.previousElementSibling; // Get the input field
-                        if (input.type === 'password') {
-                            input.type = 'text'; // Change the input type to text to show the password
-                            icon.classList.remove('fa-eye');
-                            icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
-                        } else {
-                            input.type = 'password'; // Change the input type back to password
-                            icon.classList.remove('fa-eye-slash');
-                            icon.classList.add('fa-eye'); // Change the icon back to an eye icon
-                        }
-                    }
-
-                </script>
-                <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
+<body class="dark-bg">
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+        <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+        <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <h2 class="page-title">Log in</h2>
+                    <div class="cafena-breadcrumb breadcrumbs">
+                        <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                            <li class="cafenabcrumb-item duxinbcrumb-end">
+                                <span>Log in</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div>
-                    <button id="login-submit" type="submit" class="site-btn">Log in</button>
-                </div>
-                <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword" style="color:black">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color:black">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="color:black">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to log in.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                                    <div>
-                                        <p>
-                                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                                            about setting up this ASP.NET application to support logging in via external services</a>.
-                                        </p>
-                                    </div>
-                }
-                else
-                {
-                                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                        <div>
-                                            <p>
-                                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                                            </p>
-                                        </div>
-                                    </form>
-                }
-            }
-        </section>
-    </div>
-</div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+    
 
+    <main>
+        <div class="checkout-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cart-wrapper checkout-wrapper" style="background: white;">
+                            <div class="row">
+                                <div class="col-xl-9">
+                                    <div class="checkout-top">
+                                        <div class="cart-form">
+                                            <form id="account" method="post">
+                                                <h2>Use a local account to log in.</h2>
+                                                <hr />
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <div class="from-group mt-15">
+                                                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Enter your Email.." />
+                                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                                </div>
+                                                <div class="from-group mt-15">
+                                                    <div class="custom-input-group">
+                                                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true"  placeholder="Password"/>
+                                                        <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility(this)"></i>
+                                                    </div>
+                                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                                </div>
+                                                <script>
+                                                    function togglePasswordVisibility(icon) {
+                                                        const input = icon.previousElementSibling; // Get the input field
+                                                        if (input.type === 'password') {
+                                                            input.type = 'text'; // Change the input type to text to show the password
+                                                            icon.classList.remove('fa-eye');
+                                                            icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
+                                                        } else {
+                                                            input.type = 'password'; // Change the input type back to password
+                                                            icon.classList.remove('fa-eye-slash');
+                                                            icon.classList.add('fa-eye'); // Change the icon back to an eye icon
+                                                        }
+                                                    }
+
+                                                </script>
+                                                <div class="from-group mt-15">
+                                                    <div class="checkbox">
+                                                        <label asp-for="Input.RememberMe" class="form-label">
+                                                            <input class="form-check-input" asp-for="Input.RememberMe" style="width:25px"/>
+                                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button id="login-submit" type="submit" class="site-btn">Log in</button>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        <a id="forgot-password" asp-page="./ForgotPassword" class="custom-link">Forgot your password?</a>
+                                                    </p>
+                                                    <p>
+                                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="custom-link">Register as a new user</a>
+                                                    </p>
+                                                    <p>
+                                                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="custom-link">Resend email confirmation</a>
+                                                    </p>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </main>
+
+</body>
+
+                                            
+   
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -60,10 +60,6 @@
 
     <div >
         <main role="main" class="pb-3">
-            
-                <!--[if lt IE 8]>
-                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-                <![endif]-->
 
                  <!-- preloader  -->
                  <div id="preloader">
@@ -121,30 +117,27 @@
                             <nav>
                                 <ul>
                                             <li><a asp-controller="Home" asp-action="Index" style="color:#C7A17A">Home</a></li>
-                                    <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
                                             <li><a asp-controller="Home" asp-action="About" style="color:#C7A17A">About</a></li>
-                                    <!--<li><a href="about.html">About</a></li>-->
                                             <li><a asp-controller="Menus" asp-action="MenuIndex" style="color:#C7A17A">Menu</a></li>
-                                    <!--<li><a href="menu.html">Menu</a></li>-->
                                             <li><a asp-controller="Home" asp-action="Reservation" style="color:#C7A17A">Reservation</a></li>
-                                    <!--<li><a href="reservation.html">Reservation</a></li>-->
                                           @if (User.IsInRole("Manager"))
                                             {
                                                 <li>
                                                     <a class="active" style="color:#C7A17A"> <i class="fas fa-user-shield"></i></a>
                                                     <ul class="sub-menu">
-                                                        @* <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="product-details.html">Shop Details</a></li>
-                                                    <li><a href="cart.html">Shop Cart</a></li>
-                                                    <li><a href="checkout.html">Shop Checkout</a></li>*@
-                                                        <li><a asp-controller="Orders" asp-action="Graph">Graph</a></li>
-                                                        <li>
-                                                             <a class="active">Info</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a asp-controller="Orderrs" asp-action="Index">Orders</a></li>
+                                                       <li>
+                                                           <a class="active">Orders</a>
+                                                           <ul class="sub-menu">
+                                                                <li><a asp-controller="Orderrs" asp-action="Index">Orders List</a></li>
+                                                                <li><a asp-controller="OrderDetials" asp-action="Index">Orders Detials</a></li>
+                                                                <li><a asp-controller="Orderrs" asp-action="Graph">Graph</a></li>
+                                                                <li><a asp-controller="Orderrs" asp-action="Index">Weather statistics</a></li>
+                                                                <li><a asp-controller="Orderrs" asp-action="Inde">habcal statistics</a></li>
                                                             </ul>
-                                                        </li>
-                                                        <li><a asp-controller="Products" asp-action="Index">Products list</a></li>
+                                                       </li> 
+                                                        <li><a asp-controller="Products" asp-action="Index">Products List</a></li>
+                                                        <li><a asp-controller="Products" asp-action="Index">Menu List</a></li>
+                                                        <li><a asp-controller="UserInfoes" asp-action="Index">Users</a></li>
                                                     </ul>
                                                 </li>
                                             }
@@ -168,17 +161,11 @@
                                             <a class="active" style="color:#C7A17A">pages</a>
                                             <ul class="sub-menu">
                                                 <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
-                                                <!---<li><a href="blog.html">Blog</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="BlogDetails">Blog Details</a></li>
-                                                <!---<li><a href="blog-details.html">Blog Details</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Chefs">Chefs</a></li>
-                                                <!---<li><a href="chefs.html">Chefs</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Faq">Faq</a></li>
-                                                <!---<li><a href="faq.html">Faq</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Story">Story</a></li>
-                                                <!---<li><a href="story.html">Story</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                                                <!---<li><a href="gallery.html">Gallery</a></li>-->
                                             </ul>
                                         </li>
                                         <li><a asp-controller="Products" asp-action="ShopIndex" style="color:#C7A17A">Shop</a></li>
@@ -196,7 +183,6 @@
                                             </ul>
                                         </li> *@
                                                 <li><a asp-controller="Home" asp-action="Contact" style="color:#C7A17A">Contact</a></li>
-                                        <!---<li><a href="contact.html">Contact</a></li>-->
                                     </ul>
                                 </nav>
                             </div>
@@ -300,7 +286,7 @@
                         <div class="wrapper-for-lg d-flex align-items-center">
                             <div class="logo d-lg-none">
                                 <a asp-controller="Home" asp-action="Index">
-                                    <!---<a href="index.html">-->
+                                    
                                     <img src="~/assets/images/logo/logo.png" alt="img">
                                 </a>
                             </div>
@@ -308,45 +294,22 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
                                         <li><a asp-controller="Home" asp-action="About">About</a></li>
-                                        <!--<li><a href="about.html">About</a></li>-->
                                         <li><a asp-controller="Home" asp-action="Menu">Menu</a></li>
-                                        <!--<li><a href="menu.html">Menu</a></li>-->
                                         <li><a asp-controller="Home" asp-action="Reservation">Reservation</a></li>
-                                        <!--<li><a href="reservation.html">Reservation</a></li>-->
                                         <li>
                                             <a class="=" active>pages</a>
                                             <ul class="sub-menu">
                                                 <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
-                                                <!---<li><a href="blog.html">Blog</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="BlogDetails">Blog Details</a></li>
-                                                <!---<li><a href="blog-details.html">Blog Details</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Chefs">Chefs</a></li>
-                                                <!---<li><a href="chefs.html">Chefs</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Faq">Faq</a></li>
-                                                <!---<li><a href="faq.html">Faq</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Story">Story</a></li>
-                                                <!---<li><a href="story.html">Story</a></li>-->
                                                 <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                                                <!---<li><a href="gallery.html">Gallery</a></li>-->
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a class="active">Shop</a>
-                                            <ul class="sub-menu">
-                                                @* <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="product-details.html">Shop Details</a></li>
-                                                <li><a href="cart.html">Shop Cart</a></li>
-                                                <li><a href="checkout.html">Shop Checkout</a></li>*@
-                                                <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
-                                                <li><a asp-controller="Home" asp-action="ProductDetails">Shop Details</a></li>
-                                                <li><a asp-controller="Home" asp-action="Cart">Shop Cart</a></li>
-                                                <li><a asp-controller="Home" asp-action="Checkout">Shop Checkout</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
                                         <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                                        <!---<li><a href="contact.html">Contact</a></li>-->
                                     </ul>
                                 </nav>
                             </div>
@@ -426,7 +389,6 @@
                         </p>
                          
                                 <a class="site-btn mt-20" asp-controller="Home" asp-action="Contact">Contant us</a>
-                                    <!--<a class="site-btn mt-20" href="contact.html">Contact us</a>-->
                                 </div>
                                 <div class="contact__info--wrapper mt-15">
                                     <h4 class="title mb-10">Contact us</h4>
@@ -668,17 +630,11 @@
                             <nav>
                                 <ul>
                                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                    <!--<li class="menu-item-has-children active"><a href="index.html">Home</a></li>-->
                                     <li><a asp-controller="Home" asp-action="About">About</a></li>
-                                    <!--<li><a href="about.html">About</a></li>-->
                                     <li><a asp-controller="Home" asp-action="Menu">Menu</a></li>
-                                    <!--<li><a href="menu.html">Menu</a></li>-->
                                     <li><a asp-controller="Home" asp-action="Reservation">Reservation</a></li>
-                                    <!--<li><a href="reservation.html">Reservation</a></li>-->
                                     <li><a asp-controller="Home" asp-action="Shop">Shop</a></li>
-                                    <!--<li><a href="shop.html">Shop</a></li>-->
                                     <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
-                                    <!---<li><a href="blog.html">Blog</a></li>-->
                                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                 </ul>
                             </nav>

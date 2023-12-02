@@ -373,7 +373,64 @@
                         </div>
                     </div>
                 </div>
+
+                @{
+                    var categories = new Dictionary<string, string> { { "CAT1", "cat1" }, { "CAT2", "cat2" } };
+                }
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-6 col-lg-6 col-md-6 l-item grid-item @(categories.ContainsKey(item.Description) ? categories[item.Description] : "") mt-35">
+                        <div class="popular-menu__list">
+                            <div class="thumb">
+                                <img src="@item.ImageUrl" alt="">
+                            </div>
+                            <div class="content">
+                                <h3 class="title border-effect" style="color:white"><a href="#0">@item.Name</a></h3>
+                                <span class="price">$@item.Price</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+                @section Scripts {
+                    <script>
+                        function GetCategoryClass(description) {
+                            switch (description) {
+                                case 'CAT1':
+                                    return 'cat1';
+                                case 'CAT2':
+                                    return 'cat2';
+                                // הוסף קוד לכל קטגוריה נוספת כאן
+                                default:
+                                    return '';
+                            }
+                        }
+                    </script>
+                }
             </div>
+           @* @foreach (var item in Model)
+            {
+                <div class="product-item col-md-3 pb-4 text-center">
+                    @* <a href=~/@Html.DisplayFor(modelItem => item.Image_URL) class="product-image"><img src=~/@Html.DisplayFor(modelItem => item.Image_URL)></a>*@
+                   @* @if (Uri.IsWellFormedUriString(item.ImageUrl, UriKind.Absolute))
+                    {
+                        <a href="@Html.DisplayFor(modelItem => item.ImageUrl)" class="product-image"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
+                    }
+                    else
+                    {
+                        <a href="~/images/@Html.DisplayFor(modelItem => item.ImageUrl)" class="product-image"><img src="~/images/@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
+                    }
+                    <div class="text-comtent text-center">
+                        <h5 class="pt-4"><a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></h5>
+                        <p> @Html.DisplayFor(modelItem => item.Description)</p>
+                        <span class="price colored"> @Html.DisplayFor(modelItem => item.Price)$</span>
+                    </div>
+
+                    <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
+
+                </div>
+            }*@
         </div>
     </section>
     <!-- populer menu area end -->
