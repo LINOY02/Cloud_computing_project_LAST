@@ -177,18 +177,18 @@
                                                     </div>
 
                                                     <script>
-                                                        function togglePasswordVisibility(icon) {
-                                                            const input = icon.previousElementSibling; // Get the input field
-                                                            if (input.type === 'password') {
-                                                                input.type = 'text'; // Change the input type to text to show the password
-                                                                icon.classList.remove('fa-eye');
-                                                                icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
-                                                            } else {
-                                                                input.type = 'password'; // Change the input type back to password
-                                                                icon.classList.remove('fa-eye-slash');
-                                                                icon.classList.add('fa-eye'); // Change the icon back to an eye icon
-                                                            }
-                                                        }
+                                                                    function togglePasswordVisibility(icon) {
+                                                                        const input = icon.previousElementSibling; // Get the input field
+                                                                        if (input.type === 'password') {
+                                                                            input.type = 'text'; // Change the input type to text to show the password
+                                                                            icon.classList.remove('fa-eye');
+                                                                            icon.classList.add('fa-eye-slash'); // Change the icon to a slash icon
+                                                                        } else {
+                                                                            input.type = 'password'; // Change the input type back to password
+                                                                            icon.classList.remove('fa-eye-slash');
+                                                                            icon.classList.add('fa-eye'); // Change the icon back to an eye icon
+                                                                        }
+                                                                    }
 
                                                     </script>
 
