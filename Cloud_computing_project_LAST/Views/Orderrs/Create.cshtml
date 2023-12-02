@@ -30,23 +30,20 @@
         <div class="checkout-area pt-120 pb-120">
             <div class="container">
                 <div class="row">
+                    <div class="col-xl-12 text-center">
+                        <div class="section-heading section-heading__black mb-40">
+                            <span class="sub-title">Order Detials</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xl-12">
                         <div class="cart-wrapper checkout-wrapper" style="background:white">
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="checkout-top">
-                                        <h4 class="title">Payment Mathod</h4>
-                                        <nav>
-                                            <div class="nav" id="shop-filter-tab" role="tablist">
-                                                <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" href="~/Paypel.html" role="tab" aria-controls="pd-1" aria-selected="true">
-                                                    Paypal
-                                                </a>
-
-                                                <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-1" aria-selected="true">
-                                                    Cash on Delivery
-                                                </a>
-                                            </div>
-                                        </nav>
+                                        <h3>The order is expected to arrive in about an hour</h3>
                                         <div class="tab-content" id="pdContent">
                                             <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab">
                                                 <div class="cart-form">
@@ -59,14 +56,14 @@
                                                 <label asp-for="OrderDate" id="currentDateTimeLabel" class="form-control" />
                                                 <span asp-validation-for="OrderDate" class="text-danger"></span>
                                             </div>*@
-                                                                <div class="form-group" style="display: flex; align-items: center;">
+                                                           @*     <div class="form-group" style="display: flex; align-items: center;">
                                                                     <label asp-for="OrderDate" class="control-label" style="margin-right: 10px; border: none !important;">Order Date:</label>
                                                                     <div style="flex: 1;">
                                                                          <label asp-for="OrderDate" id="currentDateTimeLabel" class="form-control" style="border: none"></label>
                                                                     </div>
                                                                     <span asp-validation-for="OrderDate" class="text-danger"></span>
                                                                 </div>
-                                                            </div>
+                                                            
                                                             <script>
                                                                 function updateCurrentDateTime() {
                                                                     var currentDateTime = new Date();
@@ -79,21 +76,34 @@
                                                                 updateCurrentDateTime();
                                                                 // קביעת זמן קבוע לעדכון - כל 1000 מילי-שניות (1 שנייה)
                                                                 setInterval(updateDeliveryDate, 1000);
-                                                            </script>
+                                                            </script>*@
+
+
+                                                                <div class="form-group" style="display: flex; align-items: center;">
+                                                                    <label asp-for="OrderDate" class="control-label" style="margin-right: 10px; border: none !important;">.</label>
+                                                                    <div style="flex: 1;">
+                                                                        <label id="currentDateTimeLabel" class="form-control" style="border: none;">
+                                                                            @ViewData["OrderDate"]
+                                                                        </label>
+                                                                    </div>
+                                                                    <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                                                </div>
+
+                                                            </div>
                                                             <div class="col-xl-6">
                                           @*  <div class="form-group">
                                                                     <label asp-for="DeliveryDate" class="control-label">Delivery Date:</label>
                                                 <label id="deliveryDateLabel" class="form-control" />
                                                 <span asp-validation-for="DeliveryDate" class="text-danger"></span>
                                             </div>*@
-                                                                <div class="form-group" style="display: flex; align-items: center; ;">
+                                                               @* <div class="form-group" style="display: flex; align-items: center; ;">
                                                                     <label asp-for="DeliveryDate" class="control-label" style="margin-right: 10px;">Delivery Date:</label>
                                                                     <div style="flex: 1; ">
                                                                         <label id="deliveryDateLabel" class="form-control" style="border: none"></label>
                                                                     </div>
                                                                     <span asp-validation-for="DeliveryDate" class="text-danger"></span>
                                                                 </div>
-                                                            </div>
+                                                            
                                                             <script>
                                                                 function updateDeliveryDate() {
                                                                     var tomorrow = new Date();
@@ -111,7 +121,20 @@
 
                                                                 // קריאה לפונקציה כעת
                                                                 updateDeliveryDate();
-                                                            </script>
+                                                            </script>*@
+
+
+                                                                    <div class="form-group" style="display: flex; align-items: center;">
+                                                                        <label asp-for="DeliveryDate" class="control-label" style="margin-right: 10px;">.</label>
+                                                                        <div style="flex: 1;">
+                                                                            <label id="deliveryDateLabel" class="form-control" style="border: none;">
+                                                                                @ViewData["DeliveryDate"]
+                                                                            </label>
+                                                                        </div>
+                                                                        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                                                                    </div>
+
+                                                            </div>
                                                             <div class="col-xl-6">
                                             <div class="form-group">
                                                 <label asp-for="Name" class="control-label">First Name*</label>
@@ -169,6 +192,32 @@
                                             <div class="site-btn mt-30">
                                             <input type="submit" value="Create" style="font-size: 16px; color: black; background: none;" @*class="btn btn-primary"*@ />
                                             </div>
+                                                                <h4 class="title">Payment Mathod</h4>
+                                                                <nav>
+                                                                    <div class="nav" id="shop-filter-tab" role="tablist">
+                                                                        <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" role="tab" aria-controls="pd-1" aria-selected="true">
+                                                                            Paypal
+                                                                        </a>
+                                                                        <script src="https://www.paypal.com/sdk/js?client-id=AQ3cycaNrcGUw0JcKGMovAvR81yjV8u9eVIQslKzwrm6944bZqnh6J_oOMje1xMHUSeJJm9Cjss6H5eN&components=buttons"></script>
+                                                                        <div id="paypal-button-container" style="max-width:1000px;"></div>
+                                                                        <script src="https://www.paypal.com/sdk/js?client-id=AQ3cycaNrcGUw0JcKGMovAvR81yjV8u9eVIQslKzwrm6944bZqnh6J_oOMje1xMHUSeJJm9Cjss6H5eN&components=buttons"></script>
+                                                                        <div id="paypal-button-container" style="max-width:1000px;"></div>
+                                                                        <script>
+                                                                            paypal.Buttons({
+                                                                                style: {
+                                                                                    disableMaxWidth: true
+                                                                                },
+                                                                                onClick: function () {
+                                                                                    // Add your custom logic or action here
+                                                                                    //  alert('PayPal button clicked!');
+                                                                                }
+                                                                            }).render('#paypal-button-container');
+                                                                        </script>
+                                                                        <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" href="#pd-1" role="tab" aria-controls="pd-1" aria-selected="true">
+                                                                            Cash on Delivery
+                                                                        </a>
+                                                                    </div>
+                                                                </nav>
                                             </div>
                                                         <div class="form-group">
                                                             <label asp-for="TotalPrice" class="control-label"></label>

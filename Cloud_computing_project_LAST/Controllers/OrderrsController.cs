@@ -63,12 +63,24 @@ namespace Cloud_computing_project_LAST.Controllers
         {
             if (ModelState.IsValid)
             {
+                orderr.OrderDate = DateTime.Now;
+                orderr.DeliveryDate = GetNextHourFromCurrentTime();
                 _context.Add(orderr);
                 await _context.SaveChangesAsync();
                 await SendOrderConfirmationEmail(orderr);
+                ViewData["OrderDate"] = orderr.OrderDate;
+                ViewData["DeliveryDate"] = orderr.DeliveryDate;
                 return RedirectToAction(nameof(Index));
             }
             return View(orderr);
+        }
+        private DateTime GetNextHourFromCurrentTime()
+        {
+            var currentDateTime = DateTime.Now;
+            var nextHourDateTime = currentDateTime.AddHours(1);
+            nextHourDateTime = new DateTime(nextHourDateTime.Year, nextHourDateTime.Month, 
+                nextHourDateTime.Day,nextHourDateTime.Hour, 0, 0);
+            return nextHourDateTime;
         }
 
         // GET: Orderrs/Edit/5
