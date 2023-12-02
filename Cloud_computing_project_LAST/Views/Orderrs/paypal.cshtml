@@ -1,0 +1,21 @@
+﻿@model Cloud_computing_project_LAST.Models.Orderr
+
+@{
+    ViewData["Title"] = "paypal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+< class="no-js" lang="zxx">
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AQ3cycaNrcGUw0JcKGMovAvR81yjV8u9eVIQslKzwrm6944bZqnh6J_oOMje1xMHUSeJJm9Cjss6H5eN&components=buttons"></script>
+    <div id="paypal-button-container" style="max-width:1000px;"></div>
+
+    <script>
+        paypal.Buttons({
+            style: {
+                disableMaxWidth: true
+            },
+        }).render('#paypal-button-container');</script>
+
+</>
+</div>

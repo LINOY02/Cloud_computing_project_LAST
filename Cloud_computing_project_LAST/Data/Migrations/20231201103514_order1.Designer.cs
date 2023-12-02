@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cloud_computing_project_LAST.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231031173220_order")]
-    partial class order
+    [Migration("20231201103514_order1")]
+    partial class order1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,7 +112,35 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.ToTable("CartItem");
                 });
 
-            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Order", b =>
+            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menu");
+                });
+
+            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Orderr", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +186,7 @@ namespace Cloud_computing_project_LAST.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orderr");
                 });
 
             modelBuilder.Entity("Cloud_computing_project_LAST.Models.Product", b =>

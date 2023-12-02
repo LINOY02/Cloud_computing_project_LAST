@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Cloud_computing_project_LAST.Controllers;
 using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -208,6 +209,17 @@ namespace Cloud_computing_project_LAST.Areas.Identity.Pages.Account
                             await _userManager.AddToRoleAsync(user, "Customer");
 
                         AddUserInfo();
+                        var cart = new Cart
+                        {
+                            userId = Input.Email,
+                            Quantity = 0,
+                            TotalPrice = 0,
+                            CartItem = new List<CartItem>()
+                        };
+
+                        // Pass the cart to the Create method of the CartsController
+                        _context.Cart.Add(cart);
+                        _context.SaveChanges();
 
                         _logger.LogInformation("User created a new account with password.");
 

@@ -79,7 +79,8 @@
                                             </div>
                                             <div class="pp__content pp__content--2 mt-25">
                                                 <h4 class="pp__title pp__title--2">
-                                                    <a href="ProductDetails.cshtml" style="color:white">@product.Name</a>
+                                                    <a href="#" class="product-link" data-product-id="@product.Id" style="color:white">@product.Name</a>
+
                                                 </h4>
                                                 <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
                                                     <h6 class="label" style="color:white">Price - </h6>
@@ -146,6 +147,20 @@
                         </div>
                     </div>
                 </div>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('.product-link').on('click', function (e) {
+                            e.preventDefault(); // Prevent the default link behavior
+
+                            var productId = $(this).data('product-id');
+
+                            // Redirect to the ProductDetails action with the product ID as a parameter
+                            window.location.href = '/Products/ProductDetails/' + productId;
+                        });
+                    });
+                </script>
+
                 <div class="col-xl-4 col-lg-4">
                     <div class="blog__sidebar blog__sidebar--shop mt-none-30">
                         <div class="widget mt-30" style="background-color:black">

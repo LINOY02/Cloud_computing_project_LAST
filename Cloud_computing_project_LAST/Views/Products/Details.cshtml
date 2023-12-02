@@ -65,42 +65,45 @@
 </section>
 <!-- breadcrumb area end -->
 <div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InStock)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InStock)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="reservation__wrapper reservation__wrapper--2">
+                    <div class="section-heading section-heading__black text-center mb-35">
+                        <h6 class="title">@Html.DisplayFor(model => model.Name)</h6>
+                    </div>
+                    <div class="reservation__form reservation__form--2 mt-none-30 text-center">
+                        <div class="cart-form">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="@Model.ImageUrl" alt="Product Image" class="img-fluid" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <dl class="row">
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Name)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Description)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.InStock)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.InStock)</dd>
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Price)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Price)</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 offset-xl-9 text-right">
+                                  <a asp-action="Edit" asp-route-id="@Model?.Id" class="custom-link">Edit</a> |
+                                <a asp-action="Index" class="custom-link">Back to List</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
