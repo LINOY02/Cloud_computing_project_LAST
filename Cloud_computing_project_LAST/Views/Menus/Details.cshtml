@@ -5,39 +5,104 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<head>
+    <style>
+        body {
+            background-color: black
+        }
 
+        .custom-link {
+            color: black; /* Set the text color to white */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+
+        .btn.btn-primary {
+            /* Your primary button styles */
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: #C7A17A;
+            padding: 9.5px 34px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            border: 1px solid #C7A17A;
+            font-weight: 500;
+        }
+
+            /* Hover effect for the primary button */
+            .btn.btn-primary:hover {
+                background: black;
+                border-color: black;
+                color: white;
+            }
+    </style>
+
+</head>
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+    <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+    <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">PRODUCTS</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span>delete product</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<hr/>
 <div>
-    <h4>Menu</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="reservation__wrapper reservation__wrapper--2">
+                    <div class="section-heading section-heading__black text-center mb-35">
+                        <h6 class="title">@Html.DisplayFor(model => model.Name)</h6>
+                    </div>
+                    <div class="reservation__form reservation__form--2 mt-none-30 text-center">
+                        <div class="cart-form">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="@Model.ImageUrl" alt="Product Image" class="img-fluid" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <dl class="row">
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Name)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Description)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
+
+                                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Price)</dt>
+                                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Price)</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 offset-xl-9 text-right">
+                                <a asp-action="Edit" asp-route-id="@Model?.Id" class="custom-link">Edit</a> |
+                                <a asp-action="Index" class="custom-link">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

@@ -42,12 +42,12 @@
                     <div class="popular-menu__wrapper m-auto d-inline-block">
                         <div class="popular-menu__filter d-flex justify-content-center align-items-center mb-45">
                             <button class="active" data-filter="*">All</button>
-                            <button data-filter=".cat1">chocolate</button>
-                            <button data-filter=".cat2">coffee</button>
-                            <button data-filter=".cat3">sandwiches</button>
-                            <button data-filter=".cat4">croissant</button>
-                            <button data-filter=".cat5">Black tea</button>
-                            <button data-filter=".cat6">Grean Tea</button>
+                            <button data-filter=".chocolate">Chocolate</button>
+                            <button data-filter=".coffee">Coffee</button>
+                            <button data-filter=".sandwiches">Sandwiches</button>
+                            <button data-filter=".croissant">Croissant</button>
+                            <button data-filter=".black-tea">Black Tea</button>
+                            <button data-filter=".green-tea">Green Tea</button>
                         </div>
                     </div>
                 </div>
@@ -56,13 +56,10 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 l-item grid-sizer"></div>
              
 
-                @{
-                    var categories = new Dictionary<string, string> { { "CAT1", "cat1" }, { "CAT2", "cat2" } };
-                }
 
                 @foreach (var item in Model)
                 {
-                    <div class="col-xl-6 col-lg-6 col-md-6 l-item grid-item @(categories.ContainsKey(item.Description) ? categories[item.Description] : "") mt-35">
+                    <div class="col-xl-6 col-lg-6 col-md-6 l-item grid-item mt-35 @item.Description.ToLower().Replace(" ", "-")">
                         <div class="popular-menu__list">
                             <div class="thumb">
                                 <img src="@item.ImageUrl" alt="">
@@ -110,21 +107,7 @@
                     });
 
                 </script>
-                @section Scripts {
-                    <script>
-                        function GetCategoryClass(description) {
-                            switch (description) {
-                                case 'CAT1':
-                                    return 'cat1';
-                                case 'CAT2':
-                                    return 'cat2';
-                                // הוסף קוד לכל קטגוריה נוספת כאן
-                                default:
-                                    return '';
-                            }
-                        }
-                    </script>
-                }
+               
             </div>
            @* @foreach (var item in Model)
             {

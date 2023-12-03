@@ -41,6 +41,16 @@
                 border-color: black;
                 color: white;
             }
+
+        .cart-form select {
+            width: 100%;
+            border: none;
+            background-color: #FBFAF7;
+            padding: 10px 15px;
+            color: #848177;
+            /* Additional styles if needed */
+            /* Add more styles to match your design */
+        }
     </style>
 
 </head>
@@ -76,27 +86,37 @@
                         <form asp-action="Create">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group mt-30">
                                         <input asp-for="Name" class="form-control" placeholder="Name" />
                                         <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mt-30">
-                                        <input asp-for="Description" class="form-control" placeholder="Description" />
-                                        <span asp-validation-for="Description" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group mt-30">
                                         <input asp-for="Price" class="form-control" placeholder="Price" />
                                         <span asp-validation-for="Price" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <select asp-for="Description" class="sub-menu">
+                                            <option value="">Select Category</option>
+                                            <option value="Chocolate">Chocolate</option>
+                                            <option value="Coffee">Coffee</option>
+                                            <option value="Sandwiches">Sandwiches</option>
+                                            <option value="Croissant">Croissant</option>
+                                            <option value="Black Tea">Black Tea</option>
+                                            <option value="Green Tea">Green Tea</option>
+                                        </select>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-md-8">
                                     <div class="form-group mt-30">
                                         <input asp-for="ImageUrl" class="form-control" placeholder="Image Url" />
                                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
@@ -108,7 +128,7 @@
                                         @ViewBag.ImageCheckError
                                     </div>
                                 }
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="form-group mt-30">
                                         <input class="form-control" placeholder="Label" />
                                     </div>
