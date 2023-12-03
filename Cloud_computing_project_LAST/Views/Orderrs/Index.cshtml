@@ -10,6 +10,15 @@
         body {
             background-color: black
         }
+
+        .custom-link {
+            color: white; /* Set the text color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
     </style>
 </head>
 
@@ -99,9 +108,9 @@
                     @Html.DisplayFor(modelItem => item.Info)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="custom-link" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="custom-link" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="custom-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

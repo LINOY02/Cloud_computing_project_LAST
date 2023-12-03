@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace Cloud_computing_project_LAST.Models
 {
@@ -19,7 +20,7 @@ namespace Cloud_computing_project_LAST.Models
 
         public async Task<string> HebcalRoot()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"api/Habcal");
+            HttpResponseMessage response = await _httpClient.GetAsync($"api/Hebcal");
 
             if (response.IsSuccessStatusCode)
             {
@@ -29,8 +30,6 @@ namespace Cloud_computing_project_LAST.Models
             {
                 return $"Error: {response.StatusCode}";
             }
-
         }
-
     }
 }

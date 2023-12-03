@@ -11,15 +11,28 @@ using System.Net.Mail;
 using System.Net;
 using Cloud_computing_project_LAST.Data.Migrations;
 
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis;
+using System.Data.Entity;
+
 namespace Cloud_computing_project_LAST.Controllers
 {
     public class OrderrsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly HebcalService _hebcalService = new HebcalService();
+        private readonly WeatherService _weatherService = new WeatherService();
 
-        public OrderrsController(ApplicationDbContext context)
+
+        public OrderrsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+           
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
+            
+
         }
 
         // GET: Orderrs
@@ -49,9 +62,34 @@ namespace Cloud_computing_project_LAST.Controllers
         }
 
         // GET: Orderrs/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            Orderr orderr = null;
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    var user = await _context.UsersInfo.FindAsync(User.Identity.Name);
+                    var carts = _context.Cart.ToList();
+                    var cart = carts.Find(e => e.userId == User.Identity.Name);
+                    orderr = CreateOrderFromUser(user);
+                }
+                if (User.Identity.IsAuthenticated)
+                {
+                    var carts = _context.Cart.ToList();
+                    var cart = carts.Find(e => e.userId == User.Identity.Name);
+                    orderr.TotalPrice = cart.TotalPrice;
+
+                }
+                else
+                {
+                    var httpContext = _httpContextAccessor.HttpContext;
+                    var guestCart = httpContext.Session.GetString("GuestCart");
+                    var cart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
+                    orderr.TotalPrice = cart.TotalPrice;
+                }
+            }
+            return View(orderr);
         }
 
         // POST: Orderrs/Create
@@ -65,15 +103,75 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 orderr.OrderDate = DateTime.Now;
                 orderr.DeliveryDate = GetNextHourFromCurrentTime();
+               
                 _context.Add(orderr);
                 await _context.SaveChangesAsync();
                 await SendOrderConfirmationEmail(orderr);
                 ViewData["OrderDate"] = orderr.OrderDate;
                 ViewData["DeliveryDate"] = orderr.DeliveryDate;
+
+                var orders = _context.Orderr.ToList();
+                orderr = orders.Find(e => e.Email == User.Identity.Name);
+                var hebcal = await _hebcalService.HebcalRoot();
+                var hebdate = JsonConvert.DeserializeObject<Hebcal>(hebcal);
+                hebdate.orderId = orderr.Id;
+                _context.Hebcal.Add(hebdate);
+                await _context.SaveChangesAsync();
+
+                var weather = await _weatherService.GetWeatherForCity(orderr.City);
+                var weatherCity = JsonConvert.DeserializeObject<Weather>(weather);
+                weatherCity.orderId = orderr.Id;
+                _context.Weather.Add(weatherCity);
+                await _context.SaveChangesAsync();
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var carts = _context.Cart.ToList();
+                    var cart = carts.Find(e => e.userId == User.Identity.Name);
+                    foreach (CartItem cartItem in cart.CartItem)
+                    {
+                        var orderItem = new OrderItem
+                        { 
+                            orderId = orderr.Id,    
+                            Name = cartItem.Name,
+                            Description = cartItem.Description,
+                            ImageUrl = cartItem.ImageUrl,
+                            Price = cartItem.Price,
+                            Amount = cartItem.Amount,
+                        };
+                        _context.OrderItem.Add(orderItem);
+                        await _context.SaveChangesAsync();
+                        _context.CartItem.Remove(cartItem);
+                        await _context.SaveChangesAsync();
+                    }
+                    cart.Quantity = 0;
+                    cart.TotalPrice = 0;
+                    _context.Cart.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(orderr);
         }
+
+        private Orderr CreateOrderFromUser(UserInfo user)
+        {
+            return new Orderr
+            {
+                Name = user.FirstName,
+                LastName = user.LastName,
+                City = user.City,
+                Address = user.Street,
+                streetNum = int.Parse(user.StreetNum),
+                ZIPCode = user.ZIPCode,
+                PhoneNumber = user.PhoneNumber,
+                Email = User.Identity.Name,
+                //TotalPrice = price
+            };
+        }
+
         private DateTime GetNextHourFromCurrentTime()
         {
             var currentDateTime = DateTime.Now;
