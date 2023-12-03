@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Cloud_computing_project_LAST.Models.Weather>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeelsLike)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pressure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Main)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeelsLike)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pressure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Main)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

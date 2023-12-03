@@ -1,29 +1,59 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
 
-<ul class="navbar-nav">
+    <style>
+    .custom-link {
+        color: black; /* Set the text color to white */
+    }
+
+        .custom-link:hover {
+            color: #C7A17A; /* Change the text color to blue on hover */
+        }
+    </style>
+@{
+    var userInfo = DbContext.UsersInfo.ToList().Find(e => e.Id == User.Identity.Name );
+}
+
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+    <div class="row">
+        <div class="col-sm-8 d-flex align-items-center">
+            <div class="mt-10">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    Hello @userInfo.FirstName @userInfo.LastName
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="mt-10">
+                <div class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="custom-link" style="background-color:white">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-     <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot your password?</a>
-    </li>
+    <div class="text-center">
+        <div class="mt-10 ">
+        <h3>Dont have an accoun yet?</h3>
+      <div class="mt-8 "> 
+            <a class="custom-link" asp-area="Identity" asp-page="/Account/Register">Sign Up Now</a>
+      </div>
+        </div>
+        <div class="mt-10 ">
+        <h3>Already have an account?</h3>
+            <div class="mt-8 ">
+                <a class="custom-link" asp-area="Identity" asp-page="/Account/Login">Log in Now</a>
+                </div>
+        </div>
+    </div>
+   
 }
-</ul>
+
