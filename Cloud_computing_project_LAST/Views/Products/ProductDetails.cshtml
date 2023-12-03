@@ -166,7 +166,7 @@
                             <h3 class="price" style="color:white">@Html.DisplayFor(model => model.Price)&#8378;</h3>
                             <<div class="product-quantity d-flex align-items-center">
                                 <span>Quantity</span>
-                                <input type="number" id="quantityInput" placeholder="0">
+                                <input type="number" id="quantityInput" placeholder="0" min="0">
                                 @if (Model.InStock > 0)
                                 {
                                     <button class="site-btn" id="addToCartBtn">Add to Cart</button>
@@ -223,7 +223,7 @@
 
                     // Send an AJAX request to your controller
                     $.ajax({
-                        url: '/Carts/AddToCart', // Replace with your actual controller action route
+                        url: '/Carts/AddToCartShop', // Replace with your actual controller action route
                         type: 'POST',
                         data: data,
                         success: function (response) {

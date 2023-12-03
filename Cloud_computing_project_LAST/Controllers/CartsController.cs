@@ -166,7 +166,7 @@ namespace Cloud_computing_project_LAST.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddToCart(int productId, int quantity)
+        public async Task<ActionResult> AddToCartShop(int productId, int quantity)
         {
             
                 if (quantity == 0)
@@ -252,6 +252,103 @@ namespace Cloud_computing_project_LAST.Controllers
                         tempCart.CartItem.Remove(oldItem);
                         tempCart.CartItem.Add(item);
                         tempCart.TotalPrice = tempCart.TotalPrice - oldItem.Price + item.Price;
+                    }
+
+                    httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(tempCart));
+                }
+
+            }
+            return Json(new { success = true, message = "Item added to cart successfully." });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddToCartMenu(int productId)
+        {
+
+           var product = await _context.Menu.FindAsync(productId);
+            
+            if (_context.Cart == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+            }
+            var item = new CartItem
+            {
+                Name = product.Name,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                Amount = 1,
+                Price = product.Price,
+                InStock = 0,
+            };
+            if (User.Identity.IsAuthenticated)
+            {
+                var carts = await _context.Cart.ToListAsync();
+
+                var cart = carts.Find(e => e.userId == User.Identity.Name);
+
+
+                var cartItems = await _context.CartItem.ToListAsync();
+
+                var oldItem = cartItems.Find(e => e.Name == product.Name);
+
+                if (oldItem == null)
+                {
+                    cart.CartItem.Add(item);
+                    _context.SaveChanges();
+                    cart.TotalPrice += item.Price;
+                    cart.Quantity += 1;
+                    _context.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    _context.CartItem.Remove(oldItem);
+                    _context.SaveChanges();
+                    item.Amount += oldItem.Amount;
+                    item.Price += oldItem.Price;
+                    cart.CartItem.Add(item);
+                    _context.SaveChanges();
+                    cart.TotalPrice += product.Price;
+                    _context.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            else
+            {
+                var httpContext = _httpContextAccessor.HttpContext;
+
+                var guestCart = httpContext.Session.GetString("GuestCart");
+
+                if (string.IsNullOrEmpty(guestCart))
+                {
+                    // Create a new temporary cart for guest users
+                    var cart = new Cart(); // Assuming Cart is your cart model
+                    cart.userId = Guid.NewGuid().ToString(); // Temporary identifier for guest users
+                    cart.CartItem = new List<CartItem>(); // Initialize cart items list
+                    cart.CartItem.Add(item);
+                    cart.Quantity = 1;
+                    cart.TotalPrice = item.Price;
+                    httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(cart)); // Store the cart in session for guest users
+                }
+                else
+                {
+                    // Retrieve existing cart from session and deserialize it
+                    var tempCart = JsonConvert.DeserializeObject<Cart>(guestCart);
+                    var oldItem = tempCart.CartItem.Find(e => e.Name == product.Name);
+
+                    if (oldItem == null)
+                    {
+                        tempCart.CartItem.Add(item);
+                        tempCart.Quantity += 1;
+                        tempCart.TotalPrice += item.Price;
+                    }
+                    else
+                    {
+                        tempCart.CartItem.Remove(oldItem);
+                        item.Amount += oldItem.Amount;
+                        item.Price += oldItem.Price;
+                        tempCart.CartItem.Add(item);
+                        tempCart.TotalPrice += product.Price;
                     }
 
                     httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(tempCart));
