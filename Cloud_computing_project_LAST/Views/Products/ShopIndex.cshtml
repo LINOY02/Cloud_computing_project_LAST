@@ -208,47 +208,49 @@
                                 <button class="site-btn" id="filterButton" for="amount">Filter</button>
                             </p>
                         </div>
-                        @* <div id="productList">
-                            @foreach (var product in Model)
-                            {
-                                <div class="product-card">
-                                    <p>@product.Name - $@product.Price</p>
-                                </div>
-                            }
-                        </div> *@
-                        <!-- Add this script tag to your HTML to include jQuery -->
-                       @*  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+                        <!-- Include jQuery -->
+                        @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                        <!-- Include jQuery UI -->
+                        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                         <script>
                             $(document).ready(function () {
-                                // Initialize the price range slider
+                                var userInputValue = document.getElementById("amount").value;
+
+                                // Initialize the slider
                                 $("#slider-range").slider({
                                     range: true,
-                                    min: 0, // Set the minimum price
-                                    max: 100, // Set the maximum price
-                                    values: [0, 100], // Set the initial values
+                                    min: userInputValue.val,
+                                    max: /* your max price */,
+                                    values: [0, 100],
                                     slide: function (event, ui) {
                                         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                                     }
                                 });
 
-                                // Handle the filter button click event
-                                $("#filter-button").click(function () {
+                                // Set initial values for the amount input
+                                $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                                    " - $" + $("#slider-range").slider("values", 1));
+
+                                // Handle filter button click
+                                $("#filterButton").on("click", function () {
                                     // Get the selected price range
                                     var minPrice = $("#slider-range").slider("values", 0);
                                     var maxPrice = $("#slider-range").slider("values", 1);
 
-                                    // Send an AJAX request to your controller to fetch filtered products
-                                    $.ajax({
-                                        url: "/filter-products", // Update with the actual URL of your controller
-                                        type: "GET",
-                                        data: { minPrice: minPrice, maxPrice: maxPrice },
-                                        success: function (data) {
-                                            // Display the filtered products on your website
-                                            $("#filtered-products").html(data);
-                                        }
-                                    });
+                                    // Call a function to filter products based on the selected price range
+                                    filterProducts(minPrice, maxPrice);
                                 });
+
+                                // Add your function to filter products based on price range
+                                function filterProducts(minPrice, maxPrice) {
+                                    // Make an AJAX request or perform any action to filter products on the server
+                                    // Update the product list on the page accordingly
+                                    console.log("Filtering products between $" + minPrice + " and $" + maxPrice);
+                                    // Add your logic here to update the product list
+                                }
                             });
                         </script> *@
                     </div>

@@ -4,9 +4,23 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<head>
+<head>
     <link href="~/assets/css/stylecafe.css" rel="stylesheet" />
-</head>*@
+    <style>
+        body {
+            background-color: black
+        }
+
+        .custom-link {
+            color: white; /* Set the text color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+    </style>
+</head>
 <body class="dark-bg">
 <!-- breadcrumb area start -->
     <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
@@ -28,7 +42,11 @@
     </div>
 </section>
 <!-- breadcrumb area end -->
-
+    <div class="from-group mt-15">
+        <p>
+            <a asp-action="Create" class="site-btn">Create New</a>
+        </p>
+    </div>
 <table class="table">
     <thead>
         <tr>
@@ -57,26 +75,26 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <img src ="@Html.DisplayFor(modelItem => item.ImageUrl)"/>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="custom-link">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="custom-link">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="custom-link">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-  @*  <p>
+    @*<p>
         <a asp-action="Create">Create New</a>
-    </p>*@
+    </p>
     <div class="col-xl-12 text-center" style="margin-bottom:1px">
         <a asp-action="Create" type="submit" class="site-btn mt-30" style="padding-top:10px">CREATE NEW</a>
-    </div>
+    </div>*@
 
     <!-- populer menu area end -->
 </body>

@@ -5,43 +5,167 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<head>
+    <style>
+        body {
+            background-color: black
+        }
 
-<h4>Menu</h4>
+        .custom-link {
+            color: black; /* Set the text color to white */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+
+        .btn.btn-primary {
+            /* Your primary button styles */
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: #C7A17A;
+            padding: 9.5px 34px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            border: 1px solid #C7A17A;
+            font-weight: 500;
+        }
+
+            /* Hover effect for the primary button */
+            .btn.btn-primary:hover {
+                background: black;
+                border-color: black;
+                color: white;
+            }
+
+        .cart-form select {
+            width: 100%;
+            border: none;
+            background-color: #FBFAF7;
+            padding: 10px 15px;
+            color: #848177;
+            /* Additional styles if needed */
+            /* Add more styles to match your design */
+        }
+    </style>
+
+</head>
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+    <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+    <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">MENU</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span>edit product</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="reservation__wrapper reservation__wrapper--2">
+                <div class="section-heading section-heading__black text-center mb-35">
+                    <h3 class="title">Create Product</h3>
+                </div>
+                <div class="reservation__form reservation__form--2 mt-none-30 text-center">
+                    <div class="cart-form">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Name" class="form-control" placeholder="Name" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Price" class="form-control" placeholder="Price" />
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mt-30">
+                                        <select asp-for="Description" class="sub-menu">
+                                            <option value="">Select Category</option>
+                                            <option value="Chocolate">Chocolate</option>
+                                            <option value="Coffee">Coffee</option>
+                                            <option value="Sandwiches">Sandwiches</option>
+                                            <option value="Croissant">Croissant</option>
+                                            <option value="Black Tea">Black Tea</option>
+                                            <option value="Green Tea">Green Tea</option>
+                                        </select>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-8">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="ImageUrl" class="form-control" placeholder="Image Url" />
+                                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mt-30">
+                                        <input type="hidden" name="Lable" id="Lable" />
+                                        <input class="form-control" placeholder="Lable" oninput="updateHiddenField(this)" />
+                                    </div>
+                                </div>
+                                @if (ViewBag.ImageCheckError != null)
+                                {
+                                    <div class="alert alert-danger mt-3">
+                                        @ViewBag.ImageCheckError
+                                    </div>
+                                }
+                                <script>
+                                    function updateHiddenField(input) {
+                                        document.getElementById('Lable').value = input.value;
+                                    }
+                                </script>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mt-30">
+                                    <div class="col-xl-2 offset-xl-5 text-center">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3 offset-xl-9 text-right">
+                                    <div>
+                                        <a asp-action="Index" class="custom-link">Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+
 

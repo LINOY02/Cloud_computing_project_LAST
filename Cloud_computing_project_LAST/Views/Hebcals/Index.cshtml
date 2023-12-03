@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Cloud_computing_project_LAST.Models.Hebcal>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hebrew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.events)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hebrew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.events)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,71 @@
+﻿@model Cloud_computing_project_LAST.Models.Weather
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Weather</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="orderId" class="control-label"></label>
+                <input asp-for="orderId" class="form-control" />
+                <span asp-validation-for="orderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Temp" class="control-label"></label>
+                <input asp-for="Temp" class="form-control" />
+                <span asp-validation-for="Temp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeelsLike" class="control-label"></label>
+                <input asp-for="FeelsLike" class="form-control" />
+                <span asp-validation-for="FeelsLike" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempMin" class="control-label"></label>
+                <input asp-for="TempMin" class="form-control" />
+                <span asp-validation-for="TempMin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempMax" class="control-label"></label>
+                <input asp-for="TempMax" class="form-control" />
+                <span asp-validation-for="TempMax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pressure" class="control-label"></label>
+                <input asp-for="Pressure" class="form-control" />
+                <span asp-validation-for="Pressure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Humidity" class="control-label"></label>
+                <input asp-for="Humidity" class="form-control" />
+                <span asp-validation-for="Humidity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Main" class="control-label"></label>
+                <input asp-for="Main" class="form-control" />
+                <span asp-validation-for="Main" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
