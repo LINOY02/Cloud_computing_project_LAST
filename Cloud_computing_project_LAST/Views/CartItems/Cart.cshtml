@@ -34,41 +34,49 @@
         </section>
         <!-- breadcrumb area end -->
         <!-- cart area start -->
-        <div class="cart-area pt-120 pb-120">
+        <div class="cart-area pt-120 pb-120" >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="cart-wrapper">
-                            <div class="table-content table-responsive">
+                        <div class="cart-wrapper" style="background-color:white">
+                            <div class="table-content table-responsive" >
 
-                                <table class="table">
+                                <table class="table" >
                                     <thead>
                                         <tr>
-                                            <th class="product-thumbnail"> Product Image</th>
+                                            
+
+                                            <th class="product-thumbnail">Product Image</th>
                                             <th class="cart-product-name">Product Name</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Subtotal</th>
-                                            <th class="product-remove" style="color: red;">X</th>
+                                            <th class="product-subtotal">subTotal</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var cartItem in Model)
                                         {
-                                            <tr>
-                                                <td>@cartItem.ImageUrl</td> <!-- Replace with the actual property for image URL -->
-                                                <td>@cartItem.Name</td>
-                                                <td>@cartItem.Price</td>
-                                                <td>@cartItem.Amount</td>
-                                                <td>@(cartItem.Price * cartItem.Amount)</td>
-                                              <td><button class="remove-item" data-product-id="@cartItem.Id" style="color: red;">X</button></td>
+                                        
 
+                                            <tr>
+                                                <td class="product-thumbnail">
+                                                    <a href="#" class="img">
+                                                        <img src="@cartItem.ImageUrl" alt="">
+                                                    </a>
+                                                    <a href="#" class="product-remove"><i class="fal fa-times"></i></a>
+                                                </td>
+                                                <td class="product-name"><a href="#">@cartItem.Name</a></td>
+                                                <td class="product-price"><span class="amount">@cartItem.Price</span></td>
+                                                <td class="product-quantity">
+                                                    <input type="number" placeholder=@cartItem.Amount min="1">
+                                                </td>
+                                                <td class="product-subtotal"><span class="amount">@(cartItem.Price * cartItem.Amount)</span></td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
-
+                            
 
                             </div>
                         </div>
@@ -88,7 +96,7 @@
                             </div>
 
 
-                            <a asp-controller="Home" asp-action="Checkout" class="site-btn">Procced to checkout</a>
+                            <a asp-controller="Orderrs" asp-action="Create" class="site-btn">Procced to checkout</a>
                         </div>
                     </div>
                 </div>
