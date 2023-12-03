@@ -27,19 +27,16 @@ namespace Cloud_computing_project_LAST.Controllers
 
 
         public OrderrsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
-           
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
-            
-
         }
 
         // GET: Orderrs
         public async Task<IActionResult> Index()
         {
               return _context.Orderr != null ? 
-                          View(await _context.Orderr.ToListAsync()) :
+                          View( _context.Orderr.ToList()) :
                           Problem("Entity set 'ApplicationDbContext.Orderr'  is null.");
         }
 
@@ -128,7 +125,9 @@ namespace Cloud_computing_project_LAST.Controllers
                 {
                     var carts = _context.Cart.ToList();
                     var cart = carts.Find(e => e.userId == User.Identity.Name);
-                    foreach (CartItem cartItem in cart.CartItem)
+                    var items = _context.CartItem.ToList();
+                    var cartItems = items.FindAll(e => e.cartId == cart.Id);
+                    foreach (CartItem cartItem in cartItems)
                     {
                         var orderItem = new OrderItem
                         { 
@@ -148,6 +147,12 @@ namespace Cloud_computing_project_LAST.Controllers
                     cart.TotalPrice = 0;
                     _context.Cart.Update(cart);
                     await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    var httpContext = _httpContextAccessor.HttpContext;
+                    var guestCart = httpContext.Session.GetString("GuestCart");
+                    httpContext.Session.SetString("GuestCart", null);
                 }
 
                 return RedirectToAction(nameof(Index));
