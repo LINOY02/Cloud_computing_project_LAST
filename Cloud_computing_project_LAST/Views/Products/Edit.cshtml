@@ -80,63 +80,78 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group mt-30">
-                                <input asp-for="Name" class="form-control" placeholder="Name"/>
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            </div>
+                                        <input asp-for="Name" class="form-control" placeholder="Name" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
-                                        <div class="form-group mt-30">
+                                    <div class="form-group mt-30">
                                         <input asp-for="Price" class="form-control" />
                                         <span asp-validation-for="Price" class="text-danger"></span>
-                               </div>
-                            </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group mt-30">
-                                <input asp-for="InStock" class="form-control" placeholder="In Stock"/>
-                                <span asp-validation-for="InStock" class="text-danger"></span>
-                            </div>
-                            </div>
-                            </div>
-                          <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group mt-30">
-                                        <input asp-for="Description" class="form-control" placeholder="Description" />
-                                        <span asp-validation-for="Description" class="text-danger"></span>
-                                        </div>
-                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group mt-30">
-                                    <input asp-for="ImageUrl" class="form-control" placeholder="Image Url"/>
-                                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                            </div>
-                            </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mt-30">
-                                        <input class="form-control" placeholder="Lable" />
+                                        <input asp-for="InStock" class="form-control" placeholder="In Stock" />
+                                        <span asp-validation-for="InStock" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group mt-30">
+                                        <input asp-for="Description" class="form-control" placeholder="Description" />
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group mt-30">
+                                        F
+                                        <input asp-for="ImageUrl" class="form-control" placeholder="Image Url" />
+                                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mt-30">
+                                        <input type="hidden" name="Lable" id="Lable" />
+                                        <input class="form-control" placeholder="Lable" oninput="updateHiddenField(this)" />
+                                    </div>
+                                </div>
+                            </div>
+                            @if (ViewBag.ImageCheckError != null)
+                            {
+                                <div class="alert alert-danger mt-3">
+                                    @ViewBag.ImageCheckError
+                                </div>
+                            }
+                            <script>
+                                function updateHiddenField(input) {
+                                    document.getElementById('Lable').value = input.value;
+                                }
+                            </script>
+                            <div class="row">
                                 <div class="form-group mt-30">
                                     <div class="col-xl-2 offset-xl-5 text-center">
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                            </div>
-                            </div>
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-3 offset-xl-9 text-right">
                                     <div>
                                         <a asp-action="Index" class="custom-link">Back to List</a>
                                     </div>
-                                    </div>
-                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
 
-      
 
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+                @section Scripts {
+                    @{
+                        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                    }
+                }

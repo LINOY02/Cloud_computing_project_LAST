@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
+using Cloud_computing_project_LAST.Data.Migrations;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
@@ -64,10 +65,19 @@ namespace Cloud_computing_project_LAST.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageUrl,Price")] Menu menu)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageUrl,Price")] Menu menu, string Lable)
         {
             if (ModelState.IsValid)
             {
+                ImaggaService imaggaService = new ImaggaService();
+                string imaggaResponse = await imaggaService.CheckImage(menu.ImageUrl!, Lable);
+
+                if (imaggaResponse.Contains("Error"))
+                {
+                    ViewBag.ImageCheckError = "Image check failed. Please provide a valid image.";
+                    return View(menu);
+                }
+
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -96,7 +106,7 @@ namespace Cloud_computing_project_LAST.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageUrl,Price")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageUrl,Price")] Menu menu , string Lable)
         {
             if (id != menu.Id)
             {
@@ -107,6 +117,15 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 try
                 {
+                    ImaggaService imaggaService = new ImaggaService();
+                    string imaggaResponse = await imaggaService.CheckImage(menu.ImageUrl!, Lable);
+
+                    if (imaggaResponse.Contains("Error"))
+                    {
+                        ViewBag.ImageCheckError = "Image check failed. Please provide a valid image.";
+                        return View(menu);
+                    }
+
                     _context.Update(menu);
                     await _context.SaveChangesAsync();
                 }

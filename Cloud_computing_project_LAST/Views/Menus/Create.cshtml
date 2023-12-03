@@ -122,17 +122,23 @@
                                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mt-30">
+                                        <input type="hidden" name="Lable" id="Lable" />
+                                        <input class="form-control" placeholder="Lable" oninput="updateHiddenField(this)" />
+                                    </div>
+                                </div>
                                 @if (ViewBag.ImageCheckError != null)
                                 {
                                     <div class="alert alert-danger mt-3">
                                         @ViewBag.ImageCheckError
                                     </div>
                                 }
-                                <div class="col-md-4">
-                                    <div class="form-group mt-30">
-                                        <input class="form-control" placeholder="Label" />
-                                    </div>
-                                </div>
+                                <script>
+                                    function updateHiddenField(input) {
+                                        document.getElementById('Lable').value = input.value;
+                                    }
+                                </script>
                             </div>
                             <div class="row">
                                 <div class="form-group mt-30">

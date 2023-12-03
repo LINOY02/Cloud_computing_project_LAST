@@ -10,6 +10,10 @@ using Cloud_computing_project_LAST.Models;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
+    public class MyLable
+    {
+        public string Lable { get; set; }
+    }
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -70,15 +74,13 @@ namespace Cloud_computing_project_LAST.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,InStock,ImageUrl,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,InStock,ImageUrl,Price")] Product product, string Lable)
         {
             if (ModelState.IsValid)
             {
                 ImaggaService imaggaService = new ImaggaService();
-                string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!);
+                string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!, Lable);
 
-                // Process the imaggaResponse as needed
-                // For example, check if the response indicates an error
                 if (imaggaResponse.Contains("Error"))
                 {
                     ViewBag.ImageCheckError = "Image check failed. Please provide a valid image.";
@@ -113,7 +115,7 @@ namespace Cloud_computing_project_LAST.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,InStock,ImageUrl,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,InStock,ImageUrl,Price")] Product product, string Lable)
         {
             if (id != product.Id)
             {
@@ -125,11 +127,9 @@ namespace Cloud_computing_project_LAST.Controllers
                 try
                 {
                     ImaggaService imaggaService = new ImaggaService();
-                    string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!);
+                    string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!, Lable);
 
-                    // Process the imaggaResponse as needed
-                    // For example, check if the response indicates an error
-                    if (imaggaResponse is "Error: Problem, this is not an image of coffee")
+                    if (imaggaResponse.Contains("Error"))
                     {
                         ModelState.AddModelError("ImageUrl", "Image check failed. Please provide a valid image.");
                         return View(product);

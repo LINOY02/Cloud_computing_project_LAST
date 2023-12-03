@@ -17,9 +17,9 @@ namespace Cloud_computing_project_LAST.Models
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<string> CheckImage(string imageUrl)
+        public async Task<string> CheckImage(string imageUrl, string description)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"api/Imagga/CheckImage?image_url={imageUrl}");
+            HttpResponseMessage response = await _httpClient.GetAsync($"Imagga/CheckImage?imageUrl={imageUrl}&description={description}");
 
             if (response.IsSuccessStatusCode)
             {
