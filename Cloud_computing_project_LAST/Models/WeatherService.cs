@@ -19,7 +19,7 @@ namespace Cloud_computing_project_LAST.Models
 
         public async Task<string> GetWeatherForCity(string city)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"api/weather/CityName={city}");
+            HttpResponseMessage response = await _httpClient.GetAsync($"api/Weather/{city}");
 
             if (response.IsSuccessStatusCode)
             {

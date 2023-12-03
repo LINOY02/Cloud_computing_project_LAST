@@ -3,6 +3,7 @@
     public class CartItem
     {
         public int Id { get; set; }
+        public int cartId { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int InStock { get; set; }

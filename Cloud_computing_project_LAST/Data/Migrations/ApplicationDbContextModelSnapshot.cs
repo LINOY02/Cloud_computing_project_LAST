@@ -109,6 +109,37 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.ToTable("CartItem");
                 });
 
+            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Hebcal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("events")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("hd")
+                        .HasColumnType("int");
+
+                    b.Property<string>("hebrew")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("hm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("hy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Hebcal");
+                });
+
             modelBuilder.Entity("Cloud_computing_project_LAST.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
@@ -118,15 +149,12 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
@@ -135,6 +163,37 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menu");
+                });
+
+            modelBuilder.Entity("Cloud_computing_project_LAST.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("Cloud_computing_project_LAST.Models.Orderr", b =>
@@ -250,6 +309,46 @@ namespace Cloud_computing_project_LAST.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsersInfo");
+                });
+
+            modelBuilder.Entity("Cloud_computing_project_LAST.Models.Weather", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("FeelsLike")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Humidity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Main")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Pressure")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Temp")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TempMax")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TempMin")
+                        .HasColumnType("float");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Weather");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

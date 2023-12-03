@@ -12,11 +12,6 @@ namespace Cloud_computing_project_LAST.Models
         public double TotalPrice { get; set; }
         public List<CartItem>? CartItem { get; set; } = new List<CartItem>();
 
-        public Cart()
-        {
-                
-        }
-
         public Cart(int id, string UserId, int quantity, double totalPrice)
         {
             Id = id;
@@ -24,6 +19,10 @@ namespace Cloud_computing_project_LAST.Models
             Quantity = quantity;
             TotalPrice = totalPrice;
             CartItem= new List<CartItem>();
+        }
+
+        public Cart()
+        {
         }
     }
 
