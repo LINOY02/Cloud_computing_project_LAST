@@ -106,7 +106,7 @@ Sincerely,
 LAST
 Meneger
 Cafena
-052-5381648
+0584000146
 caffena100@gmail.com
 https://localhost:7227/",
                     IsBodyHtml = false
@@ -128,20 +128,50 @@ https://localhost:7227/",
         {
             var person = new
             {
-                Name = form["name"],
+              
                 Email = form["email"],
-                Seates = form["subject"],
-                Massage = form["massage"]
+              
             };
 
             if (ModelState.IsValid)
             {
-                await SendContactConfirmationEmail(person.Name!, person.Email!, person.Seates!, person.Massage! );
+                await SendConfirmationEmail(person.Email);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(person);
+            return View(person.Email);
         }
+
+        private async Task SendConfirmationEmail(string email)
+        {
+            // Replace these values with your SMTP server details
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587;
+            string smtpUsername = "caffena100@gmail.com";
+            string smtpPassword = "zybc owcy vprg vmcb";
+
+            using (var client = new SmtpClient(smtpServer, smtpPort))
+            {
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                client.EnableSsl = true;
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress("caffena100@gmail.com"),
+                    Subject = "Message Rececived",
+                    Body = $"Thank you for the message, the message was successfully received in the system and we will check and get back to you as soon as possible if necessary.",
+                    IsBodyHtml = false
+                };
+                message.To.Add(email);
+                await client.SendMailAsync(message);
+            }
+        }
+
+
+
+
+
 
         private async Task SendContactConfirmationEmail(string name, string email, string seats, string message)
         {

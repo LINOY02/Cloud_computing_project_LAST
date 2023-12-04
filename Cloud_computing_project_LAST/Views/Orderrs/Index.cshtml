@@ -108,9 +108,12 @@
                     @Html.DisplayFor(modelItem => item.Info)
                 </td>
                 <td>
-                    <a class="custom-link" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a class="custom-link" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="custom-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="custom-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a class="custom-link" asp-Controller="Weathers" asp-action="Details" asp-route-id="@item.Id">Weather</a> |
+                    <br>
+                    <a class="custom-link" asp-Controller="Hebcals" asp-action="Details" asp-route-id="@item.Id">Hebrow date</a>
+
                 </td>
             </tr>
         }
