@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Cloud_computing_project_LAST.Models.Product>
+@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
+
 
 @{
     ViewData["Title"] = "ShopIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var items = DbContext.Product.ToList();
 }
 
 <body class=" dark-bg">
@@ -75,7 +78,7 @@
                                                 </div>
                                             </div>
                                             <div class="pp__thumb pp__thumb--2 mt-35">
-                                                <img src="@product.ImageUrl" alt="">
+                                                <img src="@product.ImageUrl" alt="" width="121" height="172">
                                             </div>
                                             <div class="pp__content pp__content--2 mt-25">
                                                 <h4 class="pp__title pp__title--2">
@@ -163,40 +166,27 @@
 
                 <div class="col-xl-4 col-lg-4">
                     <div class="blog__sidebar blog__sidebar--shop mt-none-30">
-                        <div class="widget mt-30" style="background-color:black">
-                            <h2 class="title" style="color:white">Search Here</h2>
-                            <form asp-controller="Home" asp-action="Index" class="search-widget">
-                                <input type="search" name="search" id="search" placeholder="Serach Product">
-                                <button type="submit"><i class="fal fa-search"></i></button>
+                        <div class="widget mt-30" style="background-color: black;">
+                            <h2 class="title" style="color: white;">Search Here</h2>
+                            <form id="searchForm" class="search-widget">
+                                <input type="search" name="search" id="search" placeholder="Search Product">
+                                <button type="button" onclick="searchProduct()"><i class="fal fa-search"></i></button>
                             </form>
                             <script>
-                                function redirectToSearchResults() {
-                                    var searchValue = document.getElementById('search').value;
-
-                                    if (!searchValue) {
-                                        return false;
-                                    }
-                                    else {
-                                        // Make an AJAX request to check if the path exists on your website
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open("HEAD", '/Home/Shop' + encodeURIComponent(searchValue), true);
-
-                                        xhr.onload = function () {
-                                            if (xhr.status == 200) {
-                                                // Path exists, navigate to it
-                                                window.location.href = '/Home/Shop' + encodeURIComponent(searchValue);
-                                            } else {
-                                                // Path does not exist, display an error message or change styling
-                                                var errorMessageElement = document.getElementById('error-message');
-                                                errorMessageElement.innerText = "The entered path does not exist. Please select a valid path before searching.";
-                                                // You can also change styling or add a red border to the search input.
-                                            }
-                                        };
-
-                                        xhr.send();
-                                    }
-
-                                    return false;
+                                function searchProduct() {
+                                    var searchTerm = document.getElementById('search').value.toLowerCase();
+                                    var items = @Html.Raw(Json.Serialize(items)); // Serialize items to JavaScript array
+                                    if (searchTerm != " " || searchTerm != '')
+                                   {
+                                    var matchingProducts = items.filter(function (product) {
+                                        return product.name.toLowerCase() == searchTerm.toLowerCase();
+                                    });
+                                       
+                                        if (matchingProducts[0] != null)
+                                            window.location.href = '/Products/ProductDetails/' + matchingProducts[0].id;
+                                        else
+                                           alert("This product is not exist");
+                                   }
                                 }
                             </script>
                         </div>

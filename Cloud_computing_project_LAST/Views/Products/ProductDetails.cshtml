@@ -52,6 +52,23 @@
         display: inline-block;
         border: 1px solid #343a40;
         font-weight: 500;
+        }
+                .stripe {
+            position: relative; /* Changed to relative */
+            width: 360px;
+            height: 2px;
+            background-color: #E2DFDD;
+        }
+
+        .stripe::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 2px;
+            background-color: #E2DFDD;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -130,9 +147,9 @@
                         <div class="product-details__wrapper">
                             <div class="pd-img">
                                 <div class="tab-content" id="pdContent">
-                                    <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab" style="border: 15px solid white"> 
+                                    <div class="tab-pane fade show active" id="pd-1" role="tabpanel" aria-labelledby="pd-1-tab" style="background-color: white"> 
                                         <div class="big-img">
-                                            <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="">
+                                            <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="" style="border: 6px solid black">
                                         </div>
                                     </div>
                                    
@@ -144,11 +161,13 @@
                     <div class="col-xl-6">
                         <div class="product-details__content">
                             <div class="tr-wrapper d-flex align-items-center justify-content-between">
-                                <h1 class="title" style="color:white">@Html.DisplayFor(model => model.Name)</h1>
+                                <h5 class="title stripe" style="color:white;">@Html.DisplayFor(model => model.Name)</h5>
+                                <hr/>
                             </div>
-                            <p style ="color:white">
+                            <p style="color:lightgray; font-size: 20px;">
                                 @Html.DisplayFor(model => model.Description)</p>
                              <hr/>
+                            <hr />
                             @if (Model.InStock > 0)
                             {
                                 <span class="stock-label in-stock">
@@ -163,8 +182,8 @@
                                     <span class="stock-text">Out of Stock</span>
                                 </span>
                             }
-                            <h3 class="price" style="color:white">@Html.DisplayFor(model => model.Price)&#8378;</h3>
-                            <<div class="product-quantity d-flex align-items-center">
+                            <h3 class="price" style="color:white">@Html.DisplayFor(model => model.Price)$</h3>
+                            <div class="product-quantity d-flex align-items-center">
                                 <span>Quantity</span>
                                 <input type="number" id="quantityInput" placeholder="0" min="0">
                                 @if (Model.InStock > 0)
