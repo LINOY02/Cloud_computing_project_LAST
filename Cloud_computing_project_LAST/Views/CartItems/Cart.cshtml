@@ -41,41 +41,128 @@
                         <div class="cart-wrapper" style="background-color:white">
                             <div class="table-content table-responsive" >
 
-                                <table class="table" >
+                                <table class="table">
                                     <thead>
                                         <tr>
-                                            
-
                                             <th class="product-thumbnail">Product Image</th>
                                             <th class="cart-product-name">Product Name</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
                                             <th class="product-subtotal">subTotal</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var cartItem in Model)
                                         {
-                                        
-
                                             <tr>
                                                 <td class="product-thumbnail">
                                                     <a href="#" class="img">
                                                         <img src="@cartItem.ImageUrl" alt="">
                                                     </a>
-                                                    <a href="#" class="product-remove"><i class="fal fa-times"></i></a>
+                                                    <a href="#" class="product-remove" data-product-id="@cartItem.Id"><i class="fal fa-times"></i></a>
                                                 </td>
                                                 <td class="product-name"><a href="#">@cartItem.Name</a></td>
                                                 <td class="product-price"><span class="amount">@cartItem.Price</span></td>
+                                                <!-- ... Your existing table ... -->
+
                                                 <td class="product-quantity">
-                                                    <input type="number" placeholder=@cartItem.Amount min="1">
+                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-action="decrement">-</button>
+                                                    <input type="number" class="quantity-input" value="@cartItem.Amount" min="1">
+                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-action="increment">+</button>
                                                 </td>
+
+                                                <!-- ... Your existing script ... -->
+
                                                 <td class="product-subtotal"><span class="amount">@(cartItem.Price * cartItem.Amount)</span></td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
+
+                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                                <script>
+                                    $(document).ready(function () {
+                                        // Add a click event listener to all elements with the class "product-remove"
+                                        $(document).on('click', '.product-remove', function (event) {
+                                            // ... Your existing remove item logic ...
+                                        });
+
+                                        // Add a click event listener to all elements with the class "quantity-btn"
+                                        $(document).on('click', '.quantity-btn', function (event) {
+                                            event.preventDefault();
+
+                                            // Get the product ID and action from the data attributes
+                                            var productId = $(this).data('product-id');
+                                            var action = $(this).data('action');
+
+                                            // Find the corresponding input element
+                                            var $quantityInput = $(this).siblings('.quantity-input');
+
+                                            // Get the current quantity
+                                            var currentQuantity = parseInt($quantityInput.val());
+
+                                            // Update the quantity based on the action
+                                            var newQuantity = action === 'increment' ? currentQuantity + 1 : Math.max(currentQuantity - 1, 1);
+
+                                            // Update the quantity input
+                                            $quantityInput.val(newQuantity);
+
+                                            // Send an AJAX request to update the quantity in the database
+                                            $.ajax({
+                                                url: '/CartItems/UpdateQuantity',
+                                                type: 'POST',
+                                                data: { productId: productId, quantity: newQuantity },
+                                                success: function (response) {
+                                                    // Handle success if needed
+                                                },
+                                                error: function (error) {
+                                                    console.error('Error updating quantity:', error);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+
+
+                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+                                <script>
+                                    $(document).ready(function () {
+                                        // Add a click event listener to all elements with the class "product-remove"
+                                        $(document).on('click', '.product-remove', function (event) {
+                                            event.preventDefault();
+
+                                            // Get the product ID from the data attribute
+                                            var productId = $(this).data('product-id');
+
+                                            // Store the reference to the current button
+                                            var $button = $(this);
+
+                                            // Send an AJAX request to remove the item
+                                            $.ajax({
+                                                url: '/CartItems/RemoveItem',
+                                                type: 'POST',
+                                                data: { productId: productId },
+                                                success: function (response) {
+                                                    if (response.success) {
+                                                        // Remove the table row associated with the removed item
+                                                        $button.closest('tr').remove();
+                                                    } else {
+                                                        alert(response.message);
+                                                    }
+                                                },
+                                                error: function (error) {
+                                                    console.error('Error removing item:', error);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+
+
+
                             
 
                             </div>

@@ -23,6 +23,66 @@ namespace Cloud_computing_project_LAST.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(int productId, int quantity)
+        {
+            // check if the amount is valid
+            var product = await _context.Product.FindAsync(productId);
+           
+                try
+                {
+                    var cartItem = await _context.CartItem.FindAsync(productId);
+
+                    if (cartItem == null)
+                    {
+                        return Json(new { success = false, message = "Item not found" });
+                    }
+
+                    // Get the current subtotal before updating the quantity
+                    var currentSubtotal = cartItem.Price * cartItem.Amount;
+
+                    // Update the quantity
+                    cartItem.Amount = quantity;
+                    _context.Update(cartItem);
+                    await _context.SaveChangesAsync();
+
+                    // Calculate the new subtotal
+                    var newSubtotal = cartItem.Price * cartItem.Amount;
+
+                    return Json(new { success = true, message = "Quantity updated successfully", newSubtotal = newSubtotal });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "Error updating quantity", error = ex.Message });
+                }
+           
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveItem(int productId)
+        {
+            try
+            {
+                var cartItem = await _context.CartItem.FindAsync(productId);
+
+                if (cartItem == null)
+                {
+                    return Json(new { success = false, message = "Item not found" });
+                }
+
+                _context.CartItem.Remove(cartItem);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, message = "Item removed successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error removing item", error = ex.Message });
+            }
+        }
+
         public async Task<IActionResult> Cart()
         {
             var cartItems = new List<CartItem>();
