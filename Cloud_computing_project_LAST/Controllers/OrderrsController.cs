@@ -139,6 +139,8 @@ namespace Cloud_computing_project_LAST.Controllers
                 _context.Weather.Add(weatherCity);
                 await _context.SaveChangesAsync();
 
+                var products = _context.Product.ToList();
+
                 if (User.Identity.IsAuthenticated)
                 {
                     var carts = _context.Cart.ToList();
@@ -160,6 +162,13 @@ namespace Cloud_computing_project_LAST.Controllers
                         await _context.SaveChangesAsync();
                         _context.CartItem.Remove(cartItem);
                         await _context.SaveChangesAsync();
+                        var newProduct = products.Find(e => e.Name == cartItem.Name && e.Description == cartItem.Description);
+                        if(newProduct != null)
+                        {
+                            newProduct.InStock -= cartItem.Amount;
+                            _context.Product.Update(newProduct);
+                            await _context.SaveChangesAsync();
+                        }
                     }
                     cart.Quantity = 0;
                     cart.TotalPrice = 0;
@@ -356,6 +365,20 @@ namespace Cloud_computing_project_LAST.Controllers
         public IActionResult Submit()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Route("/api/orders")]
+        public IActionResult CreateOrder([FromBody] Orderr orderDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            }
+
+            Create(orderDto);
+
+            return Ok(new { message = "Order created successfully", orderId = orderDto.Id });
         }
     }
 }
