@@ -58,6 +58,23 @@ namespace Cloud_computing_project_LAST.Controllers
             return View(orderr);
         }
 
+        public async Task<IActionResult> OrderDetail(int? id)
+        {
+            if (id == null || _context.Orderr == null)
+            {
+                return NotFound();
+            }
+
+            var orderr =  _context.Orderr
+                .FirstOrDefault(m => m.Id == id);
+            if (orderr == null)
+            {
+                return NotFound();
+            }
+
+            return View(orderr);
+        }
+
         // GET: Orderrs/Create
         public async Task<IActionResult> Create()
         {
@@ -107,8 +124,9 @@ namespace Cloud_computing_project_LAST.Controllers
                 ViewData["OrderDate"] = orderr.OrderDate;
                 ViewData["DeliveryDate"] = orderr.DeliveryDate;
 
-                var orders = _context.Orderr.ToList();
-                orderr = orders.Find(e => e.Email == User.Identity.Name);
+                var orders =_context.Orderr.ToList();
+                orderr = orders.FindAll(e => e.Email == User.Identity.Name).OrderByDescending(e => e.OrderDate) // Assuming there's a DateAdded property for the order
+                        .FirstOrDefault();
                 var hebcal = await _hebcalService.HebcalRoot();
                 var hebdate = JsonConvert.DeserializeObject<Hebcal>(hebcal);
                 hebdate.orderId = orderr.Id;
@@ -333,6 +351,11 @@ namespace Cloud_computing_project_LAST.Controllers
             };
 
             return View(viewModel); // Pass the view model to the view
+        }
+
+        public IActionResult Submit()
+        {
+            return View();
         }
     }
 }
