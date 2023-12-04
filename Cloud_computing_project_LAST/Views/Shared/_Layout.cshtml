@@ -194,10 +194,8 @@
                                     </div>
                                     <div class="search__form">
                                                 <form role="search" method="get" onsubmit="return redirectToSearchResults()">
-                                                    <input type="search" id="searchInput" name="s" value="" placeholder="Search Page">
-                                                    <input type="text" id="selectedPath" placeholder="Product">
-                                                    <div id="error-message" class="text-danger"></div>
-                                            <button type="submit"><i class="far fa-search"></i></button>
+                                                    <input type="search" id="searchInput" name="s" value="" placeholder="Search Product">
+                                                  <button type="submit"><i class="far fa-search"></i></button>
                                         </form>
                                                 <script>
                                                     function redirectToSearchResults() {
@@ -492,65 +490,7 @@
                             }
                         });
                     </script>
-                        <div class="cart-bar__lists">
-                            <div class="cart-bar__item position-relative d-flex">
-                                <div class="thumb">
-                                    <img src="assets/images/top-grade/tg-1.png" alt="image_not_found">
-                                </div>
-                                <div class="content">
-                                    <h4 class="title">
-                                        <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
-                                    </h4>
-                                    <span class="price">$19.00</span>
-                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                                </div>
-                            </div>
-                            <div class="cart-bar__item position-relative d-flex">
-                                <div class="thumb">
-                                    <img src="assets/images/top-grade/tg-2.png" alt="image_not_found">
-                                </div>
-                                <div class="content">
-                                    <h4 class="title">
-                                        <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
-                                    </h4>
-                                    <span class="price">$36.00</span>
-                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                                </div>
-                            </div>
-                            <div class="cart-bar__item position-relative d-flex">
-                                <div class="thumb">
-                                    <img src="assets/images/top-grade/tg-3.png" alt="image_not_found">
-                                </div>
-                                <div class="content">
-                                    <h4 class="title">
-                                    <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
-                                    </h4>
-                                    <span class="price">$20.00</span>
-                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                                </div>
-                            </div>
-                            <div class="cart-bar__item position-relative d-flex">
-                                <div class="thumb">
-                                    <img src="assets/images/top-grade/tg-4.png" alt="image_not_found">
-                                </div>
-                                <div class="content">
-                                    <h4 class="title">
-                                    <a asp-controller="Home" asp-action="ProductDetails">Rorem ipsum dolor sit amet.</a>
-                                    </h4>
-                                    <span class="price">$20.00</span>
-                                    <a href="#0" class="remove"><i class="fal fa-times"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-bar__subtotal d-flex align-items-center justify-content-between">
-                            <span>Sub Total:</span>
-                            <span>$87.00</span>
-                        </div>
-                        <div class="btns d-flex align-items-center justify-content-center">
-                            <a asp-controller="CartItems" asp-action="Cart" class="site-btn">View Cart</a>
-                            <a asp-controller="Orderrs" asp-action="Create" class="site-btn site-btn__borderd">Checkout</a>
-                        </div>
-                    </div>
+                    <partial name="_CartPartial" />
                 </aside>
            
                 @*<div class="overlay"></div>*@

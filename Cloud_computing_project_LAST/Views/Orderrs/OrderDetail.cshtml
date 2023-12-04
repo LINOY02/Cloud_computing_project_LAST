@@ -46,18 +46,24 @@
                                 
                                     <div class="form-group row">
                                         <div class="col-xl-3">
-                                            <label for="orderNo" class="col-form-label">ORDER NO.:</label>
+                                        <label for="orderNo" class="col-form-label">ORDER NO.: @Model.Id</label>
                                         </div>
                                         <div class="col-xl-3">
-                                            <span id="orderNo">@Model.Id</span> 
+                                            <span id="orderNo"></span> 
                                         </div>
                                         <div class="col-xl-3">
-                                            <label for="orderDate" class="col-form-label">ORDER DATE:</label>
-                                        </div>
-                                        <div class="col-xl-3">
-                                            <span id="orderDate">@Model.OrderDate</span> 
-                                        </div>
-                                    </div>
+                                        <label for="orderDate" class="col-form-label">ORDER DATE: @Model.OrderDate</label>
+                                   </div>
+                           </div>
+                           <div class="col-xl-5">
+                                  <div class="mt-15">
+                                      <label class="col-form-label">ORDER TIME: @Model.OrderDate</label>
+                                  </div>
+                                  <div class="mt-15">
+                                        <label class="col-form-label">ORDER TIME: @Model.DeliveryDate</label>
+                                  </div>
+                                  
+                            </div>
                                 <div class="cart-wrapper" >
                                     <div class="table-content table-responsive">
                                         <table class="table">
