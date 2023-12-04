@@ -129,10 +129,9 @@
                                                            <a class="active">Orders</a>
                                                            <ul class="sub-menu">
                                                                 <li><a asp-controller="Orderrs" asp-action="Index">Orders List</a></li>
-                                                                <li><a asp-controller="OrderItems" asp-action="Index">Orders Detials</a></li>
                                                                 <li><a asp-controller="Orderrs" asp-action="Graph">Graph</a></li>
-                                                                <li><a asp-controller="Orderrs" asp-action="Index">Weather statistics</a></li>
-                                                                <li><a asp-controller="Orderrs" asp-action="Inde">habcal statistics</a></li>
+                                                                <li><a asp-controller="Weathers" asp-action="Index">Weather statistics</a></li>
+                                                                <li><a asp-controller="Hebcals" asp-action="Index">habcal statistics</a></li>
                                                             </ul>
                                                        </li> 
                                                         <li><a asp-controller="Products" asp-action="Index">Products List</a></li>
@@ -446,15 +445,21 @@
                             <ul class="contact__info list-unstyled">
                                 <li>
                                     <span><i class="fas fa-map-marker-alt"></i></span>
-                                    <p>Central Park, New York City</p>
+                                       <div class="item d-flex align-items-center justify-content-start">
+                                <a href="https://maps.app.goo.gl/3gmoLHCQNdk7sHiY9">Acadia Beach, Herzliya</a>
+                            </div>
                                 </li>
                                 <li>
                                     <span><i class="fas fa-phone"></i></span>
-                                    <p>+1255-568-6523</p>
+                                     <div class="item d-flex align-items-center justify-content-center">
+                                     <a href="tel:0584000146">0584000146</a>
+                                     </div>
                                 </li>
                                 <li>
                                     <span><i class="fas fa-envelope-open-text"></i></span>
-                                    <p>information@gmail.com</p>
+                                     <div class="item d-flex align-items-center justify-content-start">
+                                    <a href="mailto:Caffena100@gmail.com">caffena100@gmail.com</a>
+                            </div>
                                 </li>
                             </ul>
                         </div>

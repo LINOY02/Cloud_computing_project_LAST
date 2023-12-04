@@ -214,7 +214,7 @@ namespace Cloud_computing_project_LAST.Controllers
                     if (quantity + oldItem.Amount > product.InStock)
                         return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
                     oldItem.Amount += item.Amount;
-                    oldItem.Price += item.Price;
+                    oldItem.Price += item.Price * item.Amount;
                     _context.CartItem.Update(oldItem);
                     _context.SaveChanges();
                     cart.TotalPrice += item.Price;
@@ -258,7 +258,7 @@ namespace Cloud_computing_project_LAST.Controllers
                             return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
                         tempCart.CartItem.Remove(oldItem);
                         item.Amount += oldItem.Amount;
-                        item.Price += oldItem.Price;
+                        oldItem.Price += item.Price * item.Amount;
                         tempCart.CartItem.Add(item);
                         tempCart.TotalPrice += item.Price;
                     }

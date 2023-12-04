@@ -4,12 +4,84 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <style>
+        body {
+            background-color: black
+        }
 
-<h1>Details</h1>
+        .custom-link {
+            color: black; /* Set the text color to white */
+        }
 
-<div>
-    <h4>Weather</h4>
-    <hr />
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+
+        .btn.btn-primary {
+            /* Your primary button styles */
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: #C7A17A;
+            padding: 9.5px 34px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            border: 1px solid #C7A17A;
+            font-weight: 500;
+        }
+
+            /* Hover effect for the primary button */
+            .btn.btn-primary:hover {
+                background: black;
+                border-color: black;
+                color: white;
+            }
+    </style>
+</head>
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+    <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+    <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">Weather</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<hr />
+<div class="checkout-area pt-120 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="cart-wrapper checkout-wrapper" style="background:white">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <dl class="row">
+                                <div class="checkout-area pt-120 pb-120">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="cart-wrapper checkout-wrapper" style="background:white">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <dl class="row">
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.orderId)
@@ -66,6 +138,12 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
