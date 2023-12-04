@@ -11,9 +11,77 @@
         .custom-link:hover {
             color: #C7A17A; /* Change the text color to blue on hover */
         }
+
+    .custom-table {
+        width: 85%; /* Adjust the width as needed */
+        margin: 0 auto; /* Centers the table horizontally */
+        border: 1px solid #000;
+    }
+
+        .custom-table tbody tr {
+            line-height: 3px; /* Adjust the line height as needed */
+            text-align: center;
+        }
+
+        .custom-table tbody td {
+            padding-top: 3px; /* Adjust the top padding as needed */
+            padding-bottom: 3px; /* Adjust the bottom padding as needed */
+            font-size: 12px; /* Adjust the font size as needed */
+            text-align: center;
+        }
+
+    .table-container {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease-out;
+    }
+
+    /* Show the table when checkbox is checked */
+    .toggle-checkbox:checked ~ .table-container {
+        max-height: 1000px; /* Adjust to a larger value as needed */
+    }
+
+    /* Arrow rotation animation */
+    .toggle-label::after {
+        content: ' ';
+        display: inline-block;
+        margin-left: 5px;
+        transition: transform 0.4s ease;
+    }
+
+    .toggle-checkbox:checked ~ .toggle-label .arrow-icon {
+        transform: rotateX(180deg);
+    }
+
+    /* Rotate arrow icon when checkbox is checked */
+    .toggle-checkbox:checked ~ .table-container {
+        max-height: 1000px; /* Adjust to a larger value as needed */
+    }
+
+    .arrow-icon-down {
+        display: none;
+    }
+
+    /* Show the down arrow when checkbox is checked */
+    .toggle-checkbox:checked ~ .toggle-label .arrow-icon-down {
+        display: inline;
+    }
+
+    /* Hide the right arrow when checkbox is checked */
+    .toggle-checkbox:checked ~ .toggle-label .arrow-icon {
+        display: none;
+    }
+
+    /* Rotate down arrow when checkbox is checked */
+    .toggle-checkbox:checked ~ .table-container {
+        max-height: 1000px; /* Adjust to a larger value as needed */
+    }
     </style>
 @{
     var userInfo = DbContext.UsersInfo.ToList().Find(e => e.Id == User.Identity.Name );
+    var allOrders = DbContext.Orderr.ToList();
+    var orders = allOrders.FindAll(e => e.Email == User.Identity.Name);
+
 }
 
 @if (SignInManager.IsSignedIn(User))
@@ -21,9 +89,9 @@
     <div class="row">
         <div class="col-sm-8 d-flex align-items-center">
             <div class="mt-10">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    Hello @userInfo.FirstName @userInfo.LastName
-                </a>
+                <label class="nav-link text-dark">
+                    Hello @userInfo?.FirstName @userInfo?.LastName
+                </label>
             </div>
         </div>
         <div class="col-sm-4">
@@ -36,7 +104,95 @@
             </div>
         </div>
     </div>
+    <div class="mt-10">
+        <a herf="#" class="custom-link" id="user-link" data-user-id="@User.Identity?.Name">Edit your info</a>
+    </div>
+     <div class="mt-20">
 
+        <span class="toggle-label" style="color:black">
+        My Orders
+        <span class="arrow-icon">&#x25B6;</span>
+        <span class="arrow-icon-down">&#x25BC;</span>
+        </span>
+
+
+        <!-- Checkbox to control the toggle -->
+        <input type="checkbox" id="toggle-table" class="toggle-checkbox" hidden />
+
+            <!-- Table to show/hide -->
+            <div class="table-container">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>NO.</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr style="width:6px">
+                     <td><a herf="#" class="custom-link order-link" data-order-id="@order.Id">@order.Id</a></td> <!-- Assuming OrderId is the property name for Order ID -->
+                        <td style="color:black">@order?.OrderDate.Value.ToShortDateString()</td> <!-- Assuming OrderDate is the property name for Order Date -->
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#user-link').on('click', function (e) {
+                e.preventDefault(); // Prevent the default link behavior
+
+                var userId = $(this).data('user-id');
+
+                // Redirect to the ProductDetails action with the product ID as a parameter
+                window.location.href = '/UserInfoes/Edit/' + userId;
+            });
+        });
+
+        $(document).ready(function () {
+            $('.order-link').on('click', function (e) {
+                e.preventDefault(); // Prevent the default link behavior
+
+                var orderId = $(this).data('order-id');
+
+                // Redirect to the ProductDetails action with the product ID as a parameter
+                window.location.href = '/Orderrs/OrderDetail/' + orderId;
+            });
+        });
+
+        $(document).ready(function () {
+            $('.toggle-label .arrow-icon').on('click', function () {
+                var checkbox = $('#toggle-table');
+                var tableContainer = $('.table-container');
+
+                checkbox.prop('checked', !checkbox.prop('checked'));
+                tableContainer.slideToggle();
+
+                $('.arrow-icon, .arrow-icon-down').toggle();
+            });
+
+            $(document).on('click', function (e) {
+                var tableContainer = $('.table-container');
+                var checkbox = $('#toggle-table');
+                var arrowIcon = $('.arrow-icon');
+                var arrowIconDown = $('.arrow-icon-down');
+
+                if (!tableContainer.is(e.target) && !tableContainer.has(e.target).length &&
+                    !$('.toggle-label').is(e.target) && !$('.toggle-label').has(e.target).length) {
+                    checkbox.prop('checked', false);
+                    tableContainer.slideUp();
+                    arrowIcon.show();
+                    arrowIconDown.hide();
+                }
+            });
+        });
+
+    </script>
 }
 else
 {
@@ -56,4 +212,5 @@ else
     </div>
    
 }
+
 

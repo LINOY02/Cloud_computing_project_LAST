@@ -13,7 +13,7 @@ namespace Cloud_computing_project_LAST.Data
         }
         public DbSet<Cafe> Cafe { get; set; }
        
-        public DbSet<UserInfo> UsersInfo { get; set; }
+        public DbSet<Cloud_computing_project_LAST.Models.UserInfo> UsersInfo { get; set; }
         public DbSet<Cloud_computing_project_LAST.Models.Product>? Product { get; set; }
         public DbSet<Cloud_computing_project_LAST.Models.CartItem>? CartItem { get; set; }
         public DbSet<Cloud_computing_project_LAST.Models.Cart>? Cart { get; set; }

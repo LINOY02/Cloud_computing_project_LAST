@@ -1,0 +1,100 @@
+﻿@model Cloud_computing_project_LAST.Models.Orderr
+@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
+
+
+@{
+    ViewData["Title"] = "orderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var items = DbContext.OrderItem.ToList();
+    var orderItems = items.FindAll(e => e.orderId == Model.Id);
+
+}
+
+<body class="dark-bg">
+    
+        <!-- breadcrumb area start -->
+        <section class="breadcrumb-area pt-140 pb-140 bg_img" data-background="/assets/images/bg/breadcrumb-bg1.jpeg" data-overlay="dark" data-opacity="5">
+            <div class="shape shape__1"><img src="~/assets/images/shape/breadcrumb-shape-1.png" alt=""></div>
+            <div class="shape shape__2"><img src="~/assets/images/shape/breadcrumb-shape-2.png" alt=""></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 text-center">
+                        <h2 class="page-title">Prder Detial</h2>
+                        <div class="cafena-breadcrumb breadcrumbs">
+                            <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                                <li class="cafenabcrumb-item duxinbcrumb-end">
+                                    <span>order no. @Model.Id</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb area end -->
+        <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="reservation__wrapper reservation__wrapper--2">
+                    <div class="section-heading section-heading__black text-center mb-35">
+                        <h3 class="title">Create Product</h3>
+                    </div>
+                    <div class="reservation__form reservation__form--2 mt-none-30 text-center">
+                        <div class="cart-form">
+                            <div class="row">
+                                
+                                    <div class="form-group row">
+                                        <div class="col-xl-3">
+                                            <label for="orderNo" class="col-form-label">ORDER NO.:</label>
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <span id="orderNo">@Model.Id</span> 
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <label for="orderDate" class="col-form-label">ORDER DATE:</label>
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <span id="orderDate">@Model.OrderDate</span> 
+                                        </div>
+                                    </div>
+                                <div class="cart-wrapper" >
+                                    <div class="table-content table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">Product Image</th>
+                                                    <th class="cart-product-name">Product Name</th>
+                                                    <th class="product-price">Price</th>
+                                                    <th class="product-quantity">Quantity</th>
+                                                    <th class="product-subtotal">subTotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(var item in orderItems)
+                                                {
+                                                <tr>
+                                                    <td class="product-thumbnail">
+                                                        <a href="#" class="img">
+                                                            <img src="@item.ImageUrl" alt="">
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name"><a href="#">@item.Name</a></td>
+                                                    <td class="product-price"><span class="amount">@item.Price</span></td>
+                                                    <td class="product-quantity">
+                                                        <input type="number" placeholder="@item.Amount" readonly>
+                                                    </td>
+                                                    <td class="product-subtotal"><span class="amount">@(item.Amount * item.Price)</span></td>
+                                                </tr>
+                                                }
+                                                </tbody>
+                                       </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </body>

@@ -11,6 +11,11 @@
         public string StreetNum { get; set; }
         public string ZIPCode { get; set; }
 
+        public UserInfo()
+        {
+
+        }
+
         public UserInfo(string id, string firstName, string lastName, string phoneNumber, string city, string street, string streetNum, string zIPCode)
         {
             Id = id;
