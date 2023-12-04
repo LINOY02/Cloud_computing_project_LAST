@@ -211,11 +211,13 @@ namespace Cloud_computing_project_LAST.Controllers
                 }
                 else
                 {
-                    _context.CartItem.Remove(oldItem);
+                    if (quantity + oldItem.Amount > product.InStock)
+                        return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
+                    oldItem.Amount += item.Amount;
+                    oldItem.Price += item.Price;
+                    _context.CartItem.Update(oldItem);
                     _context.SaveChanges();
-                    cart.CartItem.Add(item);
-                    _context.SaveChanges();
-                    cart.TotalPrice = cart.TotalPrice - oldItem.Price + item.Price;
+                    cart.TotalPrice += item.Price;
                     _context.Update(cart);
                     await _context.SaveChangesAsync();
                 }
@@ -227,7 +229,7 @@ namespace Cloud_computing_project_LAST.Controllers
                 var guestCart = httpContext.Session.GetString("GuestCart");
 
               
-if (string.IsNullOrEmpty(guestCart))
+                if (string.IsNullOrEmpty(guestCart))
                 {
                     // Create a new temporary cart for guest users
                     var cart = new Cart(); // Assuming Cart is your cart model
@@ -252,9 +254,13 @@ if (string.IsNullOrEmpty(guestCart))
                     }
                     else
                     {
+                        if (quantity + oldItem.Amount > product.InStock)
+                            return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
                         tempCart.CartItem.Remove(oldItem);
+                        item.Amount += oldItem.Amount;
+                        item.Price += oldItem.Price;
                         tempCart.CartItem.Add(item);
-                        tempCart.TotalPrice = tempCart.TotalPrice - oldItem.Price + item.Price;
+                        tempCart.TotalPrice += item.Price;
                     }
 
                     httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(tempCart));

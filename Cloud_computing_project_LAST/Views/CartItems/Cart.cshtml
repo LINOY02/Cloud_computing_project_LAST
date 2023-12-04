@@ -66,10 +66,11 @@
                                                 <!-- ... Your existing table ... -->
 
                                                 <td class="product-quantity">
-                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-action="decrement">-</button>
+                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-product-name="@cartItem.Name" data-action="decrement">-</button>
                                                     <input type="number" class="quantity-input" value="@cartItem.Amount" min="1">
-                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-action="increment">+</button>
+                                                    <button class="quantity-btn" data-product-id="@cartItem.Id" data-product-name="@cartItem.Name" data-action="increment">+</button>
                                                 </td>
+
 
                                                 <!-- ... Your existing script ... -->
 
@@ -92,8 +93,9 @@
                                         $(document).on('click', '.quantity-btn', function (event) {
                                             event.preventDefault();
 
-                                            // Get the product ID and action from the data attributes
+                                            // Get the product ID, product name, and action from the data attributes
                                             var productId = $(this).data('product-id');
+                                            var productName = $(this).data('product-name');
                                             var action = $(this).data('action');
 
                                             // Find the corresponding input element
@@ -105,6 +107,7 @@
                                             // Update the quantity based on the action
                                             var newQuantity = action === 'increment' ? currentQuantity + 1 : Math.max(currentQuantity - 1, 1);
 
+
                                             // Update the quantity input
                                             $quantityInput.val(newQuantity);
 
@@ -112,7 +115,7 @@
                                             $.ajax({
                                                 url: '/CartItems/UpdateQuantity',
                                                 type: 'POST',
-                                                data: { productId: productId, quantity: newQuantity },
+                                                data: { productId: productId, productName: productName, quantity: newQuantity },
                                                 success: function (response) {
                                                     // Handle success if needed
                                                 },
@@ -123,6 +126,7 @@
                                         });
                                     });
                                 </script>
+
 
 
                                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

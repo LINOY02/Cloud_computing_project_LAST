@@ -24,11 +24,17 @@ namespace Cloud_computing_project_LAST.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateQuantity(int productId, int quantity)
+        public async Task<IActionResult> UpdateQuantity(int productId,string productName, int quantity)
         {
             // check if the amount is valid
-            var product = await _context.Product.FindAsync(productId);
-           
+            var products =  _context.Product.ToList();
+            var product = products.Find(x => x.Name == productName);
+            if(quantity >product.InStock)
+            {
+                return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
+            }
+            else
+            {
                 try
                 {
                     var cartItem = await _context.CartItem.FindAsync(productId);
@@ -55,6 +61,8 @@ namespace Cloud_computing_project_LAST.Controllers
                 {
                     return Json(new { success = false, message = "Error updating quantity", error = ex.Message });
                 }
+            }
+               
            
         }
 
