@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
+using Newtonsoft.Json;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
+   
+   
     public class MyLable
     {
         public string Lable { get; set; }
@@ -26,9 +29,9 @@ namespace Cloud_computing_project_LAST.Controllers
         // GET: Products
         public async Task<IActionResult> ShopIndex()
         {
-              return _context.Product != null ? 
-                          View(await _context.Product.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Product'  is null.");
+            return _context.Product != null ?
+                        View(await _context.Product.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
         public async Task<IActionResult> Index()
@@ -129,7 +132,8 @@ namespace Cloud_computing_project_LAST.Controllers
                     ImaggaService imaggaService = new ImaggaService();
                     string imaggaResponse = await imaggaService.CheckImage(product.ImageUrl!, Lable);
 
-                    if (imaggaResponse.Contains("Error"))
+                   
+if (imaggaResponse.Contains("Error"))
                     {
                         ModelState.AddModelError("ImageUrl", "Image check failed. Please provide a valid image.");
                         return View(product);
@@ -186,14 +190,14 @@ namespace Cloud_computing_project_LAST.Controllers
             {
                 _context.Product.Remove(product);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-          return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         public async Task<IActionResult> ProductDetails(int id)
@@ -203,7 +207,7 @@ namespace Cloud_computing_project_LAST.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
                 return NotFound();

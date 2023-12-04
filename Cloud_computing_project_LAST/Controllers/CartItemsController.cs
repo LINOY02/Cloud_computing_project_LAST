@@ -7,28 +7,59 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
- 
+using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
     public class CartItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public CartItemsController(ApplicationDbContext context)
+        public CartItemsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public IActionResult Cart()
+        public async Task<IActionResult> Cart()
         {
             var cartItems = new List<CartItem>();
-            var cartItem= new CartItem();   
-            cartItems.Add(cartItem);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var carts = await _context.Cart.Include(c => c.CartItem).ToListAsync();
+                var cart = carts.Find(e => e.userId == User.Identity.Name);
+                if (cart != null)
+                {
+                    cartItems = cart.CartItem.ToList();
+                }
+            }
+            else
+            {
+                var httpContext = _httpContextAccessor.HttpContext;
+                var guestCart = httpContext.Session.GetString("GuestCart");
+
+                if (!string.IsNullOrEmpty(guestCart))
+                {
+                    var tempCart = JsonConvert.DeserializeObject<Cart>(guestCart);
+                    cartItems = tempCart.CartItem;
+                }
+            }
+
+            // Calculate subtotal and total
+            var subtotal = cartItems.Sum(item => item.Price * item.Amount);
+            var total = subtotal; // You can add additional logic for discounts, taxes, etc.
+
+            // Pass the subtotal and total to the view using ViewData
+            ViewData["Subtotal"] = subtotal;
+            ViewData["Total"] = total;
+
             return View(cartItems);
         }
 
-
+      
 
 
 

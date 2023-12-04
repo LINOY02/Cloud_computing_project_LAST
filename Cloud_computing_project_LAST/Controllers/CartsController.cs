@@ -11,12 +11,13 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 namespace Cloud_computing_project_LAST.Controllers
 {
+   
     public class CartsController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-       
-        
+
+
         public CartsController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
@@ -141,6 +142,7 @@ namespace Cloud_computing_project_LAST.Controllers
             return View(cart);
         }
 
+   
         // POST: Carts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -168,16 +170,16 @@ namespace Cloud_computing_project_LAST.Controllers
         [HttpPost]
         public async Task<ActionResult> AddToCartShop(int productId, int quantity)
         {
-            
-                if (quantity == 0)
-                    return Json(new { success = true, message = "Can not add 0 quantity" });
-                var product = await _context.Product.FindAsync(productId);
-                if(quantity > product.InStock)
-                    return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
-                if (_context.Cart == null)
-                {
-                    return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
-                }
+
+            if (quantity == 0)
+                return Json(new { success = true, message = "Can not add 0 quantity" });
+            var product = await _context.Product.FindAsync(productId);
+            if (quantity > product.InStock)
+                return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
+            if (_context.Cart == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+            }
             var item = new CartItem
             {
                 Name = product.Name,
@@ -193,7 +195,7 @@ namespace Cloud_computing_project_LAST.Controllers
 
                 var cart = carts.Find(e => e.userId == User.Identity.Name);
 
-                
+
                 var cartItems = await _context.CartItem.ToListAsync();
 
                 var oldItem = cartItems.Find(e => e.Name == product.Name);
@@ -224,7 +226,8 @@ namespace Cloud_computing_project_LAST.Controllers
 
                 var guestCart = httpContext.Session.GetString("GuestCart");
 
-                if (string.IsNullOrEmpty(guestCart))
+              
+if (string.IsNullOrEmpty(guestCart))
                 {
                     // Create a new temporary cart for guest users
                     var cart = new Cart(); // Assuming Cart is your cart model
@@ -240,8 +243,8 @@ namespace Cloud_computing_project_LAST.Controllers
                     // Retrieve existing cart from session and deserialize it
                     var tempCart = JsonConvert.DeserializeObject<Cart>(guestCart);
                     var oldItem = tempCart.CartItem.Find(e => e.Name == product.Name);
-                    
-                    if(oldItem == null)
+
+                    if (oldItem == null)
                     {
                         tempCart.CartItem.Add(item);
                         tempCart.Quantity += 1;
@@ -265,8 +268,8 @@ namespace Cloud_computing_project_LAST.Controllers
         public async Task<ActionResult> AddToCartMenu(int productId)
         {
 
-           var product = await _context.Menu.FindAsync(productId);
-            
+            var product = await _context.Menu.FindAsync(productId);
+
             if (_context.Cart == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
@@ -319,7 +322,8 @@ namespace Cloud_computing_project_LAST.Controllers
 
                 var guestCart = httpContext.Session.GetString("GuestCart");
 
-                if (string.IsNullOrEmpty(guestCart))
+              
+if (string.IsNullOrEmpty(guestCart))
                 {
                     // Create a new temporary cart for guest users
                     var cart = new Cart(); // Assuming Cart is your cart model
@@ -362,4 +366,3 @@ namespace Cloud_computing_project_LAST.Controllers
 
     }
 }
-
