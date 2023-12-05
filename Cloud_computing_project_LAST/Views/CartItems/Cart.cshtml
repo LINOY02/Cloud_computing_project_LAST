@@ -62,7 +62,7 @@
                                                     <a href="#" class="product-remove" data-product-id="@cartItem.Id"><i class="fal fa-times"></i></a>
                                                 </td>
                                                 <td class="product-name"><a href="#">@cartItem.Name</a></td>
-                                                <td class="product-price"><span class="amount">@cartItem.Price</span></td>
+                                                <td class="product-price"><span class="amount">@("$" + cartItem.Price / cartItem.Amount)</span></td>
                                                 <!-- ... Your existing table ... -->
 
                                                 <td class="product-quantity">
@@ -74,7 +74,7 @@
 
                                                 <!-- ... Your existing script ... -->
 
-                                                <td class="product-subtotal"><span class="amount">@(cartItem.Price * cartItem.Amount)</span></td>
+                                                <td class="product-subtotal"><span class="amount">$@cartItem.Price</span></td>
                                             </tr>
                                         }
                                     </tbody>
@@ -117,10 +117,26 @@
                                                 type: 'POST',
                                                 data: { productId: productId, productName: productName, quantity: newQuantity },
                                                 success: function (response) {
-                                                    // Handle success if needed
+                                                    // Update price and subtotal based on the response
+                                                    var newPrice = response.newPrice.toFixed(2);
+                                                   
+
+                                                    // Update the displayed price and subtotal
+                                                    $quantityInput.closest('tr').find('.product-price .amount').text('$' + newPrice / newQuantity);
+                                                    $quantityInput.closest('tr').find('.product-subtotal .amount').text('$' + newPrice);
+
+                                                    // Update the total and other relevant sections if needed
+                                                    $('.ct-sub span:last-child').text('$' + response.newSubTotal);
+                                                    $('.ct-sub ct-sub__total span:last-child').text('$' + response.newSubTotal);
+
+                                                    
                                                 },
                                                 error: function (error) {
-                                                    console.error('Error updating quantity:', error);
+                                                    if (error.responseText.includes("left in the stock"))
+                                                       {
+                                                            $quantityInput.siblings('.quantity-btn[data-action="decrement"]').prop('disabled', true);
+
+                                                        }
                                                 }
                                             });
                                         });
@@ -152,9 +168,12 @@
                                                 success: function (response) {
                                                     if (response.success) {
                                                         // Remove the table row associated with the removed item
-                                                        $button.closest('tr').remove();
+                                                         $button.closest('tr').remove();
+                                                        $('.ct-sub span:last-child').text('$' + response.newTotal);
+                                                        $('.ct-sub ct-sub__total span:last-child').text('$' + response.newTotal);
+                                                         ViewData["Total"] = response.newTotal;
                                                     } else {
-                                                        alert(response.message);
+                                                       // alert(response.message);
                                                     }
                                                 },
                                                 error: function (error) {

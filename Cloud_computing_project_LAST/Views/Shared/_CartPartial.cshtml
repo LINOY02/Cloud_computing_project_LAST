@@ -7,7 +7,7 @@
 @using Newtonsoft.Json
 
 @{
-    List<CartItem> cartItems;
+    List<CartItem> cartItems = new List<CartItem>();
     Cart cart = new Cart();
     if (SignInManager.IsSignedIn(User))
     {
@@ -25,14 +25,14 @@
             cart = JsonConvert.DeserializeObject<Cart>(guestCart);
             cartItems = cart.CartItem;
         }
-        else
-        {
-            cartItems = null;
-        }
+        
     }
     var products = DbContext.Product.ToList();
 }
-<div class="cart-bar__lists" id="cartItemsContainer">
+<div class="cart-bar">
+    <h4 class="cart-bar__title">Cart Items - <span id="cartItemCount">@cart.Quantity </span></h4>
+
+    <div class="cart-bar__lists" id="cartItemsContainer">
     @foreach(var item in @cartItems)
     {
     <div class="cart-bar__item position-relative d-flex">
@@ -71,7 +71,7 @@
 <script>
     $(document).ready(function () {
         // Add a click event listener to all elements with the class "product-remove"
-        $(document).on('click', '.product-remove', function (event) {
+        $(document).on('click', '.remove', function (event) {
             event.preventDefault();
 
             // Get the product ID from the data attribute
@@ -87,8 +87,12 @@
                 data: { productId: productId },
                 success: function (response) {
                     if (response.success) {
-                        // Remove the table row associated with the removed item
-                        $button.closest('tr').remove();
+                        // Remove the cart item from the view after successful removal
+                    $button.closest('.cart-bar__item').remove();
+
+                    // Update the cart subtotal after item removal
+                        $('.cart-bar__subtotal span:last-child').text('$' + response.newSubTotal);
+                    $('.cart-bar__title span:last-child').text(response.quantity);
                     } else {
                         alert(response.message);
                     }
@@ -100,6 +104,8 @@
         });
     });
 
+
+    
     function scrollAfterSevenItems() {
         const itemsContainer = document.getElementById('cartItemsContainer');
         const items = itemsContainer.getElementsByClassName('cart-bar__item');

@@ -33,6 +33,10 @@
     <link rel="stylesheet" href="~/assets/css/animate.min.css">
     <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
     <link rel="stylesheet" href="~/assets/css/main.css">
+
+    @{
+
+    }
     <style>
         body {
             margin: 0;
@@ -192,36 +196,38 @@
                                         <span class="close"><i class="fal fa-times"></i></span>
                                     </div>
                                     <div class="search__form">
-                                                <form role="search" method="get" onsubmit="return redirectToSearchResults()">
-                                                    <input type="search" id="searchInput" name="s" value="" placeholder="Search Product">
-                                                  <button type="submit"><i class="far fa-search"></i></button>
+                                                <form role="search" onsubmit="searchProduct(event)">
+                                                    <input type="search" id="searchInput" placeholder="Search Product">
+                                                    <button type="submit"><i class="far fa-search"></i></button>
                                         </form>
+                                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                                                 <script>
-                                                    function redirectToSearchResults() {
-                                                        var searchValue = document.getElementById('searchInput').value;
-                                                        var selectedPath = document.getElementById('selectedPath');
-
-                                                        if (!searchValue && (!selectedPath || !selectedPath.value)) {
-                                                            return false;
-                                                        }
-
-                                                        if (selectedPath && selectedPath.value) {
-                                                            window.location.href = '/Home/' + encodeURIComponent(searchValue) + '#' + encodeURIComponent(selectedPath.value) ;
-                                                        } else {
-                                                            window.location.href = '/Home/' + encodeURIComponent(searchValue);
-                                                            
-                                                           
-                                                            var existingPaths = ['about', 'Shop#Rosted%20Coffee','reservation','menu', 'contact','gallery','blog','chefs','blogdetails','faq','story','shop']; 
-                                                            if (!existingPaths.includes(searchValue.toLowerCase())) {
-                                                                alert("The entered path does not exist. Please select a valid path before searching.");
-                                                               // errorMessageElement.textContent = "The entered path does not exist. Please select a valid path before searching.";
-                                                                return false; 
+                                                    function searchProduct(event) 
+                                                    {
+                                                        event.preventDefault();
+                                                        
+                                                        var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                                                        if (searchTerm !== "") {
+                                                            $.ajax({
+                                                                url: '/Products/SearchProduct', // URL to the action that searches for products
+                                                                type: 'GET',
+                                                                data: { name: searchTerm },
+                                                                success: function (response) {
+                                                                    if (response === "Product is not exist") {
+                                                                        alert("Product does not exist");
+                                                                    } else {
+                                                                        window.location.href = '/Products/ProductDetails/' + response;
+                                                                    }
+                                                                },
+                                                                error: function (error) {
+                                                                    console.error('Error searching for product:', error);
+                                                                }
+                                                            });
                                                             }
-                                                        }
-
-                                                        return false;
+                                                        
                                                     }
-                                                </script>
+
+                                                    </script>
                                     </div>
                                 </div>
                                         <div class="login-trigger item" id="loginTrigger">
@@ -476,25 +482,7 @@
                     <div class="cart-bar__close">
                         <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);"><i class="fal fa-times"></i></a>
                     </div>
-                    <div class="cart-bar">
-                    <h4 class="cart-bar__title">Cart Items - <span id="cartItemCount"> </span></h4>
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                           
-                            updateCartItemCount();
-
-                            function updateCartItemCount() {
-                               
-                                const cartItemCount = document.querySelectorAll('.cart-bar__item').length;
-
-                               
-                                const pluralSuffix = cartItemCount === 1 ? '' : 's';
-
-                               
-                                document.getElementById('cartItemCount').textContent = `${cartItemCount} item${pluralSuffix}`;
-                            }
-                        });
-                    </script>
+                    
                     <partial name="_CartPartial" />
                 </aside>
            

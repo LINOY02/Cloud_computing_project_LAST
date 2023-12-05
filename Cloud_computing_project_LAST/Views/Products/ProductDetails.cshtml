@@ -292,7 +292,7 @@
                                     <a href="/CartItems/Cart"><i class="fal fa-shopping-basket"></i></a>
                                 </div>
                                 <div class="view d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-eye"></i></a>
+                                        <a href="#" class="product-link" data-product-id="@item.Id"><i class="fal fa-eye"></i></a>
                                 </div>
                             </div>
                             <div class="pp__thumb pp__thumb--2 mt-35">
@@ -324,5 +324,18 @@
         <!-- releted products area end -->
 
     </main>
+    script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.product-link').on('click', function (e) {
+                e.preventDefault(); // Prevent the default link behavior
+
+                var productId = $(this).data('product-id');
+
+                // Redirect to the ProductDetails action with the product ID as a parameter
+                window.location.href = '/Products/ProductDetails/' + productId;
+            });
+        });
+    </script>
 </body>
 

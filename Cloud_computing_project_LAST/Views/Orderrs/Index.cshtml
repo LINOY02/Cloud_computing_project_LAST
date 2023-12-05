@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Cloud_computing_project_LAST.Models.Orderr>
+@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var weatherInfo = DbContext.Weather.ToList();
+    var hebcalInfo = DbContext.Hebcal.ToList();
 }
 <head>
     <link href="~/assets/css/stylecafe.css" rel="stylesheet" />
@@ -110,9 +113,9 @@
                 <td>
                     <a class="custom-link" asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a class="custom-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                    <a class="custom-link" asp-Controller="Weathers" asp-action="Details" asp-route-id="@item.Id">Weather</a> |
+                    <a class="custom-link" asp-Controller="Weathers" asp-action="Details" asp-route-id="@weatherInfo.Find(e => e.orderId == item.Id).Id">Weather</a> |
                     <br>
-                    <a class="custom-link" asp-Controller="Hebcals" asp-action="Details" asp-route-id="@item.Id">Hebrow date</a>
+                    <a class="custom-link" asp-Controller="Hebcals" asp-action="Details" asp-route-id="@hebcalInfo.Find(e => e.orderId == item.Id).Id">Hebrow date</a>
 
                 </td>
             </tr>
