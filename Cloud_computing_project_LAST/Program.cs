@@ -63,25 +63,25 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    var email = "ayalahaim20@gmail.com";
-    var password = "AyalaHaim!1";
+//    var email = "ayalahaim20@gmail.com";
+//    var password = "AyalaHaim!1";
 
-    if (await userManager.FindByEmailAsync(email) == null)
-    {
-        var user = new IdentityUser();
-        user.UserName = email;
-        user.Email = email;
-        user.EmailConfirmed = true;
+//    if (await userManager.FindByEmailAsync(email) == null)
+//    {
+//        var user = new IdentityUser();
+//        user.UserName = email;
+//        user.Email = email;
+//        user.EmailConfirmed = true;
        
 
-        await userManager.CreateAsync(user, password);
-        await userManager.AddToRoleAsync(user, "Manager");
-    }
+//        await userManager.CreateAsync(user, password);
+//        await userManager.AddToRoleAsync(user, "Manager");
+//    }
 
-}
+//}
 
 app.Run();
