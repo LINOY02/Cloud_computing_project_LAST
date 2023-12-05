@@ -46,12 +46,10 @@
                                 </div>
                             </nav>
                             <div class="sort-wrapper ml-45">
-                                <select name="select" id="select" style="color:white;background-color:black">
-                                    <option value="1">Short By New</option>
-                                    <option value="2">Short By New</option>
-                                    <option value="3">Short By New</option>
-                                    <option value="4">Short By New</option>
-                                    <option value="5">Short By New</option>
+                                <select name="select" id="select" style="color:white;background-color:black" >
+                                    <option value="1">Sort By</option>
+                                    <option value="2">Sort Low to High</option>
+                                    <option value="3">Short High to Low</option>
                                 </select>
                             </div>
                         </div>
@@ -61,95 +59,100 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-8">
                     <div class="tab-content" id="shop-tabContent">
-                        <div class="tab-pane fade show mt-none-30 active" id="shop-tab-1" role="tabpanel" aria-labelledby="shop-tab-1-tab">
-                            <div class="row">
-                                @foreach (var product in Model)
-                                {
-                                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
-                                        <div class="pp__item pp__item--2 active text-center pt-20 pb-20" style="background-color:black">
-                                            <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
-                                                <div class="cart d-flex align-items-center justify-content-center" style="background-color:black">
-                                                    <a href="/CartItems/Cart" style="color:white"><i class="fal fa-shopping-basket"></i></a>
-                                                </div>
-                                                <div class="view d-flex align-items-center justify-content-center">
-                                                    <button style="background-color:black" class="view-product" id="my-button" data-product-id="@product.Id">
-                                                        <i class="fal fa-eye" style="color:white"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="pp__thumb pp__thumb--2 mt-35">
-                                                <img src="@product.ImageUrl" alt="" width="121" height="172">
-                                            </div>
-                                            <div class="pp__content pp__content--2 mt-25">
-                                                <h4 class="pp__title pp__title--2">
-                                                    <a href="#" class="product-link" data-product-id="@product.Id" style="color:white">@product.Name</a>
+                        
+                                <div class="tab-pane fade show mt-none-30 active" id="shop-tab-1" role="tabpanel" aria-labelledby="shop-tab-1-tab">
+                                    <div class="row" id="productContainer">
+                                        @foreach (var product in Model)
+                                        {
+                                            <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                                                <div class="pp__item pp__item--2 active text-center pt-20 pb-20" style="background-color:black">
+                                                    <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
+                                                        <div class="cart d-flex align-items-center justify-content-center" style="background-color:black">
+                                                            <a href="/CartItems/Cart" style="color:white"><i class="fal fa-shopping-basket"></i></a>
+                                                        </div>
+                                                        <div class="view d-flex align-items-center justify-content-center">
+                                                            <button style="background-color:black" class="product-link" id="my-button" data-product-id="@product.Id">
+                                                                <i class="fal fa-eye" style="color:white"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp__thumb pp__thumb--2 mt-35">
+                                                        <img src="@product.ImageUrl" alt="" width="121" height="172">
+                                                    </div>
+                                                    <div class="pp__content pp__content--2 mt-25">
+                                                        <div class="pp__c-top d-flex align-items-center justify-content-center">
+                                                            <div class="pp__cat pp__cat--2">
+                                                                <a href="#0" style="color:lightgray">-----------------</a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="pp__title pp__title--2">
+                                                            <a href="#" class="product-link" data-product-id="@product.Id" style="color:white">@product.Name</a>
 
-                                                </h4>
-                                                <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
-                                                    <h6 class="label" style="color:white">Price - </h6>
-                                                    <span class="price"> $@product.Price </span>
+                                                        </h4>
+                                                        <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
+                                                            <h6 class="label" style="color:white">Price - </h6>
+                                                            <span class="price"> $@product.Price </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        }
                                         </div>
-                                    </div>
-                                }
-                                <!-- product popup start -->
-                                <div class="product-popup product-popup-1" id="product-popup">
-                                    <div class="view-background" style="background-color:black">
-                                        <div class="row">
-                                            <div class="col-md-4 align-self-center">
-                                                <div class="quickview d-flex align-items-center justify-content-center">
-                                                    <div class="quickview__thumb">
-                                                        <img class="my_img" src="" alt="">
+                                   </div>
+
+
+                                <div class="tab-pane fade mt-none-30" id="shop-tab-2" role="tabpanel" aria-labelledby="shop-tab-2-tab">
+                                
+                                <div class="row" id="productContainerTab2">
+                                        @foreach (var product in Model)
+                                        {
+                                            <div class="col-xl-12 mt-30">
+                                                <div class="pp__item pp__item--2 text-center pt-30 pb-25" style="background-color:black">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <div class="pp__thumb pp__thumb--2 m-0">
+                                                        <img src="@product.ImageUrl" alt="" width="141" height="172">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <div class="pp__content pp__content--2 m-0">
+                                                                <div class="pp__c-top d-flex align-items-center">
+                                                                    <div class="pp__cat pp__cat--2">
+                                                                        <a href="#0" class="product-link" data-product-id="@product.Id" style="color:white; font-size:25px;">@product.Name</a>
+                                                                    </div>
+                                                                </div>
+
+                                                        <h4 class="pp__title pp__title--2" style="text-align: left;">
+                                                            <a href="product-details.html" style="color: gray; font-size: 13px; text-align: left;">
+                                                                @product.Description
+                                                            </a>
+                                                        </h4>
+                                                                <div class="pp__price pp__price--2 d-flex align-items-center">
+                                                            <h6 class="label" style="color:white; font-size:16px">Price - </h6>
+                                                            <span class="price" style="color:#C7A17A; font-size:16px"> $@product.Price</span>
+                                                                </div>
+                                                                <div class="pp__action pp__action--2 d-flex align-items-center mt-15">
+                                                            <div class="cart d-flex align-items-center justify-content-center" style="background-color:black">
+                                                                        <a href="/CartItems/Cart"><i class="fal fa-shopping-basket"></i></a>
+                                                                    </div>
+
+                                                            <div class="view d-flex align-items-center justify-content-center" style="background-color:black">
+                                                                        <a href="#0" class="product-link" data-product-id="@product.Id"><i class="fal fa-eye"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <div class="viewcontent">
-                                                    <div class="viewcontent__header">
-                                                        <h2 class="my_name" style="color:white"></h2>
-                                                        <a class="view_close product-p-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
-                                                    </div>
-                                                    <div class="viewcontent__price">
-                                                        <h4 class="my_price" style="color:white"><span>$</span></h4>
-                                                    </div>
-                                                    <div class="viewcontent__stock">
-                                                        <h4 style="color:white">Available :<span id="availabilityLabel" class="my_inStock" @* id="availabilityLabel" *@></span></h4>
-                                                    </div>
-                                                    @* <script>
-                                                    // Get the quantity in inventory from the model
-                                                    var quantityInInventory = @product.InStock;
-
-                                                    // Get the availability label element
-                                                    var availabilityLabel = document.getElementById("availabilityLabel");
-
-                                                    // Check the quantity and set the label text accordingly
-                                                    if (quantityInInventory > 0) {
-                                                    availabilityLabel.textContent = "In Stock";
-                                                    availabilityLabel.style.color = "white";
-                                                    } else {
-                                                    availabilityLabel.textContent = "Out of Stock";
-                                                    availabilityLabel.style.color = "#a7a7a7";
-                                                    }
-                                                    </script> *@
-                                                    <div class="viewcontent__details">
-                                                        <p class="my_description"></p>
-                                                    </div>
-                                                    <div class="viewcontent__action">
-                                                        <span style="color:white">Qty</span>
-                                                        <input type="number" placeholder="1">
-                                                        <a class="site-btn" href="#">add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        }
                                 </div>
-                                <!-- product popup end -->
                             </div>
-                        </div>
+                                
+                             
                     </div>
                 </div>
+                
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function () {
@@ -199,50 +202,145 @@
                             </p>
                         </div>
 
-                        <!-- Include jQuery -->
-                        @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-                        <!-- Include jQuery UI -->
-                        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                         <script>
-                            $(document).ready(function () {
-                                var userInputValue = document.getElementById("amount").value;
 
-                                // Initialize the slider
+                            $(document).ready(function () {
+                                $('#select').change(function () {
+                                    var selectedOption = $(this).val();
+                                    var products = @Html.Raw(Json.Serialize(Model)); // Replace this with your actual list of products
+                                    
+                                    if (selectedOption == '2') {
+                                        // Sort products low to high by price
+                                        products.sort(function (a, b) {
+                                            return a.price - b.price;
+                                        });
+                                    } else if (selectedOption == '3') {
+                                        // Sort products high to low by price
+                                        products.sort(function (a, b) {
+                                            return b.price - a.price;
+                                        });
+                                    }
+
+                                    // Update the product list on the page with the sorted products
+                                    updateProductList(products);
+                                });
+                           
+
+
                                 $("#slider-range").slider({
                                     range: true,
-                                    min: userInputValue.val,
-                                    max: /* your max price */,
-                                    values: [0, 100],
+                                    min: 0,
+                                    max: 300,
+                                    values: [0, 300],
                                     slide: function (event, ui) {
                                         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                                     }
                                 });
 
-                                // Set initial values for the amount input
                                 $("#amount").val("$" + $("#slider-range").slider("values", 0) +
                                     " - $" + $("#slider-range").slider("values", 1));
 
-                                // Handle filter button click
                                 $("#filterButton").on("click", function () {
-                                    // Get the selected price range
                                     var minPrice = $("#slider-range").slider("values", 0);
                                     var maxPrice = $("#slider-range").slider("values", 1);
 
-                                    // Call a function to filter products based on the selected price range
                                     filterProducts(minPrice, maxPrice);
                                 });
 
-                                // Add your function to filter products based on price range
                                 function filterProducts(minPrice, maxPrice) {
-                                    // Make an AJAX request or perform any action to filter products on the server
-                                    // Update the product list on the page accordingly
-                                    console.log("Filtering products between $" + minPrice + " and $" + maxPrice);
-                                    // Add your logic here to update the product list
+                                    var products = @Html.Raw(Json.Serialize(Model)); // Replace this with your actual list of products
+                                    //var selectedOption = $(this).val();
+                                    // Filter products based on the price range
+                                    
+                                        var filteredProducts = products.filter(function (product) {
+                                            return product.price >= minPrice && product.price <= maxPrice;
+                                        });
+                                   
+                                    //if (selectedOption == 2)
+                                    //{
+                                    //    var filteredProducts = products.filter(function (product) {
+                                    //        return product.price >= minPrice && product.price <= maxPrice;
+                                    //    });
+                                    //    filteredProducts.sort(function (a, b) {
+                                    //        return a.price - b.price;
+                                    //    });
+                                    //}
+                                    //else
+                                    //{
+                                    //    var filteredProducts = products.filter(function (product) {
+                                    //        return product.price >= minPrice && product.price <= maxPrice;
+                                    //    });
+
+                                    //    filteredProducts.sort(function (a, b) {
+                                    //        return b.price - a.price;
+                                    //    });
+                                    //}
+                                    console.log(filteredProducts);
+                                    // Call a function to update the product list on the page with the filtered products
+                                    updateProductList(filteredProducts);
                                 }
+
+                                function updateProductList(filteredProducts) {
+                                    // Assuming you have a container element for displaying products
+                                    console.log("update");
+                                    var productContainer = document.getElementById('productContainer');
+                                    productContainer.innerHTML = ''; // Clear the existing product list
+                                    
+                                    // Loop through the filtered products and generate HTML for each product
+                                    filteredProducts.forEach(function (product) {
+                                        
+                                        var productHtml = `
+                                                                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30">
+                                                                                                <div class="pp__item pp__item--2 active text-center pt-20 pb-20" style="background-color:black">
+                                                                                                    <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
+                                                                                                        <div class="cart d-flex align-items-center justify-content-center" style="background-color:black">
+                                                                                                            <a href="/CartItems/Cart" style="color:white"><i class="fal fa-shopping-basket"></i></a>
+                                                                                                        </div>
+                                                                                                        <div class="view d-flex align-items-center justify-content-center">
+                                                                                                            <button style="background-color:black" class="product-link" id="my-button" data-product-id="${product.id}">
+                                                                                                                <i class="fal fa-eye" style="color:white"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="pp__thumb pp__thumb--2 mt-35">
+                                                                                                        <img src="${product.imageUrl}" alt="" width="121" height="172">
+                                                                                                    </div>
+                                                                                                    <div class="pp__content pp__content--2 mt-25">
+                                                                                                        <div class="pp__c-top d-flex align-items-center justify-content-center">
+                                                                                                            <div class="pp__cat pp__cat--2">
+                                                                                                                <a href="#0" style="color:lightgray">-----------------</a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <h4 class="pp__title pp__title--2">
+                                                                                                            <a href="#" class="product-link" data-product-id="${product.id}" style="color:white">${product.name}</a>
+
+                                                                                                        </h4>
+                                                                                                        <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
+                                                                                                            <h6 class="label" style="color:white">Price - </h6>
+                                                                                                            <span class="price"> $${product.price} </span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                    `;
+
+                                        // Append each product HTML to the container
+                                        productContainer.insertAdjacentHTML('beforeend', productHtml);
+
+                                    });
+                                } function handleProductLinkClick(e) {
+                                    e.preventDefault();
+                                    var productId = $(this).data('product-id');
+                                    window.location.href = '/Products/ProductDetails/' + productId;
+                                }
+
+                                // Attach the click event listener to the document body for .product-link elements
+                                $(document.body).on('click', '.product-link', handleProductLinkClick);
                             });
-                        </script> *@
+
+                        </script>
                     </div>
                 </div>
             </div>
