@@ -1,8 +1,11 @@
 ﻿@model Cloud_computing_project_LAST.Models.Product
+@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
 
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var allProducts = DbContext.Product.ToList().FindAll(p => p.Id != Model.Id);
+    var items = allProducts.Take(4).ToList();
 }
 <head>
     <style>
@@ -161,9 +164,11 @@
                     <div class="col-xl-6">
                         <div class="product-details__content">
                             <div class="tr-wrapper d-flex align-items-center justify-content-between">
-                                <h5 class="title stripe" style="color:white;">@Html.DisplayFor(model => model.Name)</h5>
-                                <hr/>
+                                <h5 class="title" style="color: white; text-decoration: underline;">@Html.DisplayFor(model => model.Name)</h5>
+                                
                             </div>
+                            <hr class="white-line" style="width: 360px; height: 2px; background-color: white; border: none;">
+                            <hr/>
                             <p style="color:lightgray; font-size: 20px;">
                                 @Html.DisplayFor(model => model.Description)</p>
                              <hr/>
@@ -174,6 +179,7 @@
                                     <i class="fal fa-check stock-icon" style=" color: #C7A17A"></i>
                                     <span class="stock-text">In Stock</span>
                                 </span>
+
                             }
                             else
                             {
@@ -182,7 +188,11 @@
                                     <span class="stock-text">Out of Stock</span>
                                 </span>
                             }
-                            <h3 class="price" style="color:white">@Html.DisplayFor(model => model.Price)$</h3>
+                            <hr/>
+                            <div class="pp__price pp__price--2 d-flex">
+                                <h6 class="label" style="color:white; font-size:20px;">Price - </h6>
+                                <span class="price"> $@Model.Price</span>
+                            </div>
                             <div class="product-quantity d-flex align-items-center">
                                 <span>Quantity</span>
                                 <input type="number" id="quantityInput" placeholder="0" min="0">
@@ -195,15 +205,18 @@
                                     <botton class="out-btn" id="addToCartBtnOut" disabled >Add to Cart</botton>
                                 }
                             </div>
-                            <a href="#0" class="wishlist"><i class="fas fa-heart"></i> Add to watch list</a>
+                            <a href="#0" class="wishlist"></a>
                             <div class="pd-social-wrapper">
-                                <span class="share"><i class="fas fa-share"></i> Share</span>
+                                <span class="share"></span>
                                 <div class="social-links d-flex align-items-center">
-                                    <a href="#0" target="_blank"><i class="fab fa-twitter"></i></a>
-                                    <a href="#0" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#0" target="_blank"><i class="fab fa-youtube"></i></a>
-                                    <a href="#0" target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                                    <a href="#0" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
+                                    <a href="#0" style="background-color:#C7A17A"></a>
                                 </div>
                             </div>
                         </div>
@@ -258,270 +271,71 @@
             });
         </script>
         <!-- product details area end -->
-        <!-- product info start -->
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="pinfo-tab">
-                        <nav>
-                            <div class="nav d-flex align-items-center justify-content-center" id="pinfo-tab" role="tablist">
-                                <a class="nav-link active" id="pinfo-1-tab" data-bs-toggle="tab" href="#pinfo-1" role="tab" aria-controls="pinfo-1" aria-selected="true">
-                                    Product Details
-                                </a>
-                                <a class="nav-link" id="pinfo-2-tab" data-bs-toggle="tab" href="#pinfo-2" role="tab" aria-controls="pinfo-2" aria-selected="true">
-                                    additional imformation
-                                </a>
-                                <a class="nav-link" id="pinfo-3-tab" data-bs-toggle="tab" href="#pinfo-3" role="tab" aria-controls="pinfo-3" aria-selected="true">
-                                    (04) Review
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="tab-content pinfo-content" id="pinfoContent">
-                        <div class="tab-pane fade show active" id="pinfo-1" role="tabpanel" aria-labelledby="pinfo-1-tab">
-                            <p>Rrem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,</p>
-                        </div>
-                        <div class="tab-pane fade" id="pinfo-2" role="tabpanel" aria-labelledby="pinfo-2-tab">
-                            <ul class="adi-info list-unstyled mb-0">
-                                <li>Weight</li>
-                                <li>1.4 oz</li>
-                                <li>Dimensions</li>
-                                <li>62 × 56 × 12 in</li>
-                                <li>Size</li>
-                                <li>XL, XXL, LG, SM, MD</li>
-                                <li>Fabric</li>
-                                <li>Cotton, Silk &amp; Synthetic</li>
-                                <li>Warranty</li>
-                                <li>3 Months</li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" id="pinfo-3" role="tabpanel" aria-labelledby="pinfo-3-tab">
-                            <div class="pp-comments">
-                                <div class="comment d-flex">
-                                    <div class="thumb">
-                                        <img src="~/assets/images/author/c-author-1.png" alt="img">
-                                    </div>
-                                    <div class="content pl-20">
-                                        <h5 class="name">Roger West -<span class="date">June 5, 2021</span></h5>
-                                        <div class="review d-flex">
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                                    </div>
-                                </div>
-                                <div class="comment d-flex">
-                                    <div class="thumb">
-                                        <img src="~/assets/images/author/c-author-2.png" alt="img">
-                                    </div>
-                                    <div class="content pl-20">
-                                        <h5 class="name">Aayat West -<span class="date">June 9, 2021</span></h5>
-                                        <div class="review d-flex">
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                            <i class="fal fa-star"></i>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pp-comments-form mt-50">
-                                <h4 class="title">Add a Review</h4>
-                                <div class="rev-top d-flex align-items-center mb-40">
-                                    <span>Your Rating:</span>
-                                    <div class="review d-flex align-items-center">
-                                        <a href="#0"><i class="fal fa-star"></i></a>
-                                        <a href="#0"><i class="fal fa-star"></i></a>
-                                        <a href="#0"><i class="fal fa-star"></i></a>
-                                        <a href="#0"><i class="fal fa-star"></i></a>
-                                        <a href="#0"><i class="fal fa-star"></i></a>
-                                    </div>
-                                </div>
-                                <form action="index.html">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group mb-15">
-                                                <label for="message">YOUR REVIEW</label>
-                                                <textarea name="message" id="message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-30">
-                                                <label for="message">Name</label>
-                                                <input type="text" name="name" id="name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-30">
-                                                <label for="email2">Email</label>
-                                                <input type="email" name="email2" id="email2">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button class="site-btn">submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- product info end -->
+       
         <!-- releted products area start -->
         <div class="releted-product__area pt-100 pb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <h2 class="rp-title mb-30">
-                            Reletad Product
+                        <h2 class="rp-title mb-30" style="color:white">
+                            Another Products
                         </h2>
                     </div>
                 </div>
                 <div class="row mt-none-30">
+                   @foreach(var item in items)
+                   {
                     <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
-                        <div class="pp__item pp__item--2 text-center pt-20 pb-20">
+                            <div class="pp__item pp__item--2 text-center pt-20 pb-20" style="background-color:white">
                             <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
                                 <div class="cart d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
-                                </div>
-                                <div class="wishlist d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-heart"></i></a>
+                                    <a href="/CartItems/Cart"><i class="fal fa-shopping-basket"></i></a>
                                 </div>
                                 <div class="view d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-eye"></i></a>
+                                        <a href="#" class="product-link" data-product-id="@item.Id"><i class="fal fa-eye"></i></a>
                                 </div>
                             </div>
                             <div class="pp__thumb pp__thumb--2 mt-35">
-                                <img class="default" src="~/assets/images/products/shop/s-p-1.png" alt="">
-                                <img class="on-hover" src="~/assets/images/products/shop/s-p-2.png" alt="">
-                            </div>
+                                <img class="default" src="@item.ImageUrl" alt="" width="101" height="156">
+                                    <img class="on-hover" src="@item.ImageUrl" alt="" width="101" height="156">
+                             </div>
                             <div class="pp__content pp__content--2 mt-25">
                                 <div class="pp__c-top d-flex align-items-center justify-content-center">
                                     <div class="pp__cat pp__cat--2">
-                                        <a href="#0">Rosted Coffee</a>
+                                        <a href="#0">-----------------</a>
                                     </div>
                                 </div>
                                 <h4 class="pp__title pp__title--2">
-                                    <a asp-controller="Home" asp-action="ProductDetails">vicaragua Coffee Beans</a>
+                                        <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.Id">@item.Name</a>
                                 </h4>
                                 <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
                                     <h6 class="label">Price - </h6>
-                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
+                                    <span class="price"> $@item.Price</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
-                        <div class="pp__item pp__item--2 text-center pt-20 pb-20">
-                            <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
-                                <div class="cart d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
-                                </div>
-                                <div class="wishlist d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-heart"></i></a>
-                                </div>
-                                <div class="view d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="pp__thumb pp__thumb--2 mt-35">
-                                <img class="default" src="assets/images/products/shop/s-p-2.png" alt="">
-                                <img class="on-hover" src="assets/images/products/shop/s-p-3.png" alt="">
-                            </div>
-                            <div class="pp__content pp__content--2 mt-25">
-                                <div class="pp__c-top d-flex align-items-center justify-content-center">
-                                    <div class="pp__cat pp__cat--2">
-                                        <a href="#0">Rosted Coffee</a>
-                                    </div>
-                                </div>
-                                <h4 class="pp__title pp__title--2">
-                                    <a href="product-details.html">CAFFÈ LATTE</a>
-                                </h4>
-                                <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
-                                    <h6 class="label">Price - </h6>
-                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
-                        <div class="pp__item pp__item--2 text-center pt-20 pb-20">
-                            <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
-                                <div class="cart d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
-                                </div>
-                                <div class="wishlist d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-heart"></i></a>
-                                </div>
-                                <div class="view d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="pp__thumb pp__thumb--2 mt-35">
-                                <img class="default" src="assets/images/products/shop/s-p-3.png" alt="">
-                                <img class="on-hover" src="assets/images/products/shop/s-p-4.png" alt="">
-                            </div>
-                            <div class="pp__content pp__content--2 mt-25">
-                                <div class="pp__c-top d-flex align-items-center justify-content-center">
-                                    <div class="pp__cat pp__cat--2">
-                                        <a href="#0">Rosted Coffee</a>
-                                    </div>
-                                </div>
-                                <h4 class="pp__title pp__title--2">
-                                    <a asp-controller="Home" asp-action="ProductDetails">JAPANIS COFFEE GRED</a>
-                                </h4>
-                                <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
-                                    <h6 class="label">Price - </h6>
-                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
-                        <div class="pp__item pp__item--2 text-center pt-20 pb-20">
-                            <div class="pp__action pp__action--2 d-flex align-items-center justify-content-center">
-                                <div class="cart d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-shopping-basket"></i></a>
-                                </div>
-                                <div class="wishlist d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-heart"></i></a>
-                                </div>
-                                <div class="view d-flex align-items-center justify-content-center">
-                                    <a href="#0"><i class="fal fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="pp__thumb pp__thumb--2 mt-35">
-                                <img class="default" src="~/assets/images/products/shop/s-p-4.png" alt="">
-                                <img class="on-hover" src="~/assets/images/products/shop/s-p-5.png" alt="">
-                            </div>
-                            <div class="pp__content pp__content--2 mt-25">
-                                <div class="pp__c-top d-flex align-items-center justify-content-center">
-                                    <div class="pp__cat pp__cat--2">
-                                        <a href="#0">Rosted Coffee</a>
-                                    </div>
-                                </div>
-                                <h4 class="pp__title pp__title--2">
-                                    <a asp-controller="Home" asp-action="ProductDetails">AMERICANO COFFEE</a>
-                                </h4>
-                                <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
-                                    <h6 class="label">Price - </h6>
-                                    <span class="price"> $325.00 / <span class="regular"><del>$348</del></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                   }
+                   
                 </div>
             </div>
         </div>
         <!-- releted products area end -->
 
     </main>
+    script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.product-link').on('click', function (e) {
+                e.preventDefault(); // Prevent the default link behavior
+
+                var productId = $(this).data('product-id');
+
+                // Redirect to the ProductDetails action with the product ID as a parameter
+                window.location.href = '/Products/ProductDetails/' + productId;
+            });
+        });
+    </script>
 </body>
 

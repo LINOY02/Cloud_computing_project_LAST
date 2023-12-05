@@ -215,5 +215,16 @@ if (imaggaResponse.Contains("Error"))
 
             return View(product);
         }
+
+        [HttpGet]
+        public IActionResult SearchProduct(string name)
+        {
+            var products = _context.Product.ToList();
+            var product = products.Find(p => p.Name == name);
+            if(product == null)
+                return Json("Product is not exist");
+            else
+                return Json(product.Id);
+        }
     }
 }

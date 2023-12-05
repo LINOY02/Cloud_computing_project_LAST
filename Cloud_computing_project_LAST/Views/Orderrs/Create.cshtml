@@ -125,37 +125,45 @@
                                                                 <input asp-for="Info" class="form-control" />
                                                                 <span asp-validation-for="Info" class="text-danger"></span>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label asp-for="TotalPrice" class="control-label" style="margin-right: 10px; border: none !important;"></label>
-                                                                <input asp-for="TotalPrice" class="form-control" />
-                                                                 @*<div style="flex: 1;">
-                                                                    <label id="TotalPrice" class="form-control" style="border: none;">
-                                                                        @ViewData["TotalPrice"]
-                                                                    </label>
-                                                                </div>*@
-                                                                <span asp-validation-for="TotalPrice" class="text-danger"></span>
-                                                            </div>
-                                                            <h3 style="color:white">
-                                                                .
-                                                            </h3>
-                                                            <h3 style="color:white">
-                                                                .
-                                                            </h3>
-                                                            <div class="col-xl-12 d-flex align-items-center justify-content-center text-center">
-                                                                <nav>
-                                                                    <div class="nav" id="shop-filter-tab" role="tablist">
-                                                                        <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" role="tab" href="/Orderr/Create#paypal-button-container" aria-controls="pd-1" aria-selected="true" onclick="validateSelection()">
-                                                                            Paypal
-                                                                        </a>
-                                                                        <a class="nav-link" id="pd-2-tab" data-bs-toggle="tab" role="tab" aria-controls="pd-1" aria-selected="true" onclick="validateSelection()">
-                                                                            Cash on Delivery
-                                                                        </a>
+                                                           
+
+                                                            <div class="row">
+                                                                <div class="col-xl-8">
+                                                                    <div class="cart-total mt-45 text-end">
+                                                                        <h2 class="title text-start">Cart Total</h2>
+                                                                        <div class="ct-sub">
+                                                                            @*<div class="form-group">*@
+                                                                                
+                                                                                <div class="col-xl-12 d-flex align-items-center justify-content-center text-center">
+                                                                                    <label asp-for="TotalPrice" class="control-label">
+                                                                                    <nav>
+                                                                                        <div class="nav" id="shop-filter-tab" role="tablist">
+                                                                                            <a class="nav-link" id="pd-1-tab" data-bs-toggle="tab" role="tab" aria-controls="pd-1" aria-selected="true" onclick="showPaypal()">
+                                                                                                Paypal
+                                                                                            </a>
+                                                                                            <a class="nav-link" id="pd-2-tab" data-bs-toggle="tab" role="tab" aria-controls="pd-1" aria-selected="true" onclick="validateSelection()">
+                                                                                                Cash on Delivery
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </nav>
+                                                                                    </label>
+                                                                                </div>
+                                                                                
+                                                                                <input asp-for="TotalPrice" class="form-control" readonly />
+                                                                                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                                                                            @*</div>*@
+                                                                        </div>
                                                                     </div>
-                                                                </nav>
+                                                                </div>
                                                             </div>
-                                                            
+                                                            <h3 style="color:white">
+                                                                .
+                                                            </h3>
+                                                            <h3 style="color:white">
+                                                                .
+                                                            </h3>
                                                         </div>
-                                                        <script>
+                                                    @*    <script>
                                                             function validateSelection() {
                                                                 var paypalTab = document.getElementById("pd-1-tab");
                                                                 var codTab = document.getElementById("pd-2-tab");
@@ -166,11 +174,13 @@
                                                                     document.getElementById("createButton").disabled = true;
                                                                 }
                                                             }
-                                                        </script>
+                                                        </script>*@
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                        <div id="paypal-container" style="display: none;">
                                         <script src="https://www.paypal.com/sdk/js?client-id=AQ3cycaNrcGUw0JcKGMovAvR81yjV8u9eVIQslKzwrm6944bZqnh6J_oOMje1xMHUSeJJm9Cjss6H5eN&components=buttons"></script>
                                         <div id="paypal-button-container" style="max-width:1000px;"></div>
                                         <script src="https://www.paypal.com/sdk/js?client-id=AQ3cycaNrcGUw0JcKGMovAvR81yjV8u9eVIQslKzwrm6944bZqnh6J_oOMje1xMHUSeJJm9Cjss6H5eN&components=buttons"></script>
@@ -186,8 +196,28 @@
                                                 }
                                             }).render('#paypal-button-container');
                                         </script>
-                                        <div class="site-btn mt-30">
-                                            <input id="createButton" type="submit" value="Submit Order" style="font-size: 16px; color: black; background: none !important;" disabled />
+                                        </div>
+
+                                        <script>
+                                            function showPaypal() {
+                                                var paypalContainer = document.getElementById("paypal-container");
+                                                paypalContainer.style.display = "block";
+                                                var paypalContainer = document.getElementById("submit-container");
+                                                paypalContainer.style.display = "block";
+                                            }
+                                        </script>
+                                        <script>
+                                            function validateSelection() {
+                                                var paypalContainer = document.getElementById("paypal-container");
+                                                paypalContainer.style.display = "none";
+                                                var paypalContainer = document.getElementById("submit-container");
+                                                paypalContainer.style.display = "block";
+                                            }
+                                        </script>
+                                        <div id="submit-container" style="display: none;">
+                                            <div class="site-btn">
+                                            <input id="createButton" type="submit" value="Submit Order" style="font-size: 18px; background: none !important;" />
+                                        </div>
                                         </div>
                                 </div>
                             </div>

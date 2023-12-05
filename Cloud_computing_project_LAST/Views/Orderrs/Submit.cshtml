@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Submit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <link href="~/assets/css/stylecafe.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: black
+        }
+
+        .custom-link {
+            color: white; /* Set the text color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <h2 class="page-title">Thank you for your order</h2>
+                <div class="cafena-breadcrumb breadcrumbs">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center">
+                        <li class="cafenabcrumb-item duxinbcrumb-end">
+                            <span>Your order is expected to arrive in about an hour</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 text-center">
+        <button type="submit" class="site-btn mt-30" action=""><a asp-action="Index" asp-controller="Home" style="color: black">Back to the Home Page</a></button>
+    </div>
+</body>
+

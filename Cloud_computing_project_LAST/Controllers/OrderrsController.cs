@@ -78,7 +78,7 @@ namespace Cloud_computing_project_LAST.Controllers
         // GET: Orderrs/Create
         public async Task<IActionResult> Create()
         {
-            Orderr orderr = null;
+            Orderr orderr = new Orderr();
             if (ModelState.IsValid)
             {
                 if (User.Identity.IsAuthenticated)
@@ -87,21 +87,30 @@ namespace Cloud_computing_project_LAST.Controllers
                     var carts = _context.Cart.ToList();
                     var cart = carts.Find(e => e.userId == User.Identity.Name);
                     orderr = CreateOrderFromUser(user);
+                    orderr.TotalPrice = cart.TotalPrice;
                 }
                 if (User.Identity.IsAuthenticated)
                 {
                     var carts = _context.Cart.ToList();
                     var cart = carts.Find(e => e.userId == User.Identity.Name);
                     orderr.TotalPrice = cart.TotalPrice;
-
                 }
                 else
                 {
                     var httpContext = _httpContextAccessor.HttpContext;
                     var guestCart = httpContext.Session.GetString("GuestCart");
-                    var cart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
-                    orderr.TotalPrice = cart.TotalPrice;
+                    if (guestCart != null)
+                    {
+                        var cart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
+
+                        orderr.TotalPrice = cart.TotalPrice;
+                    }
+                    else
+                    {
+                        orderr.TotalPrice = 0;
+                    }
                 }
+
             }
             return View(orderr);
         }
@@ -123,7 +132,7 @@ namespace Cloud_computing_project_LAST.Controllers
                 await SendOrderConfirmationEmail(orderr);
                 ViewData["OrderDate"] = orderr.OrderDate;
                 ViewData["DeliveryDate"] = orderr.DeliveryDate;
-
+               
                 var orders =_context.Orderr.ToList();
                 orderr = orders.FindAll(e => e.Email == User.Identity.Name).OrderByDescending(e => e.OrderDate) // Assuming there's a DateAdded property for the order
                         .FirstOrDefault();

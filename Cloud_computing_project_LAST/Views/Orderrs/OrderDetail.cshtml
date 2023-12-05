@@ -9,7 +9,46 @@
     var orderItems = items.FindAll(e => e.orderId == Model.Id);
 
 }
+<head>
+    <style>
+        body {
+            background-color: black
+        }
 
+        .custom-link {
+            color: black; /* Set the text color to white */
+        }
+
+            .custom-link:hover {
+                color: #C7A17A; /* Change the text color to blue on hover */
+            }
+
+        .btn.btn-primary {
+            /* Your primary button styles */
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: #C7A17A;
+            padding: 9.5px 34px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            border: 1px solid #C7A17A;
+            font-weight: 500;
+        }
+
+            /* Hover effect for the primary button */
+            .btn.btn-primary:hover {
+                background: black;
+                border-color: black;
+                color: white;
+            }
+    </style>
+</head>
+<hr />
 <body class="dark-bg">
     
         <!-- breadcrumb area start -->
@@ -46,18 +85,24 @@
                                 
                                     <div class="form-group row">
                                         <div class="col-xl-3">
-                                            <label for="orderNo" class="col-form-label">ORDER NO.:</label>
+                                        <label for="orderNo" class="col-form-label">ORDER NO.: @Model.Id</label>
                                         </div>
                                         <div class="col-xl-3">
-                                            <span id="orderNo">@Model.Id</span> 
+                                            <span id="orderNo"></span> 
                                         </div>
                                         <div class="col-xl-3">
-                                            <label for="orderDate" class="col-form-label">ORDER DATE:</label>
-                                        </div>
-                                        <div class="col-xl-3">
-                                            <span id="orderDate">@Model.OrderDate</span> 
-                                        </div>
-                                    </div>
+                                        <label for="orderDate" class="col-form-label">ORDER DATE: @Model.OrderDate</label>
+                                   </div>
+                           </div>
+                           <div class="col-xl-5">
+                                  <div class="mt-15">
+                                      <label class="col-form-label">ORDER TIME: @Model.OrderDate</label>
+                                  </div>
+                                  <div class="mt-15">
+                                        <label class="col-form-label">ORDER TIME: @Model.DeliveryDate</label>
+                                  </div>
+                                  
+                            </div>
                                 <div class="cart-wrapper" >
                                     <div class="table-content table-responsive">
                                         <table class="table">

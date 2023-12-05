@@ -1,0 +1,126 @@
+﻿@inject Cloud_computing_project_LAST.Data.ApplicationDbContext DbContext
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IHttpContextAccessor _httpContextAccessor
+@using Cloud_computing_project_LAST.Models
+@using Newtonsoft.Json
+
+@{
+    List<CartItem> cartItems = new List<CartItem>();
+    Cart cart = new Cart();
+    if (SignInManager.IsSignedIn(User))
+    {
+        var carts = DbContext.Cart.ToList();
+        cart = carts.Find(c => c.userId == User.Identity.Name);
+        var AllcartItems = DbContext.CartItem.ToList<CartItem>();
+        cartItems = AllcartItems.FindAll(C => C.cartId == cart.Id);
+    }
+    else
+    {
+        var httpContext = _httpContextAccessor.HttpContext;
+        var guestCart = httpContext.Session.GetString("GuestCart");
+        if(guestCart != null)
+        {
+            cart = JsonConvert.DeserializeObject<Cart>(guestCart);
+            cartItems = cart.CartItem;
+        }
+        
+    }
+    var products = DbContext.Product.ToList();
+}
+<div class="cart-bar">
+    <h4 class="cart-bar__title">Cart Items - <span id="cartItemCount">@cart.Quantity </span></h4>
+
+    <div class="cart-bar__lists" id="cartItemsContainer">
+    @foreach(var item in @cartItems)
+    {
+    <div class="cart-bar__item position-relative d-flex">
+        <div class="thumb">
+            <img src="@item.ImageUrl" alt="image_not_found" width="189" height="165">
+        </div>
+        <div class="content">
+            <h4 class="title">
+                @if(products.Find(p => p.Name == item.Name) != null)
+               {
+                        <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@products.Find(p => p.Name == item.Name).Id">@item.Name.</a>
+               }
+               else
+               {
+                    <a>@item.Name.</a>
+               }
+            </h4>
+            <span class="price">$@item.Price</span>
+                <a href="#0" class="remove" data-product-id="@item.Id"><i class="fal fa-times"></i></a>
+        </div>
+    </div>
+    }
+</div>
+<div class="cart-bar__subtotal d-flex align-items-center justify-content-between">
+    <span>Sub Total:</span>
+    <span>$@cart.TotalPrice</span>
+</div>
+<div class="btns d-flex align-items-center justify-content-center">
+    <a asp-controller="CartItems" asp-action="Cart" class="site-btn">View Cart</a>
+    <a asp-controller="Orderrs" asp-action="Create" class="site-btn site-btn__borderd">Checkout</a>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        // Add a click event listener to all elements with the class "product-remove"
+        $(document).on('click', '.remove', function (event) {
+            event.preventDefault();
+
+            // Get the product ID from the data attribute
+            var productId = $(this).data('product-id');
+
+            // Store the reference to the current button
+            var $button = $(this);
+
+            // Send an AJAX request to remove the item
+            $.ajax({
+                url: '/CartItems/RemoveItem',
+                type: 'POST',
+                data: { productId: productId },
+                success: function (response) {
+                    if (response.success) {
+                        // Remove the cart item from the view after successful removal
+                    $button.closest('.cart-bar__item').remove();
+
+                    // Update the cart subtotal after item removal
+                        $('.cart-bar__subtotal span:last-child').text('$' + response.newSubTotal);
+                    $('.cart-bar__title span:last-child').text(response.quantity);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error removing item:', error);
+                }
+            });
+        });
+    });
+
+
+    
+    function scrollAfterSevenItems() {
+        const itemsContainer = document.getElementById('cartItemsContainer');
+        const items = itemsContainer.getElementsByClassName('cart-bar__item');
+        const itemsCount = items.length;
+
+        // Scroll height after every 7 items
+        const scrollHeight = 7 * items[0].offsetHeight;
+
+        if (itemsCount > 7) {
+            itemsContainer.style.height = `${scrollHeight}px`;
+            itemsContainer.style.overflowY = 'auto';
+        }
+    }
+
+    // Call the scroll function
+    window.addEventListener('load', scrollAfterSevenItems);
+</script>
+

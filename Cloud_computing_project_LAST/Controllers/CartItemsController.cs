@@ -9,6 +9,7 @@ using Cloud_computing_project_LAST.Data;
 using Cloud_computing_project_LAST.Models;
 using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
+using Cloud_computing_project_LAST.Data.Migrations;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
@@ -28,12 +29,27 @@ namespace Cloud_computing_project_LAST.Controllers
         {
             // check if the amount is valid
             var products =  _context.Product.ToList();
-            var product = products.Find(x => x.Name == productName);
-            if(quantity >product.InStock)
+            var menues = _context.Menu.ToList();
+            var product = menues.Find(x => x.Name == productName);
+            var productShop = products.Find(x => x.Name == productName);
+            if (productShop != null)
             {
-                return Json(new { success = false, message = $"only {product.InStock} left in the stock" });
+                if (quantity > productShop.InStock)
+                {
+                    return Json(new { success = false, message = $"only {productShop.InStock} left in the stock" });
+                }
+                product = new Menu
+                {
+                    Id = productShop.Id,
+                    Name = productShop.Name,
+                    Description = productShop.Description,
+                    ImageUrl = productShop.ImageUrl,
+                    Price = productShop.Price,
+                };
+                
             }
-            else
+           
+            if(User.Identity.IsAuthenticated)
             {
                 try
                 {
@@ -45,17 +61,67 @@ namespace Cloud_computing_project_LAST.Controllers
                     }
 
                     // Get the current subtotal before updating the quantity
-                    var currentSubtotal = cartItem.Price * cartItem.Amount;
+                    var currentSubtotal = cartItem.Price;
 
                     // Update the quantity
                     cartItem.Amount = quantity;
+                    cartItem.Price = quantity * product.Price;
                     _context.Update(cartItem);
                     await _context.SaveChangesAsync();
 
                     // Calculate the new subtotal
-                    var newSubtotal = cartItem.Price * cartItem.Amount;
+                   
 
-                    return Json(new { success = true, message = "Quantity updated successfully", newSubtotal = newSubtotal });
+                    var carts = _context.Cart.ToList();
+                    var cart = carts.Find(C => C.Id == cartItem.cartId);
+                    cart.TotalPrice = cart.TotalPrice + cartItem.Price - currentSubtotal;
+                    var newSubtotal = cart.TotalPrice;
+                    _context.Cart.Update(cart);
+                    await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, message = "Quantity updated successfully", newSubTotal = newSubtotal , newPrice = cartItem.Price});
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "Error updating quantity", error = ex.Message });
+                }
+            }
+            else
+            {
+                try
+                {
+                    var httpContext = _httpContextAccessor.HttpContext;
+                    var guestCart = httpContext.Session.GetString("GuestCart");
+
+                    var newSubtotal = 0.0;
+                    var price = 0.0;
+                    CartItem cartItem = null;
+                    if (!string.IsNullOrEmpty(guestCart))
+                    {
+                        var tempCart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
+                        cartItem = tempCart.CartItem.Find(c => c.Id == productId);
+                        // Get the current subtotal before updating the quantity
+                        var currentSubtotal = cartItem.Price;
+
+                        // Update the quantity
+                        cartItem.Amount = quantity;
+                        cartItem.Price = quantity * product.Price;
+                        price = cartItem.Price; 
+                        // Calculate the new subtotal
+                        
+
+                        tempCart.TotalPrice = tempCart.TotalPrice - currentSubtotal + cartItem.Price; 
+                        newSubtotal = tempCart.TotalPrice;
+                        httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(tempCart));
+                    }
+
+                    if (cartItem == null)
+                    {
+                        return Json(new { success = false, message = "Item not found" });
+                    }
+
+                    
+                    return Json(new { success = true, message = "Quantity updated successfully", newSubTotal = newSubtotal , newPrice = price});
                 }
                 catch (Exception ex)
                 {
@@ -71,23 +137,70 @@ namespace Cloud_computing_project_LAST.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveItem(int productId)
         {
-            try
+            if (User.Identity.IsAuthenticated)
             {
-                var cartItem = await _context.CartItem.FindAsync(productId);
-
-                if (cartItem == null)
+                try
                 {
-                    return Json(new { success = false, message = "Item not found" });
+                    var cartItem = await _context.CartItem.FindAsync(productId);
+
+                    if (cartItem == null)
+                    {
+                        return Json(new { success = false, message = "Item not found" });
+                    }
+
+                    _context.CartItem.Remove(cartItem);
+                    _context.SaveChanges();
+
+                    var carts =_context.Cart.ToList();
+                    var cart = carts.Find(c => c.Id == cartItem.cartId);
+                    cart.Quantity -= 1;
+                    cart.TotalPrice -= cartItem.Price;
+
+                    _context.Cart.Update(cart);
+                    _context.SaveChanges();
+
+                    return Json(new { success = true, message = "Item removed successfully", newTotal = cart.TotalPrice ,quantity = cart.Quantity});
                 }
-
-                _context.CartItem.Remove(cartItem);
-                await _context.SaveChangesAsync();
-
-                return Json(new { success = true, message = "Item removed successfully" });
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "Error removing item", error = ex.Message });
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return Json(new { success = false, message = "Error removing item", error = ex.Message });
+                try
+                {
+                    var httpContext = _httpContextAccessor.HttpContext;
+                    var guestCart = httpContext.Session.GetString("GuestCart");
+
+                    var price = 0.0;
+                    CartItem cartItem = null;
+                    var amount = 0;
+                    if (!string.IsNullOrEmpty(guestCart))
+                    {
+                        var tempCart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
+                        cartItem = tempCart.CartItem.Find(c => c.Id == productId);
+                        tempCart.CartItem.Remove(cartItem);
+                        tempCart.Quantity -= 1;
+                        tempCart.TotalPrice -= cartItem.Price;
+                        httpContext.Session.SetString("GuestCart", JsonConvert.SerializeObject(tempCart));
+                        price = tempCart.TotalPrice;
+                        amount = tempCart.Quantity;
+                    }
+
+                    if (cartItem == null)
+                    {
+                        return Json(new { success = false, message = "Item not found" });
+                    }
+
+                    
+
+                    return Json(new { success = true, message = "Item removed successfully", newTotal = price , quantity = amount});
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "Error removing item", error = ex.Message });
+                }
             }
         }
 
@@ -111,13 +224,13 @@ namespace Cloud_computing_project_LAST.Controllers
 
                 if (!string.IsNullOrEmpty(guestCart))
                 {
-                    var tempCart = JsonConvert.DeserializeObject<Cart>(guestCart);
+                    var tempCart = JsonConvert.DeserializeObject<Models.Cart>(guestCart);
                     cartItems = tempCart.CartItem;
                 }
             }
 
             // Calculate subtotal and total
-            var subtotal = cartItems.Sum(item => item.Price * item.Amount);
+            var subtotal = cartItems.Sum(item => item.Price);
             var total = subtotal; // You can add additional logic for discounts, taxes, etc.
 
             // Pass the subtotal and total to the view using ViewData
@@ -272,5 +385,8 @@ namespace Cloud_computing_project_LAST.Controllers
         {
           return (_context.CartItem?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        
+
     }
 }
