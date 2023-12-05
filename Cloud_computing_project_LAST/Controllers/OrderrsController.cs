@@ -181,8 +181,8 @@ namespace Cloud_computing_project_LAST.Controllers
                     var guestCart = httpContext.Session.GetString("GuestCart");
                     httpContext.Session.SetString("GuestCart", null);
                 }
-
-                return RedirectToAction(nameof(Index));
+                
+                return RedirectToAction(nameof(Submit));
             }
 
             return View(orderr);
@@ -368,7 +368,6 @@ namespace Cloud_computing_project_LAST.Controllers
         }
 
         [HttpPost]
-        [Route("/api/orders")]
         public IActionResult CreateOrder([FromBody] Orderr orderDto)
         {
             if (!ModelState.IsValid)
@@ -378,7 +377,7 @@ namespace Cloud_computing_project_LAST.Controllers
 
             Create(orderDto);
 
-            return Ok(new { message = "Order created successfully", orderId = orderDto.Id });
+            return Ok(new { message = "Order created successfully" });
         }
     }
 }
