@@ -81,36 +81,24 @@
     var userInfo = DbContext.UsersInfo.ToList().Find(e => e.Id == User.Identity.Name );
     var allOrders = DbContext.Orderr.ToList();
     var orders = allOrders.FindAll(e => e.Email == User.Identity.Name);
-
 }
 
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="row">
-        <div class="col-sm-8 d-flex align-items-center">
+        <div class="col-xl-12 text-center">
             <div class="mt-10">
                 <label class="nav-link text-dark">
                     Hello @userInfo?.FirstName @userInfo?.LastName
                 </label>
             </div>
         </div>
-        <div class="col-sm-4">
-            <div class="mt-10">
-                <div class="nav-item">
-                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button type="submit" class="custom-link" style="background-color:white">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="mt-10">
-        <a herf="#" class="custom-link" id="user-link" data-user-id="@User.Identity?.Name">Edit your info</a>
-    </div>
-     <div class="mt-20">
 
+    
+  <div class="col-xl-12 text-center">
         <span class="toggle-label" style="color:black">
-        My Orders
+            Your Orders history
         <span class="arrow-icon">&#x25B6;</span>
         <span class="arrow-icon-down">&#x25BC;</span>
         </span>
@@ -138,8 +126,32 @@
             }
         </tbody>
     </table>
-    
-    </div>
+  </div>
+        <div class="col-xl-12 text-center">
+            <div class="contact__info--wrapper mt-15">
+                <ul class="contact__info list-unstyled">
+                    <li>
+                        <div class="col-xl-12 text-center">
+
+                            <a herf="#" class="custom-link" id="user-link" data-user-id="@User.Identity?.Name">Edit your info</a>
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-xl-12 text-center">
+                            <div class="item d-flex align-items-center justify-content-start">
+
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="custom-link" style="background-color:white">Logout</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -198,19 +210,18 @@ else
 {
     <div class="text-center">
         <div class="mt-10 ">
-        <h3>Dont have an accoun yet?</h3>
-      <div class="mt-8 "> 
-            <a class="custom-link" asp-area="Identity" asp-page="/Account/Register">Sign Up Now</a>
-      </div>
+            <h3>Dont have an accoun yet?</h3>
+            <div class="mt-8 ">
+                <a class="custom-link" asp-area="Identity" asp-page="/Account/Register">Sign Up Now</a>
+            </div>
         </div>
         <div class="mt-10 ">
-        <h3>Already have an account?</h3>
+            <h3>Already have an account?</h3>
             <div class="mt-8 ">
                 <a class="custom-link" asp-area="Identity" asp-page="/Account/Login">Log in Now</a>
-                </div>
+            </div>
         </div>
     </div>
-   
+
 }
-
-
+}

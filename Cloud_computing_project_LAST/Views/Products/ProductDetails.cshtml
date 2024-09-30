@@ -72,6 +72,14 @@
             height: 2px;
             background-color: #E2DFDD;
         }
+
+        .default,
+        .on-hover {
+            width: 101px;
+            height: 136px;
+        }
+
+        
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -291,13 +299,13 @@
                                 <div class="cart d-flex align-items-center justify-content-center">
                                     <a href="/CartItems/Cart"><i class="fal fa-shopping-basket"></i></a>
                                 </div>
-                                <div class="view d-flex align-items-center justify-content-center">
+                                <div class="align-items-center justify-content-center">
                                         <a href="#" class="product-link" data-product-id="@item.Id"><i class="fal fa-eye"></i></a>
                                 </div>
                             </div>
                             <div class="pp__thumb pp__thumb--2 mt-35">
-                                <img class="default" src="@item.ImageUrl" alt="" width="101" height="156">
-                                    <img class="on-hover" src="@item.ImageUrl" alt="" width="101" height="156">
+                                <img class="default" src="@item.ImageUrl" alt="" width="101" height="136">
+                                <img class="on-hover" src="@item.ImageUrl" alt="" width="101" height="136">
                              </div>
                             <div class="pp__content pp__content--2 mt-25">
                                 <div class="pp__c-top d-flex align-items-center justify-content-center">
