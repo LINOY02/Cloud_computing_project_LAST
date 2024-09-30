@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
+using Cloud_computing_project_LAST.Data;
+using System.Data.Entity;
 
 namespace Cloud_computing_project_LAST.Controllers
 {
@@ -10,15 +12,30 @@ namespace Cloud_computing_project_LAST.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        private readonly ApplicationDbContext _dbContext;
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, ApplicationDbContext dbContext)
         {
             _logger = logger;
             _configuration = configuration;
+            _dbContext = dbContext;
         }
 
-        public IActionResult Index()
+        /* public IActionResult Index()
+         {
+             return View();
+         }*/
+
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var viewModel = new
+            {
+                MenuProducts = _dbContext.Menu!.Take(6).ToList(),
+                AllProducts = _dbContext.Product!.ToList()
+            };
+            return (_dbContext.Menu != null) && (_dbContext.Product != null) ?
+                          View(viewModel) :
+                          Problem("Entity set 'ApplicationDbContext.Menu' or 'ApplicationDbContext.Product' is null.");
         }
 
         public IActionResult Privacy()
@@ -128,18 +145,24 @@ https://localhost:7227/",
         {
             var person = new
             {
-              
+                Name = form["name"],
                 Email = form["email"],
-              
+                Seates = form["subject"],
+                Massage = form["massage"]
+
             };
 
             if (ModelState.IsValid)
-            {
-                await SendConfirmationEmail(person.Email);
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(person.Email);
+                if (ModelState.IsValid)
+                {
+                    {
+                        await SendContactConfirmationEmail(person.Name!, person.Email!, person.Seates!, person.Massage!);
+                        await SendConfirmationEmail(person.Email);
+                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            return View(person);
         }
 
         private async Task SendConfirmationEmail(string email)
